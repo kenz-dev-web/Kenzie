@@ -124,6 +124,81 @@ body{background:radial-gradient(ellipse at 12% 28%,rgba(142,167,185,.045),transp
 
 .nav-links a.active{color:var(--paper);position:relative}.nav-links a.active:after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;background:var(--accent)}
 @media(hover:hover) and (pointer:fine){.explore-card:hover .explore-cross{transform:translate(3px,-3px)}.explore-cross{transition:transform .3s}.project-feature:hover{border-color:rgba(195,141,102,.3)}}
+
+
+/* ===== KENZ V4 — richer colour language & interactive controls ===== */
+:root{
+  --accent:#E39A70;--accent-2:#78B9D7;--accent-3:#B69DDA;--accent-4:#E6C477;
+  --accent-5:#8FC3B1;--accent-6:#D88E9A;
+  --glow-copper:rgba(227,154,112,.20);--glow-blue:rgba(120,185,215,.16);
+}
+:root[data-palette="coast"]{
+  --accent:#F08E7B;--accent-2:#61B9B5;--accent-3:#829DD1;--accent-4:#E9C16E;
+  --accent-5:#A6C991;--accent-6:#D69DB8;--glow-copper:rgba(240,142,123,.2);--glow-blue:rgba(97,185,181,.17);
+}
+:root[data-palette="orchid"]{
+  --accent:#D79BCB;--accent-2:#82B9DF;--accent-3:#A99BE8;--accent-4:#E8C57C;
+  --accent-5:#85C6B8;--accent-6:#EF9D91;--glow-copper:rgba(215,155,203,.2);--glow-blue:rgba(130,185,223,.17);
+}
+:root[data-palette="ember"]{
+  --accent:#E79A5E;--accent-2:#86B4C9;--accent-3:#B99BC5;--accent-4:#E9BE69;
+  --accent-5:#9DBB8B;--accent-6:#D98278;--glow-copper:rgba(231,154,94,.2);--glow-blue:rgba(134,180,201,.16);
+}
+body{background-image:radial-gradient(ellipse at 10% 14%,color-mix(in srgb,var(--accent-2) 8%,transparent),transparent 29%),radial-gradient(ellipse at 88% 38%,color-mix(in srgb,var(--accent-3) 7%,transparent),transparent 27%),radial-gradient(ellipse at 52% 92%,color-mix(in srgb,var(--accent-4) 4%,transparent),transparent 32%);background-attachment:fixed}
+.hero{background:radial-gradient(ellipse at 75% 33%,color-mix(in srgb,var(--accent-2) 8%,transparent),transparent 32%),radial-gradient(ellipse at 18% 77%,color-mix(in srgb,var(--accent-6) 6%,transparent),transparent 28%)}
+.hero-gridlines{z-index:0}.hero-glow{z-index:0}.hero-grid{position:relative;z-index:2}
+.ambient-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.78}
+.hero:after{content:"";position:absolute;z-index:1;pointer-events:none;width:240px;height:240px;right:4%;top:14%;border-radius:50%;border:1px solid color-mix(in srgb,var(--accent-4) 18%,transparent);box-shadow:0 0 0 24px color-mix(in srgb,var(--accent-4) 2%,transparent),0 0 0 56px color-mix(in srgb,var(--accent-2) 2%,transparent);animation:heroOrbit 18s linear infinite}
+@keyframes heroOrbit{to{transform:rotate(360deg)}}
+.accent-text{background:linear-gradient(105deg,var(--accent) 3%,var(--accent-2) 42%,var(--accent-3) 72%,var(--accent-4));background-size:220% auto;background-clip:text;-webkit-background-clip:text;color:transparent;animation:accentFlow 9s linear infinite}
+@keyframes accentFlow{to{background-position:220% center}}
+.eyebrow{color:var(--accent-2)}.nav-cta{border-color:color-mix(in srgb,var(--accent) 60%,transparent)}
+.nav-cta:hover{background:var(--accent);color:#17120F}.marquee{background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 4%,transparent),color-mix(in srgb,var(--accent-2) 4%,transparent),color-mix(in srgb,var(--accent-3) 4%,transparent))}
+.marquee-item:nth-child(4n+1) i{color:var(--accent)}.marquee-item:nth-child(4n+2) i{color:var(--accent-2)}.marquee-item:nth-child(4n+3) i{color:var(--accent-3)}.marquee-item:nth-child(4n) i{color:var(--accent-4)}
+.story-section{background:linear-gradient(115deg,color-mix(in srgb,var(--accent-2) 5%,transparent),transparent 46%,color-mix(in srgb,var(--accent-3) 5%,transparent))}
+.explore-web{background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 14%,#171d26),#0d1117 78%)}
+.explore-3d{background:linear-gradient(145deg,color-mix(in srgb,var(--accent-2) 15%,#17222b),#0c1118 78%)}
+.explore-ui{background:linear-gradient(145deg,color-mix(in srgb,var(--accent-3) 14%,#211c27),#0e1118 78%)}
+.explore-ai{background:linear-gradient(145deg,color-mix(in srgb,var(--accent-4) 13%,#242116),#101218 78%)}
+.principle-copper{background:linear-gradient(150deg,color-mix(in srgb,var(--accent) 14%,#1a1d22),#0d1117 80%)}
+.principle-blue{background:linear-gradient(150deg,color-mix(in srgb,var(--accent-2) 14%,#18232b),#0d1117 80%)}
+.principle-gold{background:linear-gradient(150deg,color-mix(in srgb,var(--accent-4) 13%,#242116),#0d1117 80%)}
+.bento-blue{background:linear-gradient(145deg,color-mix(in srgb,var(--accent-2) 13%,#192733),#0d121a 88%)}
+.bento-lilac{background:linear-gradient(145deg,color-mix(in srgb,var(--accent-3) 13%,#27202e),#0d1118 88%)}
+.project-feature{background:linear-gradient(125deg,color-mix(in srgb,var(--accent-2) 8%,#1b222b),color-mix(in srgb,var(--accent) 7%,#10151c));border-color:color-mix(in srgb,var(--accent-2) 24%,transparent)}
+.project-feature:hover{box-shadow:0 35px 105px rgba(0,0,0,.45),0 0 55px color-mix(in srgb,var(--accent-2) 7%,transparent)}
+.vision-visual{background:radial-gradient(circle at 52% 45%,color-mix(in srgb,var(--accent-4) 18%,transparent),transparent 30%),linear-gradient(140deg,color-mix(in srgb,var(--accent-2) 10%,#151b24),color-mix(in srgb,var(--accent-3) 9%,#17131d))}
+.vision-sun{background:linear-gradient(140deg,var(--accent-4),var(--accent));box-shadow:0 0 90px color-mix(in srgb,var(--accent-4) 28%,transparent)}
+.contact-orb{background:radial-gradient(circle at 44% 45%,color-mix(in srgb,var(--accent) 15%,transparent),color-mix(in srgb,var(--accent-3) 7%,transparent) 38%,transparent 68%)}
+.now-main{background:radial-gradient(circle at 82% 28%,color-mix(in srgb,var(--accent-2) 18%,transparent),transparent 32%),linear-gradient(135deg,color-mix(in srgb,var(--accent) 10%,#1b2027),#0e131a 73%)}
+.quote{background:radial-gradient(ellipse at 15% 70%,color-mix(in srgb,var(--accent-2) 8%,transparent),transparent 38%),radial-gradient(ellipse at 82% 40%,color-mix(in srgb,var(--accent-3) 8%,transparent),transparent 48%)}
+.process-step:nth-child(4n+1) .process-icon{color:var(--accent)}.process-step:nth-child(4n+2) .process-icon{color:var(--accent-2)}.process-step:nth-child(4n+3) .process-icon{color:var(--accent-3)}.process-step:nth-child(4n) .process-icon{color:var(--accent-4)}
+/* Hover sheen is subtle and follows the active theme. */
+.explore-card,.principle-card,.process-step,.bento,.project-feature,.now-mini{transition:border-color .35s,transform .35s,box-shadow .35s,background .45s}
+.explore-card:hover,.principle-card:hover,.process-step:hover,.bento:hover,.now-mini:hover{box-shadow:0 22px 55px rgba(0,0,0,.2),0 0 30px color-mix(in srgb,var(--accent-2) 6%,transparent)}
+/* Floating utility dock */
+.utility-dock{position:fixed;z-index:125;right:22px;bottom:22px;display:flex;align-items:center;gap:7px;padding:7px;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(13,17,24,.82);backdrop-filter:blur(18px);box-shadow:0 16px 45px rgba(0,0,0,.32)}
+.dock-button{height:38px;min-width:39px;border:1px solid transparent;border-radius:999px;background:transparent;color:#dfe4e7;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 11px;transition:background .25s,border-color .25s,color .25s,transform .25s}
+.dock-button:hover,.dock-button[aria-expanded="true"]{background:color-mix(in srgb,var(--accent-2) 13%,transparent);border-color:color-mix(in srgb,var(--accent-2) 32%,transparent);color:var(--accent-2);transform:translateY(-2px)}
+.dock-icon{font:16px var(--mono);line-height:1}.palette-icon{color:var(--accent)}.dock-label{font:8px var(--mono);letter-spacing:.1em}.dock-button kbd{font:8px var(--mono);color:#8c98a3;border:1px solid rgba(255,255,255,.12);padding:4px 5px;border-radius:4px}
+.top-dock{opacity:0;pointer-events:none;transform:translateY(7px);transition:opacity .3s,transform .3s var(--ease),background .25s}.top-dock.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+.palette-panel{position:fixed;z-index:126;right:22px;bottom:78px;width:min(330px,calc(100vw - 32px));padding:18px;border:1px solid rgba(255,255,255,.13);background:rgba(14,18,25,.94);backdrop-filter:blur(22px);box-shadow:0 25px 70px rgba(0,0,0,.42);opacity:0;visibility:hidden;transform:translateY(12px) scale(.98);transform-origin:bottom right;transition:opacity .25s,transform .3s var(--ease),visibility .3s}
+.palette-panel.open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}.palette-panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.palette-panel-head>div{display:grid;gap:5px}.palette-panel-head strong{font:600 17px var(--display);letter-spacing:-.04em}.mini-kicker{font:8px var(--mono);letter-spacing:.15em;color:var(--accent-2)}
+.palette-panel-head button{background:none;border:0;color:#aeb8c0;font-size:22px}.palette-panel>p{font-size:10px;line-height:1.7;color:#89949f;margin:10px 0 15px}.palette-options{display:grid;gap:7px}.palette-option{width:100%;display:grid;grid-template-columns:75px 1fr 15px;align-items:center;gap:11px;text-align:left;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);padding:9px 10px;color:#e9ecec;transition:border-color .25s,background .25s}.palette-option:hover,.palette-option[aria-pressed="true"]{border-color:color-mix(in srgb,var(--accent-2) 55%,transparent);background:color-mix(in srgb,var(--accent-2) 9%,transparent)}.palette-option>span:nth-child(2){display:grid;gap:3px}.palette-option b{font:600 11px var(--body)}.palette-option small{font:8px var(--mono);color:#84909b}.palette-option em{font-style:normal;color:var(--accent-2);opacity:0}.palette-option[aria-pressed="true"] em{opacity:1}.swatches{display:flex;gap:4px}.swatches i{width:14px;height:23px;border-radius:3px;background:#E39A70}.swatches i:nth-child(2){background:#78B9D7}.swatches i:nth-child(3){background:#B69DDA}.swatches i:nth-child(4){background:#E6C477}.swatches.coast i:nth-child(1){background:#F08E7B}.swatches.coast i:nth-child(2){background:#61B9B5}.swatches.coast i:nth-child(3){background:#829DD1}.swatches.coast i:nth-child(4){background:#E9C16E}.swatches.orchid i:nth-child(1){background:#D79BCB}.swatches.orchid i:nth-child(2){background:#82B9DF}.swatches.orchid i:nth-child(3){background:#A99BE8}.swatches.orchid i:nth-child(4){background:#E8C57C}.swatches.ember i:nth-child(1){background:#E79A5E}.swatches.ember i:nth-child(2){background:#86B4C9}.swatches.ember i:nth-child(3){background:#B99BC5}.swatches.ember i:nth-child(4){background:#E9BE69}
+.palette-foot{font:7px var(--mono);letter-spacing:.12em;color:#66727f;margin-top:15px}
+/* Command palette */
+.command-backdrop{position:fixed;inset:0;z-index:180;display:grid;place-items:start center;padding:14vh 18px 30px;background:rgba(3,5,8,.72);backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:opacity .22s,visibility .22s}
+.command-backdrop.open{opacity:1;visibility:visible}.command-window{width:min(570px,100%);background:#111720;border:1px solid rgba(255,255,255,.14);box-shadow:0 35px 100px rgba(0,0,0,.58);transform:translateY(14px) scale(.985);transition:transform .3s var(--ease);overflow:hidden}.command-backdrop.open .command-window{transform:translateY(0) scale(1)}
+.command-top{padding:20px 20px 16px;display:flex;align-items:center;gap:13px;border-bottom:1px solid rgba(255,255,255,.08)}.command-mark{width:38px;height:38px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent-3) 14%,transparent);border:1px solid color-mix(in srgb,var(--accent-3) 32%,transparent);color:var(--accent-3);font:18px var(--mono)}.command-top>div{display:grid;gap:4px;flex:1}.command-top strong{font:600 16px var(--display)}.command-top button{font:8px var(--mono);letter-spacing:.1em;color:#a0aab4;background:transparent;border:1px solid rgba(255,255,255,.12);padding:7px 8px}
+.command-search-wrap{height:54px;display:flex;align-items:center;gap:12px;padding:0 20px;border-bottom:1px solid rgba(255,255,255,.08);color:var(--accent-2)}.command-search-wrap>span{font-size:22px}.command-search-wrap input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:#f1f2ef;font:12px var(--body)}.command-search-wrap input::placeholder{color:#697582}.command-search-wrap kbd{font:8px var(--mono);color:#7d8994;border:1px solid rgba(255,255,255,.11);padding:4px 6px}
+.command-list{max-height:min(48vh,420px);overflow:auto;padding:8px}.command-list a{display:grid;grid-template-columns:30px 1fr 20px;align-items:center;gap:11px;padding:11px 12px;color:#dfe4e7;border:1px solid transparent;transition:background .2s,border-color .2s}.command-list a:hover,.command-list a.active{background:color-mix(in srgb,var(--accent-2) 9%,transparent);border-color:color-mix(in srgb,var(--accent-2) 22%,transparent)}.command-index{font:9px var(--mono);color:var(--accent)}.command-index.external{font-size:15px;color:var(--accent-4)}.command-list a>span:nth-child(2){display:grid;gap:3px}.command-list b{font:500 11px var(--body)}.command-list small{font:9px var(--body);color:#81909b}.command-list kbd{font:10px var(--mono);color:#687582}.command-list a[hidden]{display:none}.command-footer{display:flex;justify-content:space-between;gap:8px;padding:11px 17px;background:rgba(255,255,255,.025);border-top:1px solid rgba(255,255,255,.07);font:7px var(--mono);letter-spacing:.08em;color:#71808d}
+body.command-open{overflow:hidden}
+/* Contact micro-interactions */
+.contact-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.copy-handle{display:inline-flex;align-items:center;gap:15px;padding:17px 19px;background:rgba(255,255,255,.025);border:1px solid var(--line);color:#e7e8e4;font:10px var(--mono);letter-spacing:.05em;transition:.3s}.copy-handle span{color:var(--accent-2);font-size:8px}.copy-handle:hover{border-color:var(--accent-2);background:color-mix(in srgb,var(--accent-2) 10%,transparent);transform:translateY(-3px)}
+.toast{border-color:color-mix(in srgb,var(--accent-2) 48%,transparent);box-shadow:0 12px 45px rgba(0,0,0,.3)}
+@media(max-width:680px){.utility-dock{right:12px;bottom:12px;gap:3px;padding:5px}.dock-button{height:36px;min-width:36px;padding:0 9px}.dock-label{display:none}.command-dock kbd{display:none}.palette-panel{right:12px;bottom:65px}.command-backdrop{padding:8vh 12px 20px}.command-footer{font-size:6px}.contact-actions{align-items:stretch}.contact-actions>*{width:100%;justify-content:center}.hero:after{width:150px;height:150px;right:-35px;top:12%}}
+@media(prefers-reduced-motion:reduce){.accent-text,.hero:after{animation:none!important}.utility-dock *,.palette-panel,.command-window{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -149,7 +224,7 @@ body{background:radial-gradient(ellipse at 12% 28%,rgba(142,167,185,.045),transp
 </header>
 <main>
 <section class="hero" id="home">
-  <div class="hero-gridlines"></div><div class="hero-glow"></div>
+  <div class="hero-gridlines"></div><canvas class="ambient-canvas" id="ambientCanvas" aria-hidden="true"></canvas><div class="hero-glow"></div>
   <div class="container hero-grid">
     <div class="hero-content">
       <div class="eyebrow hero-kicker">PORTOFOLIO PERSONAL · 2026</div>
@@ -287,12 +362,49 @@ body{background:radial-gradient(ellipse at 12% 28%,rgba(142,167,185,.045),transp
 <section class="contact" id="contact"><div class="contact-orb"></div><div class="container">
   <div class="eyebrow reveal">10 / Mari terhubung</div><h2 class="reveal">Punya ide?<br><span>Mari wujudkan.</span></h2>
   <div class="contact-bottom reveal"><p>Punya gagasan, ingin bertukar pikiran, atau tertarik melihat proses di balik sebuah karya? Kunjungi Instagram saya. Saya senang berbagi perjalanan belajar dan eksplorasi digital.</p>
-    <a href="https://www.instagram.com/kenzz_sp/" target="_blank" rel="noopener noreferrer" class="email-button">KUNJUNGI INSTAGRAM <span>↗</span></a>
+    <div class="contact-actions">
+      <a href="https://www.instagram.com/kenzz_sp/" target="_blank" rel="noopener noreferrer" class="email-button">KUNJUNGI INSTAGRAM <span>↗</span></a>
+      <button type="button" class="copy-handle" id="copyHandle" aria-label="Salin username Instagram">@kenzz_sp <span>⧉ SALIN</span></button>
+    </div>
   </div>
   <footer class="footer"><span>© 2026 <strong>KENZIE SURYA PRATAMA</strong></span><span>DIBANGUN DENGAN RASA INGIN TAHU</span><a href="#home">KEMBALI KE ATAS ↑</a></footer>
 </div></section>
 </main>
-<div class="toast" id="toast">TERIMA KASIH SUDAH BERKUNJUNG</div>
+<div class="utility-dock" aria-label="Kontrol cepat">
+  <button type="button" id="paletteToggle" class="dock-button" aria-label="Pilih palet warna" aria-expanded="false"><span class="dock-icon palette-icon">✳</span><span class="dock-label">WARNA</span></button>
+  <button type="button" id="commandToggle" class="dock-button command-dock" aria-label="Buka pencarian cepat"><span class="dock-icon">⌘</span><span class="dock-label">CARI</span><kbd>CTRL K</kbd></button>
+  <button type="button" id="topButton" class="dock-button top-dock" aria-label="Kembali ke atas"><span class="dock-icon">↑</span></button>
+</div>
+<div class="palette-panel" id="palettePanel" aria-hidden="true">
+  <div class="palette-panel-head"><div><span class="mini-kicker">PERSONALISASI</span><strong>Pilih suasana warna</strong></div><button type="button" id="paletteClose" aria-label="Tutup pilihan warna">×</button></div>
+  <p>Ubah nuansa visual sesuai suasana yang kamu suka.</p>
+  <div class="palette-options">
+    <button type="button" class="palette-option" data-palette="atelier" aria-pressed="true"><span class="swatches"><i></i><i></i><i></i><i></i></span><span><b>Atelier</b><small>Copper · Sky · Lilac</small></span><em>✓</em></button>
+    <button type="button" class="palette-option" data-palette="coast" aria-pressed="false"><span class="swatches coast"><i></i><i></i><i></i><i></i></span><span><b>Coastal</b><small>Coral · Teal · Sand</small></span><em>✓</em></button>
+    <button type="button" class="palette-option" data-palette="orchid" aria-pressed="false"><span class="swatches orchid"><i></i><i></i><i></i><i></i></span><span><b>Orchid</b><small>Lavender · Rose · Ice</small></span><em>✓</em></button>
+    <button type="button" class="palette-option" data-palette="ember" aria-pressed="false"><span class="swatches ember"><i></i><i></i><i></i><i></i></span><span><b>Ember</b><small>Amber · Terracotta · Sage</small></span><em>✓</em></button>
+  </div>
+  <div class="palette-foot">PILIHAN TERSIMPAN DI PERANGKAT INI</div>
+</div>
+<div class="command-backdrop" id="commandBackdrop" aria-hidden="true">
+  <div class="command-window" role="dialog" aria-modal="true" aria-labelledby="commandTitle">
+    <div class="command-top"><span class="command-mark">⌘</span><div><span class="mini-kicker">KENZ QUICK NAVIGATION</span><strong id="commandTitle">Mau ke bagian mana?</strong></div><button type="button" id="commandClose" aria-label="Tutup pencarian">ESC</button></div>
+    <label class="command-search-wrap"><span>⌕</span><input id="commandInput" type="search" placeholder="Cari profil, karya, keahlian..." autocomplete="off"><kbd>ESC</kbd></label>
+    <div class="command-list" id="commandList">
+      <a href="#home" data-search="beranda home pembuka kenz"><span class="command-index">01</span><span><b>Beranda</b><small>Kembali ke bagian pembuka</small></span><kbd>↵</kbd></a>
+      <a href="#about" data-search="profil tentang saya about"><span class="command-index">02</span><span><b>Kenali KENZ</b><small>Profil dan cerita singkat</small></span><kbd>↵</kbd></a>
+      <a href="#cerita" data-search="perjalanan awal belajar coding cerita"><span class="command-index">03</span><span><b>Awal perjalanan</b><small>Bagaimana ketertarikan coding bermula</small></span><kbd>↵</kbd></a>
+      <a href="#eksplorasi" data-search="eksplorasi web 3d ui ux ai minat"><span class="command-index">04</span><span><b>Ruang eksplorasi</b><small>Web, 3D, UI/UX, dan AI</small></span><kbd>↵</kbd></a>
+      <a href="#prinsip" data-search="prinsip fungsi visual efisiensi"><span class="command-index">05</span><span><b>Prinsip berkarya</b><small>Fungsi, estetika, dan efisiensi</small></span><kbd>↵</kbd></a>
+      <a href="#works" data-search="karya proyek 3d smansa klaten website"><span class="command-index">06</span><span><b>Karya pilihan</b><small>Jelajahi proyek 3D SMANSA</small></span><kbd>↵</kbd></a>
+      <a href="#journey-detail" data-search="timeline perkembangan belajar coding"><span class="command-index">07</span><span><b>Catatan perjalanan</b><small>Perkembangan belajar dari waktu ke waktu</small></span><kbd>↵</kbd></a>
+      <a href="#contact" data-search="kontak instagram hubungi kenz"><span class="command-index">08</span><span><b>Kontak</b><small>Terhubung melalui Instagram</small></span><kbd>↵</kbd></a>
+      <a href="https://3d-smansa.vercel.app/" target="_blank" rel="noopener noreferrer" data-search="buka demo website 3d smansa"><span class="command-index external">↗</span><span><b>Buka 3D SMANSA</b><small>Jelajahi proyek di tab baru</small></span><kbd>↗</kbd></a>
+    </div>
+    <div class="command-footer"><span>↑ ↓ UNTUK MENJELAJAH</span><span>ENTER UNTUK MEMBUKA</span><span>ESC UNTUK MENUTUP</span></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite">TERIMA KASIH SUDAH BERKUNJUNG</div>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
@@ -456,6 +568,132 @@ body{background:radial-gradient(ellipse at 12% 28%,rgba(142,167,185,.045),transp
   if(heroArt && window.matchMedia('(pointer:fine)').matches){
     heroArt.addEventListener('mousemove',e=>{const r=heroArt.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;const logo=heroArt.querySelector('.art-logo');logo.style.transform=`translate(${x*15}px,${y*15}px) rotate(${x*4}deg)`;});
     heroArt.addEventListener('mouseleave',()=>heroArt.querySelector('.art-logo').style.transform='');
+  }
+
+  // Palette switcher: curated accent systems, saved locally on this device.
+  const root=document.documentElement;
+  const palettePanel=document.getElementById('palettePanel');
+  const paletteToggle=document.getElementById('paletteToggle');
+  const paletteClose=document.getElementById('paletteClose');
+  const paletteOptions=[...document.querySelectorAll('.palette-option')];
+  const showToast=(message)=>{
+    const toast=document.getElementById('toast');
+    if(!toast)return;
+    toast.textContent=message;
+    toast.classList.add('show');
+    clearTimeout(showToast.timer);
+    showToast.timer=setTimeout(()=>toast.classList.remove('show'),2600);
+  };
+  const setPalette=(name,notify=false)=>{
+    const valid=['atelier','coast','orchid','ember'].includes(name)?name:'atelier';
+    root.dataset.palette=valid;
+    try{localStorage.setItem('kenz-palette',valid)}catch(e){}
+    paletteOptions.forEach(option=>option.setAttribute('aria-pressed',String(option.dataset.palette===valid)));
+    window.dispatchEvent(new CustomEvent('kenz:palettechange',{detail:{palette:valid}}));
+    if(notify)showToast('NUANSA '+valid.toUpperCase()+' DI TERAPKAN');
+  };
+  try{setPalette(localStorage.getItem('kenz-palette')||'atelier')}catch(e){setPalette('atelier')}
+  const closePalette=()=>{palettePanel?.classList.remove('open');palettePanel?.setAttribute('aria-hidden','true');paletteToggle?.setAttribute('aria-expanded','false')};
+  paletteToggle?.addEventListener('click',()=>{
+    const open=!palettePanel.classList.contains('open');
+    palettePanel.classList.toggle('open',open);palettePanel.setAttribute('aria-hidden',String(!open));paletteToggle.setAttribute('aria-expanded',String(open));
+  });
+  paletteClose?.addEventListener('click',closePalette);
+  paletteOptions.forEach(option=>option.addEventListener('click',()=>{setPalette(option.dataset.palette,true);closePalette()}));
+  document.addEventListener('pointerdown',e=>{if(palettePanel?.classList.contains('open')&&!palettePanel.contains(e.target)&&!paletteToggle.contains(e.target))closePalette()});
+
+  // Searchable command palette. Shortcut: Ctrl/Cmd + K.
+  const commandBackdrop=document.getElementById('commandBackdrop');
+  const commandInput=document.getElementById('commandInput');
+  const commandItems=[...document.querySelectorAll('#commandList a')];
+  const commandOpen=()=>{
+    closePalette();commandBackdrop.classList.add('open');commandBackdrop.setAttribute('aria-hidden','false');document.body.classList.add('command-open');
+    commandInput.value='';commandItems.forEach(item=>item.hidden=false);commandItems.forEach(item=>item.classList.remove('active'));
+    requestAnimationFrame(()=>commandInput.focus());
+  };
+  const commandClose=()=>{commandBackdrop.classList.remove('open');commandBackdrop.setAttribute('aria-hidden','true');document.body.classList.remove('command-open')};
+  document.getElementById('commandToggle')?.addEventListener('click',commandOpen);
+  document.getElementById('commandClose')?.addEventListener('click',commandClose);
+  commandBackdrop?.addEventListener('pointerdown',e=>{if(e.target===commandBackdrop)commandClose()});
+  commandInput?.addEventListener('input',()=>{
+    const query=commandInput.value.trim().toLowerCase();let first=null;
+    commandItems.forEach(item=>{const match=(item.innerText+' '+item.dataset.search).toLowerCase().includes(query);item.hidden=!match;item.classList.remove('active');if(match&&!first)first=item;});
+    first?.classList.add('active');
+  });
+  commandInput?.addEventListener('keydown',e=>{
+    const visible=commandItems.filter(item=>!item.hidden);if(!visible.length)return;
+    let current=visible.findIndex(item=>item.classList.contains('active'));
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+      e.preventDefault();current=e.key==='ArrowDown'?(current+1)%visible.length:(current<=0?visible.length-1:current-1);
+      visible.forEach(item=>item.classList.remove('active'));visible[current].classList.add('active');visible[current].scrollIntoView({block:'nearest'});
+    }
+    if(e.key==='Enter'){
+      e.preventDefault();const target=visible.find(item=>item.classList.contains('active'))||visible[0];
+      if(target){const href=target.getAttribute('href');const external=target.target==='_blank';commandClose();if(external)window.open(href,'_blank','noopener');else document.querySelector(href)?.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});}
+    }
+  });
+  document.addEventListener('keydown',e=>{
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();commandBackdrop.classList.contains('open')?commandClose():commandOpen()}
+    if(e.key==='Escape'){commandClose();closePalette()}
+  });
+  commandItems.forEach(item=>item.addEventListener('click',()=>{commandClose()}));
+
+  // Back-to-top shortcut and a gentle progress-aware appearance.
+  const topButton=document.getElementById('topButton');
+  topButton?.addEventListener('click',()=>window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'}));
+  const updateTopButton=()=>topButton?.classList.toggle('visible',window.scrollY>500);
+  window.addEventListener('scroll',updateTopButton,{passive:true});updateTopButton();
+
+  // Copy Instagram handle with a fallback for browsers without Clipboard API.
+  document.getElementById('copyHandle')?.addEventListener('click',async()=>{
+    const value='@kenzz_sp';
+    try{
+      if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(value);
+      else{const area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();}
+      showToast('USERNAME @KENZZ_SP BERHASIL DISALIN');
+    }catch(error){showToast('USERNAME: @KENZZ_SP');}
+  });
+
+  // Lightweight animated particle field in the hero. No external 3D dependency.
+  const canvas=document.getElementById('ambientCanvas');
+  if(canvas&&!reduceMotion){
+    const ctx=canvas.getContext('2d',{alpha:true});
+    if(ctx){
+      let width=0,height=0,dpr=1,particles=[],frame=0,active=true,mouse={x:-1000,y:-1000};
+      const paletteColors=[];
+      const hexToRgb=(hex)=>{const h=hex.replace('#','').trim();if(h.length!==6)return[190,190,190];return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]};
+      const refreshColors=()=>{const style=getComputedStyle(root);paletteColors.splice(0,paletteColors.length,...['--accent','--accent-2','--accent-3','--accent-4','--accent-5','--accent-6'].map(key=>hexToRgb(style.getPropertyValue(key).trim()||'#C38D66')))};
+      const resize=()=>{
+        const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;dpr=Math.min(window.devicePixelRatio||1,1.5);
+        canvas.width=Math.max(1,Math.floor(width*dpr));canvas.height=Math.max(1,Math.floor(height*dpr));ctx.setTransform(dpr,0,0,dpr,0,0);
+        const amount=Math.max(22,Math.min(54,Math.round(width/25)));
+        particles=Array.from({length:amount},()=>({x:Math.random()*width,y:Math.random()*height,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:.7+Math.random()*1.5,c:Math.floor(Math.random()*6),phase:Math.random()*Math.PI*2}));
+      };
+      const draw=()=>{
+        if(!active){frame=requestAnimationFrame(draw);return}
+        ctx.clearRect(0,0,width,height);
+        for(let i=0;i<particles.length;i++){
+          const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.phase+=.009;
+          if(p.x<-10)p.x=width+10;if(p.x>width+10)p.x=-10;if(p.y<-10)p.y=height+10;if(p.y>height+10)p.y=-10;
+          const dx=p.x-mouse.x,dy=p.y-mouse.y,md=Math.hypot(dx,dy);
+          if(md<130&&md>0){p.x+=(dx/md)*.045;p.y+=(dy/md)*.045;}
+          const color=paletteColors[p.c]||[190,190,190],alpha=.27+Math.sin(p.phase)*.1;
+          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(${color[0]},${color[1]},${color[2]},${alpha})`;ctx.fill();
+          for(let j=i+1;j<particles.length;j++){
+            const q=particles[j],dist=Math.hypot(p.x-q.x,p.y-q.y);
+            if(dist<118){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(${color[0]},${color[1]},${color[2]},${(1-dist/118)*.12})`;ctx.lineWidth=.7;ctx.stroke();}
+          }
+        }
+        frame=requestAnimationFrame(draw);
+      };
+      refreshColors();resize();draw();
+      window.addEventListener('resize',resize,{passive:true});
+      canvas.addEventListener('pointermove',e=>{const r=canvas.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top});
+      canvas.addEventListener('pointerleave',()=>{mouse.x=-1000;mouse.y=-1000});
+      window.addEventListener('kenz:palettechange',refreshColors);
+      document.addEventListener('visibilitychange',()=>{active=!document.hidden});
+      window.addEventListener('pagehide',()=>cancelAnimationFrame(frame),{once:true});
+    }
   }
 })();
 </script>
