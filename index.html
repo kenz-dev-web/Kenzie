@@ -48,16 +48,16 @@ Catatan:
   --text: #f4f2ef;
   --muted: #a0a5b1;
   --line: rgba(255,255,255,.12);
-  --accent: #ff895f;
-  --accent2: #f3b75e;
-  --accent3: #83c8de;
-  --accent4: #b69ce8;
-  --accent5: #ec9bb7;
+  --accent: #85a9e8;
+  --accent2: #f2a5bc;
+  --accent3: #a9d7c6;
+  --accent4: #c9a7ed;
+  --accent5: #f4c883;
   --mono: "DM Mono",monospace;
   --display: "Space Grotesk",sans-serif;
   --body: "Plus Jakarta Sans",sans-serif;
   --ease: cubic-bezier(.22,1,.36,1);
-  --glow: rgba(255,137,95,.28);
+  --glow: rgba(133,169,232,.28);
 }
 * {
   box-sizing: border-box;
@@ -5584,6 +5584,600 @@ body.focus-mode .faq-item p {
   }
 }
 
+  
+
+/* ======================================================================
+   KENZ V13 — macOS-inspired desktop language & colorful ambient system
+   These layers extend the existing design without removing portfolio data.
+   ====================================================================== */
+:root {
+  --mac-glass: rgba(24, 29, 43, .66);
+  --mac-glass-strong: rgba(20, 25, 38, .88);
+  --mac-stroke: rgba(255,255,255,.14);
+  --mac-shadow: 0 24px 80px rgba(0,0,0,.28);
+  --mac-radius: 22px;
+  --pointer-x: 50%;
+  --pointer-y: 30%;
+  --ambient-hue: 0deg;
+  --wallpaper-speed: 24s;
+  --mac-accent-glow: color-mix(in srgb, var(--accent), transparent 76%);
+}
+html {
+  scroll-padding-top: 118px;
+  scrollbar-color: color-mix(in srgb, var(--accent), #293044 35%) #0b0e17;
+  scrollbar-width: thin;
+}
+html::-webkit-scrollbar { width: 10px; }
+html::-webkit-scrollbar-track { background: #0b0e17; }
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent), var(--accent3), var(--accent4));
+  border: 3px solid #0b0e17;
+  border-radius: 20px;
+}
+body {
+  background: #090c15;
+  isolation: isolate;
+}
+#site {
+  position: relative;
+  z-index: 1;
+  overflow: clip;
+}
+
+/* Sonoma-like animated wallpaper behind translucent content surfaces. */
+#kenzWallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 9% 18%, rgba(88,123,208,.28), transparent 31%),
+    radial-gradient(ellipse at 88% 15%, rgba(203,116,167,.21), transparent 30%),
+    radial-gradient(ellipse at 74% 83%, rgba(74,175,166,.20), transparent 34%),
+    radial-gradient(ellipse at 20% 88%, rgba(218,142,93,.15), transparent 31%),
+    linear-gradient(135deg,#090d18 0%,#121322 42%,#101b25 100%);
+}
+#kenzWallpaper::before,
+#kenzWallpaper::after {
+  content: "";
+  position: absolute;
+  width: 72vmax;
+  height: 72vmax;
+  border-radius: 42% 58% 66% 34% / 43% 42% 58% 57%;
+  filter: blur(58px) saturate(130%);
+  opacity: .22;
+  mix-blend-mode: screen;
+  will-change: transform, border-radius;
+}
+#kenzWallpaper::before {
+  left: -22vmax;
+  top: -26vmax;
+  background: conic-gradient(from 35deg, #7295ec, #aa7ce0, #ed9bb8, #efb76e, #70c9c3, #7295ec);
+  animation: kenzWallpaperDriftA var(--wallpaper-speed) ease-in-out infinite alternate;
+}
+#kenzWallpaper::after {
+  right: -24vmax;
+  bottom: -32vmax;
+  background: conic-gradient(from 110deg, #5bbdd1, #799ce9, #b58be0, #f09eae, #e9bc75, #5bbdd1);
+  animation: kenzWallpaperDriftB 29s ease-in-out infinite alternate;
+}
+@keyframes kenzWallpaperDriftA {
+  0% { transform: translate3d(0,0,0) rotate(0deg) scale(.88); border-radius: 42% 58% 66% 34% / 43% 42% 58% 57%; }
+  50% { transform: translate3d(12vw,9vh,0) rotate(95deg) scale(1.08); border-radius: 58% 42% 37% 63% / 55% 61% 39% 45%; }
+  100% { transform: translate3d(25vw,15vh,0) rotate(190deg) scale(.95); border-radius: 34% 66% 48% 52% / 60% 35% 65% 40%; }
+}
+@keyframes kenzWallpaperDriftB {
+  0% { transform: translate3d(0,0,0) rotate(0deg) scale(1); border-radius: 63% 37% 54% 46% / 43% 53% 47% 57%; }
+  100% { transform: translate3d(-22vw,-18vh,0) rotate(-170deg) scale(1.18); border-radius: 37% 63% 42% 58% / 62% 38% 57% 43%; }
+}
+#kenzWallpaper .wallpaper-grain {
+  position: absolute;
+  inset: 0;
+  opacity: .13;
+  background-image: radial-gradient(rgba(255,255,255,.55) .55px, transparent .8px);
+  background-size: 5px 5px;
+  mask-image: linear-gradient(135deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+}
+#kenzWallpaper .wallpaper-beam {
+  position: absolute;
+  width: 80vw;
+  height: 1px;
+  left: 10vw;
+  top: 52vh;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  box-shadow: 0 0 45px 10px rgba(120,154,230,.07);
+  transform: rotate(-18deg);
+  animation: wallpaperBeam 12s ease-in-out infinite alternate;
+}
+@keyframes wallpaperBeam { to { transform: translateY(13vh) rotate(-12deg); opacity: .35; } }
+
+/* macOS-like top menu bar. Kept compact; no bottom dock is added. */
+.mac-menubar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 39px;
+  z-index: 145;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(16px,3vw,42px);
+  color: rgba(247,248,252,.88);
+  background: linear-gradient(180deg,rgba(24,28,40,.84),rgba(15,18,28,.58));
+  border-bottom: 1px solid rgba(255,255,255,.09);
+  backdrop-filter: blur(28px) saturate(165%);
+  -webkit-backdrop-filter: blur(28px) saturate(165%);
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity .7s .12s, transform .7s var(--ease);
+  font-size: 10px;
+}
+body.ready .mac-menubar { opacity: 1; transform: none; }
+.mac-menu-left,.mac-menu-right,.mac-menu-items { display: flex; align-items: center; gap: 17px; }
+.mac-menu-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: 700 12px var(--display);
+  letter-spacing: -.04em;
+  color: #fff;
+}
+.mac-menu-mark {
+  width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  color: #121621;
+  background: linear-gradient(135deg,var(--accent),var(--accent3),var(--accent4));
+  box-shadow: 0 0 18px var(--mac-accent-glow);
+}
+.mac-menu-item {
+  position: relative;
+  border: 0;
+  padding: 6px 8px;
+  border-radius: 7px;
+  background: transparent;
+  color: rgba(227,232,241,.72);
+  font: 10px var(--body);
+  transition: background .25s,color .25s,transform .25s;
+}
+.mac-menu-item:hover,.mac-menu-item:focus-visible {
+  color: #fff;
+  background: rgba(255,255,255,.10);
+  transform: translateY(-1px);
+}
+.mac-menu-right { gap: 12px; color: rgba(223,230,240,.74); font: 9px var(--mono); }
+.mac-menubar .mac-live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 6px;
+  background: #7ed6b0;
+  box-shadow: 0 0 12px #7ed6b0;
+  animation: macLivePulse 2.2s ease-in-out infinite;
+}
+@keyframes macLivePulse { 50% { opacity: .4; box-shadow: 0 0 3px #7ed6b0; } }
+.mac-menu-clock { color: #fff; min-width: 40px; text-align: right; }
+.nav {
+  top: 51px;
+  z-index: 135;
+  width: min(1240px,calc(100% - 48px));
+  border-radius: 19px;
+  border-color: rgba(255,255,255,.17);
+  background: linear-gradient(115deg,rgba(24,29,43,.83),rgba(16,21,34,.69));
+  box-shadow: 0 18px 65px rgba(0,0,0,.25), inset 0 1px rgba(255,255,255,.09);
+}
+.nav.scrolled { top: 46px; background: rgba(15,19,30,.88); }
+.nav::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: .45;
+  background: linear-gradient(110deg,rgba(255,255,255,.30),transparent 25%,var(--accent) 56%,var(--accent3) 78%,transparent);
+  mask: linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+.nav-links a { position: relative; padding: 8px 0; }
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent3);
+  box-shadow: 0 0 10px var(--accent3);
+  opacity: 0;
+  transform: translateX(-50%) scale(0);
+  transition: .28s var(--ease);
+}
+.nav-links a:hover::before,.nav-links a.active::before { opacity: 1; transform: translateX(-50%) scale(1); }
+.nav-links a.active { color: #fff; }
+.control-trigger {
+  background: linear-gradient(140deg,rgba(255,255,255,.13),rgba(255,255,255,.035));
+  box-shadow: inset 0 1px rgba(255,255,255,.13),0 6px 18px rgba(0,0,0,.18);
+}
+
+/* Hero desktop widgets: factual, compact, and responsive. */
+.hero-dashboard {
+  position: relative;
+  z-index: 4;
+  width: min(940px,calc(100% - 48px));
+  margin: 27px auto 10px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 11px;
+}
+.hero-widget {
+  position: relative;
+  min-height: 76px;
+  padding: 13px 16px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 2px 12px;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 16px;
+  text-align: left;
+  color: #f7f7fb;
+  background: linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.035));
+  backdrop-filter: blur(18px) saturate(145%);
+  box-shadow: inset 0 1px rgba(255,255,255,.08),0 12px 35px rgba(0,0,0,.13);
+  overflow: hidden;
+  transition: transform .4s var(--ease),border-color .35s,background .35s,box-shadow .35s;
+}
+.hero-widget::before {
+  content: "";
+  grid-row: 1 / span 2;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  background: linear-gradient(140deg,var(--widget-a,var(--accent)),var(--widget-b,var(--accent3)));
+  box-shadow: 0 7px 22px color-mix(in srgb,var(--widget-a,var(--accent)),transparent 68%);
+}
+.hero-widget:nth-child(2) { --widget-a: #9c8be9; --widget-b: #7dcbd8; }
+.hero-widget:nth-child(3) { --widget-a: #ec9bb5; --widget-b: #e7bf78; }
+.hero-widget:nth-child(1) { --widget-a: #7dc9b6; --widget-b: #85a9e8; }
+.hero-widget .widget-symbol {
+  position: absolute;
+  left: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #111722;
+  font-size: 17px;
+}
+.hero-widget small { grid-column: 2; color: #aab4c3; font: 8px var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+.hero-widget strong { grid-column: 2; font: 600 11px var(--display); letter-spacing: -.02em; }
+.hero-widget:hover { transform: translateY(-5px); border-color: color-mix(in srgb,var(--accent3),white 15%); background: linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.055)); box-shadow: 0 17px 38px rgba(0,0,0,.22),0 0 25px var(--mac-accent-glow); }
+.hero-widget-button { cursor: pointer; }
+.hero-widget-button::after { content: "↗"; position: absolute; right: 14px; top: 12px; color: var(--accent3); font: 14px var(--mono); }
+
+/* Section atmosphere: deliberately alternating dark and light Mac wallpaper surfaces. */
+.showcase {
+  padding-top: 177px;
+  background:
+    radial-gradient(ellipse at 13% 22%,rgba(116,141,228,.15),transparent 31%),
+    radial-gradient(ellipse at 82% 26%,rgba(220,133,175,.13),transparent 28%),
+    radial-gradient(ellipse at 50% 88%,rgba(98,196,178,.10),transparent 38%),
+    linear-gradient(155deg,rgba(10,13,23,.90),rgba(12,12,20,.91));
+}
+.showcase::before { background-size: 62px 62px; opacity: .75; }
+.showcase::after {
+  background: conic-gradient(from 35deg,rgba(245,145,112,.19),rgba(145,134,224,.15),rgba(100,198,192,.17),rgba(240,180,117,.13),rgba(245,145,112,.19));
+  filter: blur(68px);
+  animation: heroColorOrbit 22s linear infinite;
+}
+@keyframes heroColorOrbit { to { transform: rotate(360deg) scale(1.12); } }
+.intro-band {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(110deg,#f4efe7 0%,#e9e9f4 35%,#e4f0ef 68%,#f6e8e1 100%);
+}
+.intro-band::before {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  right: 4%;
+  top: -250px;
+  border-radius: 50%;
+  background: radial-gradient(circle,rgba(170,151,224,.26),transparent 70%);
+  filter: blur(12px);
+  animation: softFloat 9s ease-in-out infinite alternate;
+}
+.about-section {
+  background:
+    radial-gradient(ellipse at 5% 15%,rgba(133,169,232,.24),transparent 34%),
+    radial-gradient(ellipse at 94% 88%,rgba(230,155,180,.18),transparent 32%),
+    linear-gradient(135deg,#f1f1f4,#e9f0ee 52%,#f5ece5);
+}
+.interest-section {
+  background:
+    radial-gradient(ellipse at 12% 15%,rgba(124,151,231,.19),transparent 30%),
+    radial-gradient(ellipse at 90% 70%,rgba(205,123,178,.17),transparent 33%),
+    radial-gradient(ellipse at 52% 112%,rgba(89,193,177,.13),transparent 38%),
+    linear-gradient(140deg,#111827,#141425 54%,#101a24);
+}
+.story-section {
+  background:
+    radial-gradient(ellipse at 0% 95%,rgba(139,189,206,.28),transparent 34%),
+    radial-gradient(ellipse at 100% 0%,rgba(228,176,190,.25),transparent 30%),
+    linear-gradient(125deg,#f0eee9,#eeeaf5 47%,#e6f0ef);
+}
+.feature-section {
+  background:
+    radial-gradient(ellipse at 78% 28%,rgba(237,137,101,.22),transparent 36%),
+    radial-gradient(ellipse at 15% 82%,rgba(109,163,219,.18),transparent 35%),
+    radial-gradient(ellipse at 50% 112%,rgba(169,129,202,.14),transparent 34%),
+    linear-gradient(135deg,#080d17,#111623 55%,#111520);
+}
+.journey-section {
+  background:
+    radial-gradient(ellipse at 3% 20%,rgba(233,170,133,.24),transparent 34%),
+    radial-gradient(ellipse at 95% 90%,rgba(134,181,224,.27),transparent 32%),
+    linear-gradient(130deg,#f2eee8,#e9eff3 52%,#f2eaf1);
+}
+.principles {
+  background:
+    radial-gradient(ellipse at 18% 20%,rgba(171,139,225,.18),transparent 30%),
+    radial-gradient(ellipse at 86% 80%,rgba(231,137,129,.15),transparent 31%),
+    linear-gradient(145deg,#101624,#1b1729 55%,#121c28);
+}
+.lab-section {
+  background:
+    radial-gradient(ellipse at 8% 15%,rgba(99,190,202,.18),transparent 32%),
+    radial-gradient(ellipse at 90% 80%,rgba(208,135,192,.19),transparent 34%),
+    radial-gradient(ellipse at 54% 46%,rgba(232,173,104,.08),transparent 36%),
+    linear-gradient(145deg,#111a25,#141626 56%,#101b23);
+}
+.idea-studio-section {
+  background:
+    radial-gradient(ellipse at 8% 10%,rgba(153,129,219,.20),transparent 33%),
+    radial-gradient(ellipse at 94% 96%,rgba(232,146,139,.17),transparent 36%),
+    linear-gradient(135deg,#111625,#1b1729 55%,#12202a);
+}
+.faq-section {
+  background:
+    radial-gradient(ellipse at 0% 100%,rgba(137,203,194,.25),transparent 34%),
+    radial-gradient(ellipse at 100% 0%,rgba(205,169,225,.22),transparent 31%),
+    linear-gradient(125deg,#eeefeb,#e7eef2 50%,#f1eaf0);
+}
+.contact-section {
+  background:
+    radial-gradient(ellipse at 12% 20%,rgba(115,148,225,.22),transparent 32%),
+    radial-gradient(ellipse at 88% 88%,rgba(224,130,159,.19),transparent 32%),
+    radial-gradient(ellipse at 52% 50%,rgba(91,196,179,.10),transparent 38%),
+    linear-gradient(135deg,#0b101a,#151627 54%,#101c25);
+}
+
+/* App-window framing and colorful glass surfaces. */
+.control-window,.detail-window,.command-window,.shortcut-window {
+  border: 1px solid rgba(255,255,255,.18);
+  background: linear-gradient(145deg,rgba(35,41,57,.94),rgba(18,23,36,.94));
+  backdrop-filter: blur(36px) saturate(160%);
+  -webkit-backdrop-filter: blur(36px) saturate(160%);
+  box-shadow: 0 35px 120px rgba(0,0,0,.52),inset 0 1px rgba(255,255,255,.12);
+}
+.control-window::before,.detail-window::before,.command-window::before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg,transparent,var(--accent3),var(--accent4),var(--accent5),transparent);
+  opacity: .7;
+}
+.control-window { border-radius: 25px; }
+.window-head { min-height: 52px; }
+.window-head strong { letter-spacing: -.035em; }
+.traffic-lights i { box-shadow: inset 0 1px rgba(255,255,255,.28),0 1px 4px rgba(0,0,0,.22); }
+.theme-list { gap: 7px; padding: 3px 0 6px; }
+.theme-btn {
+  position: relative;
+  border-radius: 999px;
+  padding: 9px 13px 9px 25px;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.10);
+  color: rgba(242,244,250,.78);
+  transition: transform .25s,background .25s,border-color .25s,color .25s;
+}
+.theme-btn::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: linear-gradient(135deg,var(--accent),var(--accent3),var(--accent4));
+  box-shadow: 0 0 10px var(--mac-accent-glow);
+}
+.theme-btn:hover { transform: translateY(-2px); color: #fff; background: rgba(255,255,255,.12); }
+.theme-btn.active { background: color-mix(in srgb,var(--accent),transparent 84%); border-color: color-mix(in srgb,var(--accent),white 8%); color: #fff; }
+.control-tile {
+  position: relative;
+  border-radius: 18px;
+  background: linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  border-color: rgba(255,255,255,.11);
+  transition: transform .32s var(--ease),border-color .3s,box-shadow .3s,background .3s;
+}
+.control-tile:hover { transform: translateY(-3px); border-color: rgba(255,255,255,.24); box-shadow: 0 13px 30px rgba(0,0,0,.18); }
+.tile-icon { box-shadow: inset 0 1px rgba(255,255,255,.35),0 9px 23px rgba(0,0,0,.20); }
+
+/* Color-shifting glass cards: the glow follows pointer position. */
+.interest-card,.principle-card,.contact-card,.story-step,.feature-box,.lab-shell,.faq-item,.skill-detail-panel,.idea-result {
+  position: relative;
+  isolation: isolate;
+}
+.interest-card::before,.principle-card::before,.contact-card::before,.feature-box::before,.lab-shell::before,.faq-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: inherit;
+  background: radial-gradient(380px circle at var(--spot-x,50%) var(--spot-y,50%),rgba(255,255,255,.16),transparent 48%);
+  transition: opacity .35s;
+}
+.interest-card:hover::before,.principle-card:hover::before,.contact-card:hover::before,.feature-box:hover::before,.lab-shell:hover::before,.faq-item:hover::before { opacity: 1; }
+.interest-card,.principle-card,.contact-card,.story-step,.feature-box,.lab-shell,.faq-item,.skill-tab,.skill-tool,.contact-quick-action {
+  transition-timing-function: var(--ease);
+}
+.interest-card { border-radius: 21px; box-shadow: 0 15px 38px rgba(0,0,0,.10); }
+.interest-card:hover { box-shadow: 0 24px 50px rgba(0,0,0,.22),0 0 24px color-mix(in srgb,var(--card-color),transparent 82%); }
+.story-step { border-radius: 17px; box-shadow: 0 10px 25px rgba(42,52,66,.045); }
+.story-step:hover { box-shadow: 0 16px 34px rgba(42,52,66,.11); }
+.feature-box { border-radius: 28px; box-shadow: 0 32px 95px rgba(0,0,0,.30),inset 0 1px rgba(255,255,255,.07); }
+.feature-visual { background-color: #172330; }
+.lab-shell { border-radius: 28px; box-shadow: 0 32px 90px rgba(0,0,0,.26),inset 0 1px rgba(255,255,255,.07); }
+.faq-item { border-radius: 16px; transition: border-color .3s,background .3s,transform .3s; }
+.faq-item:hover { transform: translateX(4px); }
+.contact-card { border-radius: 20px; }
+
+/* Scroll micro-interactions: gradient rails, subtle section arrival and stagger. */
+.section { overflow: clip; }
+.section::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  width: min(50vw,520px);
+  height: min(50vw,520px);
+  right: -18%;
+  top: 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle,var(--section-glow,rgba(135,169,232,.10)),transparent 68%);
+  filter: blur(22px);
+  opacity: .7;
+  transform: translate3d(0,18px,0) scale(.88);
+  transition: transform 1.6s var(--ease),opacity 1.6s;
+}
+.section.section-in-view::before { transform: translate3d(0,0,0) scale(1.08); opacity: 1; }
+.interest-section { --section-glow: rgba(172,136,224,.20); }
+.story-section { --section-glow: rgba(106,190,198,.19); }
+.feature-section { --section-glow: rgba(235,132,95,.18); }
+.journey-section { --section-glow: rgba(225,173,118,.20); }
+.principles { --section-glow: rgba(177,132,222,.20); }
+.lab-section { --section-glow: rgba(90,190,203,.20); }
+.idea-studio-section { --section-glow: rgba(219,133,176,.18); }
+.faq-section { --section-glow: rgba(124,194,176,.22); }
+.contact-section { --section-glow: rgba(227,132,156,.18); }
+.reveal { will-change: opacity,transform,filter; }
+.reveal.visible { animation: macContentSettle .78s var(--ease) both; }
+@keyframes macContentSettle {
+  0% { filter: blur(4px); }
+  55% { filter: blur(0); }
+  100% { filter: none; }
+}
+.interest-grid .interest-card,.story-steps .story-step,.contact-cards .contact-card,.principles-grid .principle-card {
+  opacity: 0;
+  transform: translateY(18px) scale(.985);
+  transition: opacity .7s var(--ease),transform .7s var(--ease),box-shadow .35s,border-color .35s;
+}
+.section-in-view .interest-grid .interest-card,
+.section-in-view .story-steps .story-step,
+.section-in-view .contact-cards .contact-card,
+.section-in-view .principles-grid .principle-card {
+  opacity: 1;
+  transform: none;
+}
+.interest-grid .interest-card:nth-child(2),.story-steps .story-step:nth-child(2),.contact-cards .contact-card:nth-child(2),.principles-grid .principle-card:nth-child(2) { transition-delay: .08s; }
+.interest-grid .interest-card:nth-child(3),.story-steps .story-step:nth-child(3),.contact-cards .contact-card:nth-child(3),.principles-grid .principle-card:nth-child(3) { transition-delay: .16s; }
+.interest-grid .interest-card:nth-child(4),.story-steps .story-step:nth-child(4),.contact-cards .contact-card:nth-child(4),.principles-grid .principle-card:nth-child(4) { transition-delay: .24s; }
+
+/* The hero carousel behaves like a premium app window floating above a wallpaper. */
+.carousel-card {
+  border-radius: 19px;
+  border: 1px solid rgba(255,255,255,.20);
+  background: linear-gradient(145deg,rgba(34,43,61,.92),rgba(13,19,31,.94));
+  box-shadow: 0 25px 65px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.16);
+  backdrop-filter: blur(14px);
+}
+.carousel-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  padding: 1px;
+  opacity: .65;
+  background: linear-gradient(135deg,rgba(255,255,255,.30),transparent 30%,var(--accent),var(--accent3),transparent 85%);
+  mask: linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+.carousel-card.active { box-shadow: 0 38px 100px rgba(0,0,0,.46),0 0 36px var(--mac-accent-glow),inset 0 1px rgba(255,255,255,.15); }
+.carousel-caption { text-shadow: 0 8px 25px rgba(0,0,0,.24); }
+
+/* Responsive spacing under the new macOS menu bar. */
+@media (max-width: 980px) {
+  .nav { top: 48px; }
+  .nav.scrolled { top: 44px; }
+  .hero-dashboard { width: min(760px,calc(100% - 36px)); }
+}
+@media (max-width: 680px) {
+  html { scroll-padding-top: 100px; }
+  .mac-menubar { height: 35px; padding: 0 12px; }
+  .mac-menu-items { gap: 3px; }
+  .mac-menu-item { padding: 5px 6px; font-size: 9px; }
+  .mac-menu-left { gap: 8px; }
+  .mac-menu-brand { font-size: 11px; }
+  .mac-menu-right { gap: 7px; font-size: 8px; }
+  .mac-menu-location { display: none; }
+  .nav { top: 43px; width: calc(100% - 22px); padding: 8px 10px; }
+  .nav.scrolled { top: 40px; }
+  .nav-links { top: calc(100% + 8px); }
+  .showcase { padding-top: 142px; }
+  .hero-dashboard { grid-template-columns: 1fr; gap: 7px; margin-top: 20px; width: calc(100% - 34px); }
+  .hero-widget { min-height: 58px; padding: 9px 13px; }
+  .hero-widget::before { width: 29px; height: 29px; border-radius: 9px; }
+  .hero-widget .widget-symbol { left: 21px; font-size: 14px; }
+  .hero-widget small { font-size: 7px; }
+  .hero-widget strong { font-size: 10px; }
+  .section { padding-top: 84px; padding-bottom: 84px; }
+  .interest-grid .interest-card,.story-steps .story-step,.contact-cards .contact-card,.principles-grid .principle-card { opacity: 1; transform: none; }
+  #kenzWallpaper::before,#kenzWallpaper::after { opacity: .13; filter: blur(42px); }
+}
+@media (max-width: 390px) {
+  .mac-menu-item[data-menu="explore"] { display: none; }
+  .mac-menu-right .mac-menu-location { display: none; }
+  .hero-widget { grid-template-columns: 30px 1fr; }
+  .nav { width: calc(100% - 16px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #kenzWallpaper::before,#kenzWallpaper::after,#kenzWallpaper .wallpaper-beam,
+  .mac-menubar .mac-live-dot,.showcase::after,.intro-band::before { animation: none !important; }
+  .reveal.visible { animation: none !important; }
+  .section::before { transition: none !important; }
+}
+
+  
+.kenz-ripple {
+  position: absolute;
+  z-index: 5;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle,rgba(255,255,255,.38),rgba(255,255,255,.10) 48%,transparent 72%);
+  transform: translate(-50%,-50%) scale(0);
+  animation: kenzRipple .62s ease-out forwards;
+}
+@keyframes kenzRipple { to { opacity: 0; transform: translate(-50%,-50%) scale(17); } }
+.mac-menu-item.active { color:#fff; background:rgba(255,255,255,.075); }
+.nav.scrolled { box-shadow:0 16px 48px rgba(0,0,0,.31),inset 0 1px rgba(255,255,255,.12); }
+.hero-dashboard.reveal { opacity:0; transform:translateY(18px); }
+.hero-dashboard.reveal.visible { opacity:1; transform:none; }
+@media (max-width:680px) { .kenz-ripple { display:none; } }
+
   </style>
  </head>
  <body>
@@ -7173,7 +7767,7 @@ body.focus-mode .faq-item p {
           </button>
          </div>
          <code id="labCssCode">
-          --accent: #ff895f; --accent-2: #83c8de;
+          --accent: #85a9e8; --accent-2: #83c8de;
          </code>
         </div>
        </div>
@@ -7719,6 +8313,11 @@ body.focus-mode .faq-item p {
      <button class="theme-btn" data-theme="midnight">
       Midnight
      </button>
+     <button class="theme-btn" data-theme="sonoma">Sonoma</button>
+     <button class="theme-btn" data-theme="prism">Prism</button>
+     <button class="theme-btn" data-theme="sunset">Sunset</button>
+     <button class="theme-btn" data-theme="oceanic">Oceanic</button>
+     <button class="theme-btn" data-theme="sakura">Sakura</button>
     </div>
     <div class="control-grid">
      <button class="control-tile" data-toggle="particles">
@@ -8075,16 +8674,16 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     const body = document.body, intro = $('#intro'), site = $('#site'), bar = $('#introBar'), pct = $('#introPercent'), status = $('#introStatus'), toastEl = $('#toast');
     const reducePref = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let manualCalm = reducePref, particlesOn = true, autoPlay = true, activeIndex = 0, autoTimer = null, tourTimer = null, toastTimer = null;
-    const themes = { ember: ['#ff895f', '#f3b75e', '#83c8de', '#b69ce8', '#ec9bb7'], coastal: ['#78c7dd', '#edaa82', '#9bd6c6', '#a8b8ee', '#e9bd79'], orchid: ['#b79be9', '#ed9abb', '#7fc9dc', '#e9c47b', '#a4d6c5'], candy: ['#fa8fa8', '#8bc9e8', '#c2a4eb', '#f5c57b', '#8ed8c0'], aurora: ['#76d5c6', '#8cbae8', '#c2a3ec', '#f1b17a', '#ef9ebc'], atelier: ['#c88c6a', '#d8b477', '#88b3c9', '#b5a1d6', '#dfa4ad'], citrus: ['#d5df79', '#f0a36c', '#79c8b1', '#81bfe3', '#d9a4ca'], glacier: ['#7ecbe7', '#a5d9d0', '#b6a4e8', '#f4c98c', '#ed9eb3'], midnight: ['#a4b5d8', '#7c9fba', '#c8a4c9', '#d5b78a', '#9dc9be'] };
+    const themes = { ember: ['#ff895f', '#f3b75e', '#83c8de', '#b69ce8', '#ec9bb7'], coastal: ['#78c7dd', '#edaa82', '#9bd6c6', '#a8b8ee', '#e9bd79'], orchid: ['#b79be9', '#ed9abb', '#7fc9dc', '#e9c47b', '#a4d6c5'], candy: ['#fa8fa8', '#8bc9e8', '#c2a4eb', '#f5c57b', '#8ed8c0'], aurora: ['#76d5c6', '#8cbae8', '#c2a3ec', '#f1b17a', '#ef9ebc'], atelier: ['#c88c6a', '#d8b477', '#88b3c9', '#b5a1d6', '#dfa4ad'], citrus: ['#d5df79', '#f0a36c', '#79c8b1', '#81bfe3', '#d9a4ca'], glacier: ['#7ecbe7', '#a5d9d0', '#b6a4e8', '#f4c98c', '#ed9eb3'], midnight: ['#a4b5d8', '#7c9fba', '#c8a4c9', '#d5b78a', '#9dc9be'], sonoma: ['#85a9e8', '#f2a5bc', '#a9d7c6', '#c9a7ed', '#f4c883'], prism: ['#a68cf2', '#69d9e5', '#f28fad', '#f4be68', '#9fe0b0'], sunset: ['#ff8c69', '#f3c36e', '#d28ebe', '#8fa8dd', '#9ad1c5'], oceanic: ['#46b6c7', '#79a8ef', '#a8dbd6', '#b49be7', '#e9c283'], sakura: ['#f29ab5', '#d6a8ec', '#86bdd7', '#f3c98f', '#a5d9c0'] };
     function setTheme(name) { let a = themes[name] || themes.ember; let root = document.documentElement; ['--accent', '--accent2', '--accent3', '--accent4', '--accent5'].forEach((v, i) => root.style.setProperty(v, a[i])); root.style.setProperty('--glow', a[0] + '55'); $$('.theme-btn').forEach(b => b.classList.toggle('active', b.dataset.theme === name)); try {
         localStorage.setItem('kenz-theme', name);
     }
     catch (e) { } }
     try {
-        setTheme(localStorage.getItem('kenz-theme') || 'ember');
+        setTheme(localStorage.getItem('kenz-theme') || 'sonoma');
     }
     catch (e) {
-        setTheme('ember');
+        setTheme('sonoma');
     }
     function toast(msg) { toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2100); }
     // Reference-driven intro timeline: editorial welcome → orange energy-grid project gallery → brand finale → seamless portfolio reveal
@@ -8865,5 +9464,195 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
 
 
   </script>
+ 
+<script>
+/* KENZ V13 interaction layer: macOS menubar, ambient wallpaper, widgets and micro-interactions. */
+(() => {
+  'use strict';
+  const doc = document;
+  const body = doc.body;
+  const $ = (selector, root = doc) => root.querySelector(selector);
+  const $$ = (selector, root = doc) => Array.from(root.querySelectorAll(selector));
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = matchMedia('(pointer: fine)').matches;
+
+  /* Ambient background is inserted behind the site and stays lightweight. */
+  if (!$('#kenzWallpaper')) {
+    const wallpaper = doc.createElement('div');
+    wallpaper.id = 'kenzWallpaper';
+    wallpaper.setAttribute('aria-hidden', 'true');
+    wallpaper.innerHTML = '<span class="wallpaper-grain"></span><span class="wallpaper-beam"></span>';
+    body.insertBefore(wallpaper, body.firstChild);
+  }
+
+  /* Add the macOS-inspired menu bar. No bottom dock is used. */
+  if (!$('#macMenubar')) {
+    const bar = doc.createElement('div');
+    bar.className = 'mac-menubar';
+    bar.id = 'macMenubar';
+    bar.setAttribute('role', 'navigation');
+    bar.setAttribute('aria-label', 'Menu cepat KENZ');
+    bar.innerHTML = `
+      <div class="mac-menu-left">
+        <a class="mac-menu-brand" href="#home" aria-label="KENZ beranda"><span class="mac-menu-mark">✳</span><span>KENZ</span></a>
+        <div class="mac-menu-items">
+          <button class="mac-menu-item" data-menu="home">Beranda</button>
+          <button class="mac-menu-item" data-menu="about">Profil</button>
+          <button class="mac-menu-item" data-menu="works">Karya</button>
+          <button class="mac-menu-item" data-menu="explore">Eksplorasi</button>
+          <button class="mac-menu-item" data-menu="theme">Tampilan</button>
+        </div>
+      </div>
+      <div class="mac-menu-right">
+        <span class="mac-menu-location">KLATEN · INDONESIA</span>
+        <span><i class="mac-live-dot"></i>ONLINE</span>
+        <span class="mac-menu-clock" id="macMenuClock">--:--</span>
+        <button class="mac-menu-item" data-menu="control" aria-label="Buka Pusat Kontrol">☷</button>
+      </div>`;
+    body.appendChild(bar);
+
+    const routes = {home:'#home',about:'#about',works:'#works',explore:'#explore'};
+    $$('.mac-menu-item', bar).forEach(button => {
+      button.addEventListener('click', () => {
+        const action = button.dataset.menu;
+        if (routes[action]) doc.querySelector(routes[action])?.scrollIntoView({behavior: reduced ? 'auto' : 'smooth'});
+        if (action === 'control') $('#openControl')?.click();
+        if (action === 'theme') {
+          const themes = $$('.theme-btn');
+          const current = themes.findIndex(item => item.classList.contains('active'));
+          themes[(current + 1 + themes.length) % themes.length]?.click();
+        }
+      });
+    });
+  }
+
+  /* Compact factual widgets make the hero feel like a desktop dashboard. */
+  const heroHeading = $('.showcase-heading');
+  if (heroHeading && !$('.hero-dashboard')) {
+    const dashboard = doc.createElement('div');
+    dashboard.className = 'hero-dashboard reveal';
+    dashboard.innerHTML = `
+      <div class="hero-widget">
+        <span class="widget-symbol">✧</span>
+        <small>STATUS / PERSONAL</small>
+        <strong>Proses belajar aktif</strong>
+      </div>
+      <div class="hero-widget">
+        <span class="widget-symbol">◇</span>
+        <small>KARYA UNGGULAN / 01</small>
+        <strong>3D SMANSA Klaten</strong>
+      </div>
+      <div class="hero-widget hero-widget-button" role="button" tabindex="0" aria-label="Lihat perjalanan belajar">
+        <span class="widget-symbol">⌁</span>
+        <small>MULAI EKSPLORASI / 2026</small>
+        <strong>Agustus · Coding journey</strong>
+      </div>`;
+    heroHeading.insertAdjacentElement('afterend', dashboard);
+    const journeyWidget = $('.hero-widget-button', dashboard);
+    const goJourney = () => $('#journey')?.scrollIntoView({behavior: reduced ? 'auto' : 'smooth'});
+    journeyWidget.addEventListener('click', goJourney);
+    journeyWidget.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); goJourney(); } });
+  }
+
+  /* Live clock in the new menu bar. */
+  const clock = $('#macMenuClock');
+  function tickClock() {
+    if (!clock) return;
+    clock.textContent = new Intl.DateTimeFormat('id-ID', {hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+  }
+  tickClock();
+  setInterval(tickClock, 15000);
+
+  /* Intersection choreography: each section receives a subtle arrival state. */
+  const sections = $$('main section');
+  if ('IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('section-in-view');
+          const id = entry.target.id;
+          $$('.mac-menu-item').forEach(button => button.classList.toggle('active', button.dataset.menu === id || (id === 'home' && button.dataset.menu === 'home')));
+        }
+      });
+    }, {threshold: .14, rootMargin:'0px 0px -10% 0px'});
+    sections.forEach(section => sectionObserver.observe(section));
+  } else sections.forEach(section => section.classList.add('section-in-view'));
+
+  /* Pointer spotlight for glass cards. Values are scoped to each hovered card. */
+  const spotlightTargets = $$('.interest-card,.principle-card,.contact-card,.feature-box,.lab-shell,.faq-item,.control-tile,.hero-widget');
+  spotlightTargets.forEach(card => {
+    card.addEventListener('pointermove', event => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--spot-x', `${event.clientX - rect.left}px`);
+      card.style.setProperty('--spot-y', `${event.clientY - rect.top}px`);
+    }, {passive:true});
+  });
+
+  /* Tiny press ripple. It is decorative only and respects reduced-motion settings. */
+  if (!reduced) {
+    $$('button,.feature-link,.project-link,.btn-primary,.btn-secondary').forEach(control => {
+      control.addEventListener('pointerdown', event => {
+        if (event.pointerType === 'touch') return;
+        const rect = control.getBoundingClientRect();
+        const ripple = doc.createElement('span');
+        ripple.className = 'kenz-ripple';
+        ripple.style.left = `${event.clientX - rect.left}px`;
+        ripple.style.top = `${event.clientY - rect.top}px`;
+        control.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 700);
+      });
+    });
+  }
+
+  /* A discreet scroll direction indicator; updates the existing menu glass. */
+  let lastScrollY = window.scrollY;
+  let scrollScheduled = false;
+  window.addEventListener('scroll', () => {
+    if (scrollScheduled) return;
+    scrollScheduled = true;
+    requestAnimationFrame(() => {
+      const current = window.scrollY;
+      body.classList.toggle('scrolling-down', current > lastScrollY && current > 140);
+      body.classList.toggle('scrolling-up', current < lastScrollY && current > 140);
+      lastScrollY = current;
+      scrollScheduled = false;
+    });
+  }, {passive:true});
+
+  /* Light pointer-reactive wallpaper on capable desktop devices. */
+  if (finePointer && !reduced) {
+    let moveFrame = 0;
+    window.addEventListener('pointermove', event => {
+      if (moveFrame) return;
+      moveFrame = requestAnimationFrame(() => {
+        doc.documentElement.style.setProperty('--pointer-x', `${(event.clientX / innerWidth) * 100}%`);
+        doc.documentElement.style.setProperty('--pointer-y', `${(event.clientY / innerHeight) * 100}%`);
+        moveFrame = 0;
+      });
+    }, {passive:true});
+  }
+
+  /* Better mobile menu close behavior: tap outside closes the expanded navigation. */
+  const mobileMenu = $('#navLinks');
+  const menuButton = $('#menuTrigger');
+  doc.addEventListener('pointerdown', event => {
+    if (!mobileMenu?.classList.contains('open')) return;
+    if (mobileMenu.contains(event.target) || menuButton?.contains(event.target)) return;
+    mobileMenu.classList.remove('open');
+  });
+
+  /* Ensure the new section widgets reveal even if the original observer ran earlier. */
+  if (window.IntersectionObserver) {
+    const widgetObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        widgetObserver.unobserve(entry.target);
+      }
+    }), {threshold:.1});
+    $$('.hero-dashboard.reveal').forEach(widget => widgetObserver.observe(widget));
+  } else $$('.hero-dashboard.reveal').forEach(widget => widget.classList.add('visible'));
+})();
+</script>
+
  </body>
 </html>
