@@ -335,6 +335,74 @@ body.ambience-off .ambient-canvas,body.ambience-off .desktop-aurora{opacity:0!im
 @media(max-width:420px){.utility-dock{gap:3px;padding:6px}.dock-button{flex-basis:36px;width:36px;height:37px;min-width:36px;border-radius:11px}.dock-icon{font-size:15px}.mac-menu-right time{font-size:7px}.loader-oddities{transform:scale(.65)}.loader-center{top:49%}.loader-name{font-size:36px}.loader-status{font-size:8px}.loader-bottom-note{font-size:6px}}
 @media(prefers-reduced-motion:reduce){.loader-oddities *,.loader-squiggle path,.desktop-aurora i,.hero-art:before{animation:none!important}.loader-logo{animation:none;opacity:1;transform:none}.loader-skip{display:none}}
 
+
+/* V7 — interactive studio, project detail window, visitor reaction and cinematic transition */
+.studio-section{position:relative;overflow:hidden;background:radial-gradient(ellipse at 8% 48%,rgba(128,105,191,.10),transparent 34%),radial-gradient(ellipse at 92% 18%,rgba(89,166,194,.10),transparent 30%)}
+.studio-shell{border:1px solid rgba(255,255,255,.13);border-radius:22px;overflow:hidden;background:linear-gradient(145deg,rgba(31,38,50,.9),rgba(12,16,23,.96));box-shadow:0 34px 100px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.08)}
+.studio-toolbar{height:48px;display:flex;align-items:center;gap:16px;padding:0 18px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.035)}
+.studio-window-dots{display:flex;gap:6px}.studio-window-dots i{width:9px;height:9px;border-radius:50%;background:#F08A83}.studio-window-dots i:nth-child(2){background:#E9C56F}.studio-window-dots i:nth-child(3){background:#79C99C}
+.studio-toolbar-title,.studio-live,.studio-control-heading,.studio-stage-caption,.studio-idea span,.studio-footnote{font:9px var(--mono);letter-spacing:.1em;color:#929eab}
+.studio-toolbar-title{color:#d8dfe5}.studio-live{margin-left:auto;display:flex;align-items:center;gap:7px}.studio-live i{width:6px;height:6px;border-radius:50%;background:#7BD6B1;box-shadow:0 0 12px #7BD6B1}
+.studio-grid{display:grid;grid-template-columns:1.2fr .8fr;min-height:510px}
+.studio-stage-wrap{padding:18px;border-right:1px solid var(--line);display:flex;flex-direction:column}
+.studio-stage{position:relative;flex:1;min-height:420px;border-radius:15px;overflow:hidden;perspective:900px;isolation:isolate;touch-action:pan-y;background:radial-gradient(circle at 50% 48%,rgba(191,155,223,.17),transparent 25%),radial-gradient(circle at 22% 25%,rgba(239,145,177,.13),transparent 28%),radial-gradient(circle at 78% 78%,rgba(95,183,206,.14),transparent 30%),#111721;cursor:grab}
+.studio-stage:active{cursor:grabbing}
+.studio-stage-grid{position:absolute;inset:-20%;opacity:.26;transform:rotateX(63deg) scale(1.2);background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(ellipse,#000 12%,transparent 70%)}
+.studio-orbit{position:absolute;left:50%;top:48%;width:300px;height:180px;margin:-90px 0 0 -150px;border:1px solid rgba(255,255,255,.24);border-radius:50%;transform:rotate(-28deg);animation:studioOrbit 18s linear infinite}
+.studio-orbit:before{content:"";position:absolute;width:8px;height:8px;left:17%;top:14%;border-radius:50%;background:var(--accent);box-shadow:0 0 22px var(--accent)}
+.studio-orbit.orbit-b{width:360px;height:225px;margin:-112px 0 0 -180px;transform:rotate(54deg);border-color:rgba(129,193,216,.32);animation-duration:23s;animation-direction:reverse}
+.studio-orbit.orbit-b:before{background:#8DCBE2;box-shadow:0 0 20px #8DCBE2;left:auto;right:14%;top:18%}
+.studio-orbit.orbit-c{width:235px;height:340px;margin:-170px 0 0 -117px;transform:rotate(72deg);border-style:dashed;border-color:rgba(225,163,198,.25);animation-duration:29s}
+@keyframes studioOrbit{to{rotate:360deg}}
+.studio-object{--lab-glow:.7;position:absolute;left:50%;top:48%;width:150px;height:150px;transform:translate(-50%,-50%) rotateX(-18deg) rotateY(32deg);transform-style:preserve-3d;transition:filter .35s,border-radius .45s}
+.studio-object:before{content:"";position:absolute;inset:-24px;border-radius:38%;background:conic-gradient(from 30deg,#E7A47D,#E6CF85,#80C9C5,#8DAEDB,#B99BE1,#E69BC3,#E7A47D);filter:blur(26px);opacity:var(--lab-glow);z-index:-2;animation:studioGlow 9s linear infinite}
+@keyframes studioGlow{to{rotate:360deg}}
+.object-face{position:absolute;inset:0;border-radius:34%;background:linear-gradient(135deg,rgba(248,205,166,.92),rgba(171,144,221,.72) 45%,rgba(97,191,201,.82));border:1px solid rgba(255,255,255,.68);box-shadow:inset 12px 12px 35px rgba(255,255,255,.25),inset -15px -18px 35px rgba(10,20,36,.25),0 25px 60px rgba(0,0,0,.3);backface-visibility:visible;transform:translateZ(36px)}
+.object-face.face-b{transform:rotateY(90deg) translateZ(36px);filter:hue-rotate(50deg)}
+.object-face.face-c{transform:rotateX(90deg) translateZ(36px);filter:hue-rotate(110deg)}
+.object-core{position:absolute;inset:24%;border:1px solid rgba(255,255,255,.75);border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.88),rgba(255,255,255,.12) 34%,rgba(80,105,155,.2) 70%,transparent);transform:translateZ(65px);box-shadow:0 0 34px rgba(255,255,255,.16)}
+.studio-stage[data-shape="orb"] .studio-object{border-radius:50%;transform:translate(-50%,-50%) rotateX(-18deg) rotateY(32deg) scale(.98)}
+.studio-stage[data-shape="orb"] .object-face{border-radius:50%;transform:translateZ(22px);background:radial-gradient(circle at 28% 22%,#fff4e5,#e3a6a3 28%,#9d91cf 62%,#69bdc0)}
+.studio-stage[data-shape="orb"] .object-face.face-b{transform:translateZ(-22px);filter:hue-rotate(55deg)}
+.studio-stage[data-shape="orb"] .object-face.face-c{opacity:.45;transform:scale(.72) translateZ(60px);filter:hue-rotate(130deg)}
+.studio-stage[data-shape="prism"] .studio-object{clip-path:polygon(50% 0,100% 100%,0 100%);border-radius:0;transform:translate(-50%,-50%) rotateX(-18deg) rotateY(32deg) scale(1.13)}
+.studio-stage[data-shape="prism"] .object-face{border-radius:0;background:linear-gradient(145deg,#f6c785,#d99bc6 45%,#70c5d1)}
+.studio-stage[data-shape="prism"] .object-core{border-radius:12px;transform:translateZ(68px) rotate(45deg)}
+.studio-stage[data-shape="flower"] .studio-object{border-radius:50%;transform:translate(-50%,-50%) rotateX(-18deg) rotateY(32deg) scale(.92)}
+.studio-stage[data-shape="flower"] .object-face{border-radius:48% 48% 12% 48%;transform:rotate(0deg) translateZ(28px);background:linear-gradient(135deg,#f4a8c7,#b89de8 50%,#83c9d1)}
+.studio-stage[data-shape="flower"] .object-face.face-b{transform:rotate(120deg) translateZ(28px);filter:hue-rotate(55deg)}
+.studio-stage[data-shape="flower"] .object-face.face-c{transform:rotate(240deg) translateZ(28px);filter:hue-rotate(120deg)}
+.studio-stage[data-shape="cube"] .studio-object{transform:translate(-50%,-50%) rotateX(-25deg) rotateY(38deg) scale(1)}
+.studio-stage[data-paused="true"] .studio-orbit,.studio-stage[data-paused="true"] .studio-object:before,.studio-stage[data-paused="true"] .studio-stage-shine{animation-play-state:paused}
+.studio-float-label{position:absolute;z-index:5;font:8px var(--mono);letter-spacing:.13em;color:rgba(231,239,245,.68);border:1px solid rgba(255,255,255,.16);padding:8px 10px;border-radius:3px;background:rgba(15,21,31,.45);backdrop-filter:blur(8px)}
+.studio-float-label.label-a{top:15%;left:9%;transform:rotate(-7deg)}.studio-float-label.label-b{right:8%;top:24%;transform:rotate(7deg)}.studio-float-label.label-c{bottom:12%;left:50%;transform:translateX(-50%)}
+.studio-stage-shine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.045) 45%,transparent 60%);transform:translateX(-100%);animation:studioShine 7s ease-in-out infinite}
+@keyframes studioShine{0%,45%{transform:translateX(-100%)}75%,100%{transform:translateX(100%)}}
+.studio-stage-caption{display:flex;justify-content:space-between;padding:13px 2px 0;font-size:8px}
+.studio-controls{padding:26px;display:flex;flex-direction:column;gap:22px}
+.studio-control-group{display:grid;gap:12px}.studio-control-heading{display:flex;justify-content:space-between;align-items:center;font-size:8px}.studio-control-heading output{color:var(--text)}
+.shape-options{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.shape-option{border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:10px;padding:11px 4px 9px;color:#aeb8c2;display:grid;justify-items:center;gap:8px;font:9px var(--mono);transition:.25s}.shape-option.active,.shape-option:hover{border-color:var(--accent);background:rgba(255,255,255,.075);color:#fff;transform:translateY(-2px)}
+.shape-icon{width:19px;height:19px;display:block;border:1px solid currentColor;background:linear-gradient(135deg,var(--accent),var(--blue));box-shadow:0 4px 12px rgba(0,0,0,.2)}.shape-orb{border-radius:50%}.shape-cube{transform:rotate(28deg);border-radius:3px}.shape-prism{clip-path:polygon(50% 0,100% 100%,0 100%)}.shape-flower{border:0;background:none;font-size:23px;line-height:17px}
+.studio-swatches{display:flex;gap:9px}.studio-swatches button{width:32px;height:32px;border-radius:50%;padding:4px;border:1px solid transparent;background:transparent;transition:.25s}.studio-swatches button:hover,.studio-swatches button.active{border-color:rgba(255,255,255,.7);transform:scale(1.12)}.studio-swatches i{display:block;width:100%;height:100%;border-radius:50%;background:var(--swatch);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.studio-range{width:100%;accent-color:var(--accent);cursor:pointer}.studio-button-row{display:flex;gap:8px}.studio-action{border:1px solid var(--line);border-radius:8px;padding:11px 12px;background:rgba(255,255,255,.035);color:#d4dce3;font:8px var(--mono);letter-spacing:.07em;transition:.25s}.studio-action:hover{transform:translateY(-2px);border-color:var(--accent)}.studio-action.primary{background:linear-gradient(110deg,rgba(215,158,121,.23),rgba(133,172,201,.18),rgba(185,151,217,.2));border-color:rgba(255,255,255,.14);flex:1}
+.studio-idea{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px;border:1px solid var(--line);border-radius:10px;background:linear-gradient(100deg,rgba(224,164,127,.08),rgba(139,177,206,.08),rgba(188,151,217,.08))}.studio-idea div{display:grid;gap:7px}.studio-idea span{font-size:8px;color:var(--accent)}.studio-idea b{font:500 12px var(--display);color:#edf0f2}.studio-idea button{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.05);color:#fff;font-size:19px;transition:transform .4s}.studio-idea button:hover{transform:rotate(180deg)}
+.studio-footnote{font-size:8px;line-height:1.75;color:#7f8b97}
+.project-actions{display:flex;flex-direction:column;align-items:flex-start;gap:17px}.project-detail-trigger{border:1px solid rgba(255,255,255,.18);border-radius:3px;background:rgba(255,255,255,.035);color:#dce5eb;padding:10px 13px;font:9px var(--mono);letter-spacing:.09em;transition:.25s}.project-detail-trigger:hover{border-color:var(--accent);background:rgba(255,255,255,.07);transform:translateY(-2px)}.project-detail-trigger span{font-size:15px;margin-left:10px;color:var(--accent)}
+.project-modal-backdrop{position:fixed;inset:0;z-index:190;background:rgba(4,7,12,.76);backdrop-filter:blur(18px);display:grid;place-items:center;padding:22px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}.project-modal-backdrop.open{opacity:1;visibility:visible}.project-modal{width:min(760px,100%);max-height:min(85vh,820px);overflow:auto;border:1px solid rgba(255,255,255,.15);border-radius:18px;background:linear-gradient(145deg,#1b232d,#0e131b);box-shadow:0 35px 110px rgba(0,0,0,.6);transform:translateY(18px) scale(.97);transition:transform .42s var(--ease)}.project-modal-backdrop.open .project-modal{transform:translateY(0) scale(1)}
+.project-modal-bar{height:48px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:15px;padding:0 17px;font:8px var(--mono);letter-spacing:.12em;color:#9eabb7}.project-modal-bar>span{margin-right:auto}.project-modal-bar button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.06);font-size:20px;color:#e9edf0;line-height:1}
+.project-modal-body{padding:clamp(23px,5vw,48px)}.project-modal-kicker{font:9px var(--mono);letter-spacing:.13em;color:var(--accent)}.project-modal-body h2{font:700 clamp(40px,7vw,68px)/.92 var(--display);letter-spacing:-.08em;margin:17px 0}.project-modal-body h2 span{color:var(--blue)}.project-modal-body>p{max-width:650px;color:#aeb9c3;font-size:12px;line-height:1.9}.project-modal-features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:27px 0}.project-modal-features article{padding:17px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.025);display:grid;gap:8px}.project-modal-features article span{font:9px var(--mono);color:var(--accent)}.project-modal-features article b{font:600 14px var(--display)}.project-modal-features article small{font-size:10px;line-height:1.7;color:var(--muted)}.project-modal-footer{display:flex;justify-content:space-between;align-items:center;gap:15px;border-top:1px solid var(--line);padding-top:20px;font:8px var(--mono);letter-spacing:.09em;color:#85919c}.project-modal-footer a{color:var(--accent)}
+.reaction-section{background:radial-gradient(ellipse at 15% 45%,rgba(233,143,178,.1),transparent 28%),radial-gradient(ellipse at 86% 50%,rgba(104,185,201,.1),transparent 32%)}.reaction-card{border:1px solid var(--line);border-radius:22px;padding:clamp(24px,5vw,52px);background:linear-gradient(125deg,rgba(255,255,255,.055),rgba(255,255,255,.015));box-shadow:0 30px 90px rgba(0,0,0,.18)}.reaction-copy{max-width:670px}.reaction-copy .section-title{font-size:clamp(39px,5.5vw,72px)}.reaction-copy p{max-width:600px;color:var(--muted);font-size:12px;line-height:1.85;margin-top:22px}.reaction-options{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:30px 0 18px}.reaction-option{border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025);padding:17px 10px;display:grid;justify-items:start;gap:7px;text-align:left;transition:transform .25s,border-color .25s,background .25s}.reaction-option:hover{transform:translateY(-4px);background:rgba(255,255,255,.055)}.reaction-option[aria-pressed="true"]{border-color:var(--accent);background:linear-gradient(130deg,rgba(222,163,127,.16),rgba(147,173,207,.13),rgba(190,151,214,.14));transform:translateY(-4px)}.reaction-option span{font-size:26px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.25))}.reaction-option b{font:600 12px var(--display)}.reaction-option small{font-size:9px;color:var(--muted)}.reaction-result{font:9px var(--mono);letter-spacing:.08em;color:var(--accent);min-height:15px}
+#pointerSparkCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:75;pointer-events:none}
+.secret-overlay{position:fixed;inset:0;z-index:260;display:grid;place-items:center;background:radial-gradient(circle,rgba(42,32,65,.88),rgba(5,8,14,.94));opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s,visibility .3s}.secret-overlay.open{opacity:1;visibility:visible}.secret-overlay>div{display:grid;justify-items:center;gap:12px;text-align:center;animation:secretPop .6s var(--ease)}.secret-overlay span{font-size:65px;color:#F3C977;text-shadow:0 0 35px #F3C977}.secret-overlay b{font:700 clamp(25px,5vw,48px) var(--display);letter-spacing:.1em}.secret-overlay small{font:10px var(--mono);letter-spacing:.13em;color:#b3bdc7}@keyframes secretPop{from{transform:scale(.55) rotate(-12deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+#kenzPortalTransition{position:fixed;inset:0;z-index:230;pointer-events:none;opacity:0;clip-path:circle(0% at 50% 50%);background:conic-gradient(from 30deg at 50% 50%,rgba(242,159,180,.96),rgba(127,190,215,.96),rgba(195,160,224,.96),rgba(237,190,123,.96),rgba(127,201,180,.96),rgba(242,159,180,.96));mix-blend-mode:screen}
+.loader-flight-clone{position:fixed!important;z-index:250!important;left:0;top:0;margin:0!important;object-fit:cover;border-radius:50%;pointer-events:none;transform-origin:center center;filter:drop-shadow(0 0 38px rgba(255,255,255,.6)) drop-shadow(0 0 75px rgba(150,190,235,.55))}
+body.is-transitioning{overflow:hidden}
+@media(max-width:850px){.studio-grid{grid-template-columns:1fr}.studio-stage-wrap{border-right:0;border-bottom:1px solid var(--line)}.studio-stage{min-height:360px}.studio-controls{padding:22px}.reaction-options{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.studio-stage-wrap{padding:10px}.studio-stage{min-height:300px}.studio-controls{padding:17px}.studio-orbit{width:250px;height:150px;margin:-75px 0 0 -125px}.studio-orbit.orbit-b{width:290px;height:180px;margin:-90px 0 0 -145px}.studio-orbit.orbit-c{width:190px;height:280px;margin:-140px 0 0 -95px}.studio-object{width:125px;height:125px}.studio-toolbar-title{font-size:7px}.studio-live{font-size:7px}.studio-button-row{flex-wrap:wrap}.studio-action{flex:1}.project-modal-features{grid-template-columns:1fr}.project-modal-footer{align-items:flex-start;flex-direction:column}.project-modal-backdrop{padding:10px}.reaction-options{gap:8px}.reaction-option{padding:14px 11px}}
+@media(prefers-reduced-motion:reduce){.studio-orbit,.studio-object:before,.studio-stage-shine{animation:none!important}.loader-flight-clone,#kenzPortalTransition{transition:none!important}}
+
+
+body.modal-open{overflow:hidden}.studio-copy-code{align-self:flex-start;border:0;background:none;padding:0;color:var(--blue);font:8px var(--mono);letter-spacing:.1em;text-decoration:underline;text-underline-offset:4px;cursor:pointer}.studio-copy-code:hover{color:#fff}
 </style>
 </head>
 <body>
@@ -458,6 +526,69 @@ body.ambience-off .ambient-canvas,body.ambience-off .desktop-aurora{opacity:0!im
     </div>
   </div>
 </section>
+
+<section class="studio-section section-pad" id="studio">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">Ruang bermain / eksperimen langsung</div><h2 class="section-title">Bukan cuma dilihat.<br><span class="muted">Coba mainkan.</span></h2></div>
+      <p class="section-intro">Sebuah mini lab visual untuk mencoba bentuk, warna, dan gerakan. Ubah komposisinya dan temukan kombinasi yang paling kamu suka.</p>
+    </div>
+    <div class="studio-shell reveal">
+      <div class="studio-toolbar">
+        <div class="studio-window-dots"><i></i><i></i><i></i></div>
+        <span class="studio-toolbar-title">KENZ / VISUAL PLAYGROUND</span>
+        <span class="studio-live"><i></i> LIVE EXPERIMENT</span>
+      </div>
+      <div class="studio-grid">
+        <div class="studio-stage-wrap">
+          <div class="studio-stage" id="studioStage" data-shape="orb" aria-label="Objek visual 3D interaktif">
+            <div class="studio-stage-grid"></div>
+            <div class="studio-orbit orbit-a"><i></i></div><div class="studio-orbit orbit-b"><i></i></div><div class="studio-orbit orbit-c"><i></i></div>
+            <div class="studio-object" id="studioObject"><i class="object-face face-a"></i><i class="object-face face-b"></i><i class="object-face face-c"></i><i class="object-core"></i></div>
+            <span class="studio-float-label label-a">FORM / 01</span><span class="studio-float-label label-b">COLOR STUDY</span><span class="studio-float-label label-c">MOVE TO PLAY ↗</span>
+            <div class="studio-stage-shine"></div>
+          </div>
+          <div class="studio-stage-caption"><span>01 — COMPOSITION ENGINE</span><span id="studioShapeName">SOFT ORB</span></div>
+        </div>
+        <div class="studio-controls">
+          <div class="studio-control-group">
+            <div class="studio-control-heading"><span>01 / PILIH BENTUK</span><span>SHAPE</span></div>
+            <div class="shape-options" role="group" aria-label="Pilih bentuk objek">
+              <button type="button" class="shape-option active" data-shape="orb" aria-pressed="true"><i class="shape-icon shape-orb"></i><span>Orb</span></button>
+              <button type="button" class="shape-option" data-shape="cube" aria-pressed="false"><i class="shape-icon shape-cube"></i><span>Cube</span></button>
+              <button type="button" class="shape-option" data-shape="prism" aria-pressed="false"><i class="shape-icon shape-prism"></i><span>Prism</span></button>
+              <button type="button" class="shape-option" data-shape="flower" aria-pressed="false"><i class="shape-icon shape-flower">✿</i><span>Bloom</span></button>
+            </div>
+          </div>
+          <div class="studio-control-group">
+            <div class="studio-control-heading"><span>02 / SUASANA WARNA</span><span>PALETTE</span></div>
+            <div class="studio-swatches" role="group" aria-label="Pilih palet warna">
+              <button type="button" data-lab-palette="atelier" aria-label="Atelier"><i style="--swatch:#D89770"></i></button>
+              <button type="button" data-lab-palette="coast" aria-label="Coast"><i style="--swatch:#65C2C0"></i></button>
+              <button type="button" data-lab-palette="orchid" aria-label="Orchid"><i style="--swatch:#C29BE2"></i></button>
+              <button type="button" data-lab-palette="candy" aria-label="Candy"><i style="--swatch:#F18BB7"></i></button>
+              <button type="button" data-lab-palette="aurora" aria-label="Aurora"><i style="--swatch:#88D6BB"></i></button>
+            </div>
+          </div>
+          <div class="studio-control-group">
+            <div class="studio-control-heading"><label for="studioIntensity">03 / INTENSITAS CAHAYA</label><output id="studioIntensityValue">70%</output></div>
+            <input id="studioIntensity" class="studio-range" type="range" min="20" max="100" value="70">
+          </div>
+          <div class="studio-button-row">
+            <button type="button" class="studio-action primary" id="studioRandom">✦ ACAK KOMPOSISI</button>
+            <button type="button" class="studio-action" id="studioMotion" aria-pressed="true">Ⅱ JEDA GERAK</button>
+          </div>
+          <div class="studio-idea">
+            <div><span>IDEA GENERATOR</span><b id="studioIdea">Bentuk sederhana, kesan yang kuat.</b></div>
+            <button type="button" id="studioNextIdea" aria-label="Ide berikutnya">↻</button>
+          </div>
+          <div class="studio-footnote">Eksperimen visual berjalan langsung di browser. Seret objek pada area kiri untuk mengubah sudut pandangnya.</div><button type="button" class="studio-copy-code" id="studioCopyCss">SALIN CONTOH CSS ↗</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="principle-section section-pad" id="prinsip">
   <div class="container"><div class="section-head reveal"><div><div class="eyebrow">04 / Prinsip berkarya</div><h2 class="section-title">Fungsi yang kuat.<br><span class="muted">Visual yang punya rasa.</span></h2></div><p class="section-intro">Saya percaya pengalaman digital yang baik perlu menyeimbangkan manfaat, estetika, dan efisiensi teknis.</p></div>
     <div class="principle-grid">
@@ -492,7 +623,7 @@ body.ambience-off .ambient-canvas,body.ambience-off .desktop-aurora{opacity:0!im
           <div><div class="work-number">01 / ARSITEKTUR · WEB INTERAKTIF</div><h3>3D SMANSA<br><span style="color:var(--accent)">Klaten.</span></h3>
           <p><strong>3D SMANSA Klaten</strong> adalah platform visualisasi arsitektur interaktif berbasis web yang memungkinkan pengunjung menjelajahi lingkungan kampus <strong>SMA Negeri 1 Klaten</strong> secara virtual dalam format tiga dimensi langsung di peramban tanpa perlu mengunduh aplikasi tambahan, lengkap dengan detail tata letak bangunan seperti deretan ruang kelas berbentuk huruf U, ruang UKS, ruang BK, koperasi sekolah, lapangan basket, dan lapangan tenis, serta simulasi mode cuaca dinamis untuk pengalaman eksplorasi yang realistis.</p>
           <div class="project-tags"><span>3D VISUALIZATION</span><span>WEB EXPERIENCE</span><span>ARCHITECTURE</span><span>INTERACTIVE</span></div></div>
-          <a class="project-link" href="https://3d-smansa.vercel.app/" target="_blank" rel="noopener noreferrer">BUKA WEBSITE PROYEK <span>↗</span></a>
+          <div class="project-actions"><button type="button" class="project-detail-trigger" id="openProjectDetails">LIHAT DETAIL PROYEK <span>＋</span></button><a class="project-link" href="https://3d-smansa.vercel.app/" target="_blank" rel="noopener noreferrer">BUKA WEBSITE PROYEK <span>↗</span></a></div>
         </div>
       </article>
     </div>
@@ -530,6 +661,26 @@ body.ambience-off .ambient-canvas,body.ambience-off .desktop-aurora{opacity:0!im
     </div>
   </div>
 </section>
+
+<section class="reaction-section section-pad" id="reaksi">
+  <div class="container">
+    <div class="reaction-card reveal">
+      <div class="reaction-copy">
+        <div class="eyebrow">Sebelum menutup halaman</div>
+        <h2 class="section-title">Tinggalkan sedikit<br><span class="muted">energi positif.</span></h2>
+        <p>Bagian mana yang paling menarik perhatianmu? Pilih satu reaksi. Pilihan ini hanya tersimpan di browser perangkatmu, bukan dikirim ke server.</p>
+      </div>
+      <div class="reaction-options" role="group" aria-label="Pilih reaksi terhadap portofolio">
+        <button type="button" class="reaction-option" data-reaction="spark" aria-pressed="false"><span>✨</span><b>Kreatif</b><small>Ide visualnya</small></button>
+        <button type="button" class="reaction-option" data-reaction="wow" aria-pressed="false"><span>🚀</span><b>Menarik</b><small>Interaksinya</small></button>
+        <button type="button" class="reaction-option" data-reaction="heart" aria-pressed="false"><span>💜</span><b>Inspiratif</b><small>Perjalanannya</small></button>
+        <button type="button" class="reaction-option" data-reaction="fire" aria-pressed="false"><span>🔥</span><b>Semangat</b><small>Terus berkarya</small></button>
+      </div>
+      <div class="reaction-result" id="reactionResult" aria-live="polite">Pilih reaksi favoritmu — satu klik saja.</div>
+    </div>
+  </div>
+</section>
+
 <section class="quote"><div class="container reveal"><div class="quote-mark">“</div><blockquote>Ide yang baik bukan hanya terlihat menarik. Ide itu perlu bekerja, memberi manfaat, dan menghadirkan pengalaman yang membuat orang ingin kembali.</blockquote><cite>KENZIE SURYA PRATAMA · PRINSIP DALAM BERKARYA</cite>
     <button type="button" class="quote-shuffle" id="quoteShuffle">↻ TEMUKAN KALIMAT LAIN</button></div></section>
 <section class="contact" id="contact"><div class="contact-orb"></div><div class="container">
@@ -590,6 +741,7 @@ body.ambience-off .ambient-canvas,body.ambience-off .desktop-aurora{opacity:0!im
       <a href="#about" data-search="profil tentang saya about"><span class="command-index">02</span><span><b>Kenali KENZ</b><small>Profil dan cerita singkat</small></span><kbd>↵</kbd></a>
       <a href="#cerita" data-search="perjalanan awal belajar coding cerita"><span class="command-index">03</span><span><b>Awal perjalanan</b><small>Bagaimana ketertarikan coding bermula</small></span><kbd>↵</kbd></a>
       <a href="#eksplorasi" data-search="eksplorasi web 3d ui ux ai minat"><span class="command-index">04</span><span><b>Ruang eksplorasi</b><small>Web, 3D, UI/UX, dan AI</small></span><kbd>↵</kbd></a>
+      <a href="#studio" data-search="visual playground studio eksperimen interaktif"><span class="command-index">05</span><span><b>Visual Playground</b><small>Eksperimen bentuk, warna, dan gerakan</small></span><kbd>↵</kbd></a>
       <a href="#prinsip" data-search="prinsip fungsi visual efisiensi"><span class="command-index">05</span><span><b>Prinsip berkarya</b><small>Fungsi, estetika, dan efisiensi</small></span><kbd>↵</kbd></a>
       <a href="#works" data-search="karya proyek 3d smansa klaten website"><span class="command-index">06</span><span><b>Karya pilihan</b><small>Jelajahi proyek 3D SMANSA</small></span><kbd>↵</kbd></a>
       <a href="#journey-detail" data-search="timeline perkembangan belajar coding"><span class="command-index">07</span><span><b>Catatan perjalanan</b><small>Perkembangan belajar dari waktu ke waktu</small></span><kbd>↵</kbd></a>
@@ -612,7 +764,28 @@ body.ambience-off .ambient-canvas,body.ambience-off .desktop-aurora{opacity:0!im
     <footer class="terminal-footer"><span><i></i> SESSION ACTIVE</span><span>CTRL + J UNTUK MEMBUKA · ESC UNTUK MENUTUP</span></footer>
   </section>
 </div>
+
 <div class="toast" id="toast" role="status" aria-live="polite">TERIMA KASIH SUDAH BERKUNJUNG</div>
+<canvas id="pointerSparkCanvas" aria-hidden="true"></canvas>
+<div class="project-modal-backdrop" id="projectModal" aria-hidden="true">
+  <section class="project-modal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+    <div class="project-modal-bar"><div class="studio-window-dots"><i></i><i></i><i></i></div><span>PROJECT / DETAIL VIEW</span><button type="button" id="closeProjectDetails" aria-label="Tutup detail proyek">×</button></div>
+    <div class="project-modal-body">
+      <div class="project-modal-kicker">01 / VISUALISASI ARSITEKTUR INTERAKTIF</div>
+      <h2 id="projectModalTitle">3D SMANSA <span>Klaten.</span></h2>
+      <p>3D SMANSA Klaten adalah platform visualisasi arsitektur interaktif berbasis web yang memungkinkan pengunjung menjelajahi lingkungan kampus SMA Negeri 1 Klaten secara virtual dalam format tiga dimensi langsung di peramban tanpa perlu mengunduh aplikasi tambahan.</p>
+      <div class="project-modal-features">
+        <article><span>01</span><b>Area ruang kelas</b><small>Deretan ruang kelas dengan tata letak berbentuk huruf U.</small></article>
+        <article><span>02</span><b>Fasilitas sekolah</b><small>Ruang UKS, ruang BK, dan koperasi sekolah.</small></article>
+        <article><span>03</span><b>Area olahraga</b><small>Lapangan basket dan lapangan tenis.</small></article>
+        <article><span>04</span><b>Cuaca dinamis</b><small>Simulasi mode cuaca untuk pengalaman eksplorasi yang lebih realistis.</small></article>
+      </div>
+      <div class="project-modal-footer"><span>LIVE PROJECT · BROWSER EXPERIENCE</span><a href="https://3d-smansa.vercel.app/" target="_blank" rel="noopener noreferrer">KUNJUNGI WEBSITE ↗</a></div>
+    </div>
+  </section>
+</div>
+<div class="secret-overlay" id="secretOverlay" aria-hidden="true"><div><span>✦</span><b>KENZ SECRET MODE</b><small>Terus eksplorasi. Terus ciptakan.</small></div></div>
+
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
@@ -639,33 +812,71 @@ body.ambience-off .ambient-canvas,body.ambience-off .desktop-aurora{opacity:0!im
   const stageLabel = document.getElementById('loaderStage');
   let finishStarted = false;
   function finishLoader(){
-    if(finishStarted)return;finishStarted=true;
-    const loaderLogo = document.querySelector('.loader-logo');
-    const heroLogo = document.querySelector('.art-logo');
+    if(finishStarted)return;
+    finishStarted=true;
+    const loaderLogo=document.querySelector('.loader-logo');
+    const heroLogo=document.querySelector('.art-logo');
     if(window.gsap && !reduceMotion && loaderLogo && heroLogo){
       const from=loaderLogo.getBoundingClientRect();
       const to=heroLogo.getBoundingClientRect();
+      const clone=loaderLogo.cloneNode(true);
+      clone.className='loader-flight-clone';
+      clone.removeAttribute('id');
+      clone.style.width=from.width+'px';
+      clone.style.height=from.height+'px';
+      clone.style.left=from.left+'px';
+      clone.style.top=from.top+'px';
+      clone.style.opacity='1';
+      clone.style.animation='none';
+      document.body.appendChild(clone);
+      heroLogo.style.opacity='0';
       const dx=(to.left+to.width/2)-(from.left+from.width/2);
       const dy=(to.top+to.height/2)-(from.top+from.height/2);
       const scale=to.width/from.width;
+      const portal=document.createElement('div');
+      portal.id='kenzPortalTransition';
+      document.body.appendChild(portal);
       const tl=gsap.timeline({onComplete:()=>{
         preloader.remove();
-        gsap.set(heroLogo,{opacity:1,clearProps:'opacity,transform'});
+        clone.remove();
+        portal.remove();
+        heroLogo.style.opacity='1';
+        heroLogo.style.transform='';
+        document.body.classList.remove('is-transitioning');
         startIntro();
       }});
-      tl.to('.loader-name,.loader-caption,.loader-status,.loader-progress,.loader-number,.loader-bottom-note,.loader-corner,.loader-skip',{opacity:0,y:-12,duration:.24,stagger:.02,ease:'power2.in'},0)
-        .to('.loader-oddities > *',{x:0,y:0,z:0,scale:.05,rotation:gsap.utils.random(-360,360),opacity:0,duration:.68,stagger:.018,ease:'back.in(1.8)'},.02)
-        .to('.loader-warp-flash',{opacity:1,scale:1.4,duration:.32,ease:'power2.in'},.24)
-        .to('.loader-universe',{opacity:0,scale:1.22,rotation:7,duration:.86,ease:'power3.inOut'},.12)
-        .to(loaderLogo,{x:dx,y:dy,scale:scale,rotation:1080,duration:1.42,ease:'power4.inOut'},.13)
-        .to('.loader-warp-flash',{opacity:0,duration:.55,ease:'power2.out'},.52)
-        .to(preloader,{backgroundColor:'rgba(7,9,16,0)',duration:.42,ease:'power2.in'},.88);
+      document.body.classList.add('is-transitioning');
+      tl.to('.loader-name,.loader-caption,.loader-status,.loader-progress,.loader-number,.loader-bottom-note,.loader-corner,.loader-skip',{
+          opacity:0,y:-18,filter:'blur(8px)',duration:.32,stagger:.018,ease:'power3.in'
+        },0)
+        .to('.loader-oddities > *',{
+          x:()=>gsap.utils.random(-70,70),y:()=>gsap.utils.random(-90,90),scale:.015,
+          rotation:()=>gsap.utils.random(-720,720),opacity:0,duration:.9,stagger:.025,ease:'back.in(1.7)'
+        },.02)
+        .to('.loader-orbit,.loader-cube,.loader-diamond,.loader-sphere,.loader-comet,.loader-star,.loader-particles i',{
+          x:()=>gsap.utils.random(-40,40),y:()=>gsap.utils.random(-55,55),scale:.02,rotation:()=>gsap.utils.random(-540,540),
+          opacity:0,duration:.8,stagger:.012,ease:'power3.in'
+        },.05)
+        .to('.loader-universe',{scale:1.34,rotation:-8,filter:'blur(12px)',opacity:0,duration:1.12,ease:'power4.in'},.12)
+        .to(portal,{clipPath:'circle(150% at 50% 50%)',opacity:.48,duration:1.02,ease:'power4.inOut'},.08)
+        .to(preloader,{opacity:0,filter:'blur(12px)',duration:1.04,ease:'power3.inOut'},.24)
+        .to(clone,{x:dx*.25,y:dy*.22,scale:scale*.78,rotation:420,duration:.52,ease:'power2.inOut'},.02)
+        .to(clone,{x:dx*.72,y:dy*.74,scale:scale*1.14,rotation:860,duration:.64,ease:'power3.inOut'},.52)
+        .to(clone,{x:dx,y:dy,scale:scale,rotation:1080,duration:.56,ease:'power4.inOut'},1.12)
+        .to(heroLogo,{opacity:1,filter:'drop-shadow(0 0 36px rgba(255,255,255,.25))',duration:.35,ease:'power2.out'},1.48)
+        .to(clone,{opacity:0,scale:scale*.88,rotation:1140,duration:.22,ease:'power2.in'},1.54)
+        .to(portal,{opacity:0,duration:.5,ease:'power2.out'},1.35);
     } else {
+      if(heroLogo)heroLogo.style.opacity='1';
       preloader.classList.add('loader-exit');
-      setTimeout(()=>{preloader.remove();if(heroLogo)heroLogo.style.opacity='1';startIntro();},reduceMotion?350:850);
+      setTimeout(()=>{
+        preloader.remove();
+        document.body.classList.remove('is-transitioning');
+        startIntro();
+      },reduceMotion?250:900);
     }
   }
-  document.getElementById('loaderSkip')?.addEventListener('click',()=>finishLoader());
+    document.getElementById('loaderSkip')?.addEventListener('click',()=>finishLoader());
   function tick(now){
     if(finishStarted)return;
     const elapsed=now-start;
@@ -995,7 +1206,7 @@ body.ambience-off .ambient-canvas,body.ambience-off .desktop-aurora{opacity:0!im
 
   // Guided page tour: scrolls through important sections and can be stopped at any time.
   const tourButton=document.getElementById('tourToggle');
-  const tourSections=['home','about','cerita','eksplorasi','prinsip','proses','works','journey-detail','arah','contact'];
+  const tourSections=['home','about','cerita','eksplorasi','studio','prinsip','proses','works','journey-detail','arah','reaksi','contact'];
   let tourTimers=[],tourRunning=false;
   const stopTour=()=>{tourTimers.forEach(clearTimeout);tourTimers=[];tourRunning=false;if(tourButton){tourButton.classList.remove('tour-active');tourButton.querySelector('.dock-icon').textContent='▷';tourButton.setAttribute('aria-label','Mulai tur website')}showToast('TUR DIHENTIKAN');};
   tourButton?.addEventListener('click',()=>{
@@ -1089,6 +1300,200 @@ body.ambience-off .ambient-canvas,body.ambience-off .desktop-aurora{opacity:0!im
   const updateMacClock=()=>{if(!macClock)return;const now=new Date();const date=new Intl.DateTimeFormat('id-ID',{weekday:'short',day:'numeric',month:'short'}).format(now);const time=new Intl.DateTimeFormat('id-ID',{hour:'2-digit',minute:'2-digit',hour12:false}).format(now);macClock.textContent=`${date} · ${time}`};
   updateMacClock();setInterval(updateMacClock,30000);
   document.addEventListener('keydown',e=>{if(e.altKey&&e.shiftKey&&e.key.toLowerCase()==='k'){e.preventDefault();controlCenter?.classList.contains('open')?closeControlCenter():openControlCenter()}if(e.key==='Escape')closeControlCenter()});
+
+
+  // V7 / KENZ Studio: live visual playground controls.
+  const studioStage=document.getElementById('studioStage');
+  const studioObject=document.getElementById('studioObject');
+  const studioShapeName=document.getElementById('studioShapeName');
+  const shapeOptions=[...document.querySelectorAll('[data-shape]')].filter(el=>el.classList.contains('shape-option'));
+  const shapeLabels={orb:'SOFT ORB',cube:'CRYSTAL CUBE',prism:'COLOR PRISM',flower:'BLOOM FORM'};
+  const applyStudioShape=(shape)=>{
+    if(!studioStage||!shapeLabels[shape])return;
+    studioStage.dataset.shape=shape;
+    if(studioShapeName)studioShapeName.textContent=shapeLabels[shape];
+    shapeOptions.forEach(btn=>{const active=btn.dataset.shape===shape;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active))});
+  };
+  shapeOptions.forEach(btn=>btn.addEventListener('click',()=>applyStudioShape(btn.dataset.shape)));
+  const labPaletteButtons=[...document.querySelectorAll('[data-lab-palette]')];
+  const applyLabPalette=(name,notify=false)=>{
+    setPalette(name,notify);
+    labPaletteButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.labPalette===name));
+  };
+  labPaletteButtons.forEach(btn=>btn.addEventListener('click',()=>applyLabPalette(btn.dataset.labPalette,true)));
+  applyLabPalette(root.dataset.palette||'atelier');
+  const studioIntensity=document.getElementById('studioIntensity');
+  const studioIntensityValue=document.getElementById('studioIntensityValue');
+  if(studioIntensityValue&&studioIntensity)studioIntensityValue.textContent=studioIntensity.value+'%';
+  studioIntensity?.addEventListener('input',()=>{
+    const value=Number(studioIntensity.value);
+    studioObject?.style.setProperty('--lab-glow',String(value/100));
+    if(studioIntensityValue)studioIntensityValue.textContent=value+'%';
+  });
+  const studioMotion=document.getElementById('studioMotion');
+  studioMotion?.addEventListener('click',()=>{
+    const paused=studioStage?.dataset.paused!=='true';
+    if(studioStage)studioStage.dataset.paused=String(paused);
+    studioMotion.setAttribute('aria-pressed',String(!paused));
+    studioMotion.textContent=paused?'▶ LANJUTKAN GERAK':'Ⅱ JEDA GERAK';
+    showToast(paused?'ANIMASI OBJEK DIJEDA':'ANIMASI OBJEK DILANJUTKAN');
+  });
+  const studioIdeas=[
+    'Bentuk sederhana, kesan yang kuat.',
+    'Coba padukan warna hangat dengan cahaya dingin.',
+    'Ruang kosong juga bagian dari desain.',
+    'Gerakan kecil bisa memberi karakter.',
+    'Buat interaksi terasa alami, bukan sekadar ramai.',
+    'Eksperimen dulu. Rapikan setelahnya.'
+  ];
+  let ideaIndex=0;
+  const studioIdea=document.getElementById('studioIdea');
+  document.getElementById('studioNextIdea')?.addEventListener('click',()=>{
+    ideaIndex=(ideaIndex+1+Math.floor(Math.random()*(studioIdeas.length-1)))%studioIdeas.length;
+    if(studioIdea){studioIdea.textContent=studioIdeas[ideaIndex];if(window.gsap)gsap.fromTo(studioIdea,{y:8,opacity:0,filter:'blur(4px)'},{y:0,opacity:1,filter:'blur(0)',duration:.4,ease:'power3.out'})}
+  });
+  document.getElementById('studioRandom')?.addEventListener('click',()=>{
+    const shapes=Object.keys(shapeLabels);
+    applyStudioShape(shapes[Math.floor(Math.random()*shapes.length)]);
+    const palettes=['atelier','coast','orchid','ember','candy','aurora'];
+    applyLabPalette(palettes[Math.floor(Math.random()*palettes.length)]);
+    if(studioIntensity){studioIntensity.value=String(30+Math.floor(Math.random()*71));studioIntensity.dispatchEvent(new Event('input'))}
+    showToast('KOMPOSISI BARU DIBUAT ✦');
+  });
+  document.getElementById('studioCopyCss')?.addEventListener('click',async()=>{
+    const css=`.my-creative-object {\n  background: conic-gradient(from 30deg, #E7A47D, #80C9C5, #8DAEDB, #B99BE1, #E69BC3);\n  border-radius: 36%;\n  box-shadow: 0 24px 60px rgba(0,0,0,.28);\n  transform: perspective(900px) rotateX(-18deg) rotateY(32deg);\n}`;
+    try{
+      await navigator.clipboard.writeText(css);
+      showToast('CONTOH CSS DISALIN');
+    }catch(error){
+      const area=document.createElement('textarea');area.value=css;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();
+      try{document.execCommand('copy');showToast('CONTOH CSS DISALIN')}catch(e){showToast('SALIN MANUAL DARI INSPECTOR')}
+      area.remove();
+    }
+  });
+  if(studioStage && window.matchMedia('(pointer:fine)').matches){
+    let stageRaf=0;
+    studioStage.addEventListener('pointermove',event=>{
+      const rect=studioStage.getBoundingClientRect();
+      const x=(event.clientX-rect.left)/rect.width-.5;
+      const y=(event.clientY-rect.top)/rect.height-.5;
+      if(stageRaf)cancelAnimationFrame(stageRaf);
+      stageRaf=requestAnimationFrame(()=>{
+        studioStage.style.transform=`perspective(1100px) rotateX(${(-y*2.2).toFixed(2)}deg) rotateY(${(x*2.8).toFixed(2)}deg)`;
+        studioStage.style.setProperty('--pointer-x',(x*100+50)+'%');
+        studioStage.style.setProperty('--pointer-y',(y*100+50)+'%');
+      });
+    });
+    studioStage.addEventListener('pointerleave',()=>{studioStage.style.transform='';});
+    studioStage.addEventListener('click',event=>{if(event.target===studioStage||event.target.classList.contains('studio-object'))sparkBurst(event.clientX,event.clientY,12)});
+  }
+  // Project detail window with focus restoration and Escape/backdrop closing.
+  const projectModal=document.getElementById('projectModal');
+  const openProjectDetails=document.getElementById('openProjectDetails');
+  const closeProjectDetails=document.getElementById('closeProjectDetails');
+  let projectFocusReturn=null;
+  const openProjectModal=()=>{
+    if(!projectModal)return;
+    projectFocusReturn=document.activeElement;
+    projectModal.classList.add('open');projectModal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+    closeProjectDetails?.focus();
+  };
+  const closeProjectModal=()=>{
+    if(!projectModal)return;
+    projectModal.classList.remove('open');projectModal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+    projectFocusReturn?.focus?.();
+  };
+  openProjectDetails?.addEventListener('click',openProjectModal);
+  closeProjectDetails?.addEventListener('click',closeProjectModal);
+  projectModal?.addEventListener('click',event=>{if(event.target===projectModal)closeProjectModal()});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&projectModal?.classList.contains('open'))closeProjectModal()});
+
+  // Visitor reactions are deliberately local-only; no fake public counters.
+  const reactionButtons=[...document.querySelectorAll('[data-reaction]')];
+  const reactionResult=document.getElementById('reactionResult');
+  const reactionMessages={spark:'Terima kasih! Senang kalau eksplorasi visualnya terasa kreatif.',wow:'Terima kasih sudah mencoba dan menjelajahi interaksinya!',heart:'Terima kasih sudah ikut mengapresiasi perjalanan belajarnya.',fire:'Energi diterima. Semangat untuk terus berkarya!'};
+  let savedReaction='';
+  try{savedReaction=localStorage.getItem('kenz-visitor-reaction')||''}catch(error){}
+  reactionButtons.forEach(btn=>{
+    const selected=btn.dataset.reaction===savedReaction;
+    btn.setAttribute('aria-pressed',String(selected));
+    btn.addEventListener('click',()=>{
+      const key=btn.dataset.reaction;
+      reactionButtons.forEach(other=>other.setAttribute('aria-pressed',String(other===btn)));
+      try{localStorage.setItem('kenz-visitor-reaction',key)}catch(error){}
+      if(reactionResult)reactionResult.textContent=reactionMessages[key]||'Terima kasih atas reaksinya.';
+      const rect=btn.getBoundingClientRect();sparkBurst(rect.left+rect.width/2,rect.top+rect.height/2,18);
+      showToast('REAKSI TERSIMPAN DI BROWSER INI');
+    });
+  });
+  if(savedReaction&&reactionResult)reactionResult.textContent=reactionMessages[savedReaction]||'Reaksi sebelumnya tersimpan di browser ini.';
+
+  // Lightweight pointer particles: small bursts only, no continuous heavy canvas animation.
+  const sparkCanvas=document.getElementById('pointerSparkCanvas');
+  const sparkCtx=sparkCanvas?.getContext('2d');
+  const sparks=[];
+  let sparkFrame=0,lastSpark=0;
+  const sparkColors=()=>{const style=getComputedStyle(document.documentElement);return [style.getPropertyValue('--accent').trim()||'#D89770',style.getPropertyValue('--blue').trim()||'#8EA7B9',style.getPropertyValue('--gold').trim()||'#C9AF83','#D59BC8','#83CFC1']};
+  const resizeSparkCanvas=()=>{
+    if(!sparkCanvas||!sparkCtx)return;
+    const ratio=Math.min(window.devicePixelRatio||1,1.6);
+    sparkCanvas.width=Math.round(innerWidth*ratio);sparkCanvas.height=Math.round(innerHeight*ratio);
+    sparkCanvas.style.width=innerWidth+'px';sparkCanvas.style.height=innerHeight+'px';
+    sparkCtx.setTransform(ratio,0,0,ratio,0,0);
+  };
+  resizeSparkCanvas();window.addEventListener('resize',resizeSparkCanvas,{passive:true});
+  function sparkBurst(x,y,count=10){
+    if(!sparkCtx||reduceMotion||!Number.isFinite(x)||!Number.isFinite(y))return;
+    const colors=sparkColors();
+    for(let i=0;i<count&&sparks.length<140;i++){
+      const angle=Math.random()*Math.PI*2,speed=1+Math.random()*3.8;
+      sparks.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed-1.1,life:35+Math.random()*28,max:63,size:1.5+Math.random()*3,color:colors[Math.floor(Math.random()*colors.length)]});
+    }
+    if(!sparkFrame)sparkFrame=requestAnimationFrame(drawSparks);
+  }
+  function drawSparks(){
+    if(!sparkCtx||!sparkCanvas){sparkFrame=0;return}
+    sparkCtx.clearRect(0,0,innerWidth,innerHeight);
+    for(let i=sparks.length-1;i>=0;i--){
+      const particle=sparks[i];particle.x+=particle.vx;particle.y+=particle.vy;particle.vy+=.035;particle.vx*=.985;particle.life--;
+      if(particle.life<=0){sparks.splice(i,1);continue}
+      sparkCtx.globalAlpha=Math.max(0,particle.life/particle.max);
+      sparkCtx.fillStyle=particle.color;sparkCtx.beginPath();sparkCtx.arc(particle.x,particle.y,particle.size,0,Math.PI*2);sparkCtx.fill();
+    }
+    sparkCtx.globalAlpha=1;
+    if(sparks.length)sparkFrame=requestAnimationFrame(drawSparks);else{sparkCtx.clearRect(0,0,innerWidth,innerHeight);sparkFrame=0}
+  }
+  if(sparkCanvas && sparkCtx && window.matchMedia('(pointer:fine)').matches && !reduceMotion){
+    document.addEventListener('pointermove',event=>{
+      if(event.pointerType==='touch')return;
+      const now=performance.now();
+      if(now-lastSpark>28){lastSpark=now;sparkBurst(event.clientX,event.clientY,2)}
+    },{passive:true});
+    document.addEventListener('click',event=>sparkBurst(event.clientX,event.clientY,9),{passive:true});
+  }
+
+  // Hidden K-E-N-Z keyboard easter egg. Ignore fields and editable areas.
+  const secretOverlay=document.getElementById('secretOverlay');
+  let secretBuffer='';
+  let secretTimer=0;
+  const triggerSecret=()=>{
+    secretOverlay?.classList.add('open');secretOverlay?.setAttribute('aria-hidden','false');
+    for(let i=0;i<6;i++)sparkBurst(innerWidth*(.25+Math.random()*.5),innerHeight*(.2+Math.random()*.55),18);
+    showToast('SECRET MODE DITEMUKAN ✦');
+    clearTimeout(secretTimer);
+    secretTimer=setTimeout(()=>{secretOverlay?.classList.remove('open');secretOverlay?.setAttribute('aria-hidden','true')},2300);
+  };
+  document.addEventListener('keydown',event=>{
+    const target=event.target;
+    if(target&&(target.isContentEditable||['INPUT','TEXTAREA','SELECT'].includes(target.tagName)))return;
+    const key=event.key.toLowerCase();
+    if(key.length===1&&/[a-z]/.test(key)){
+      secretBuffer=(secretBuffer+key).slice(-4);
+      if(secretBuffer==='kenz'){secretBuffer='';triggerSecret()}
+    }
+  });
 
 })();
 </script>
