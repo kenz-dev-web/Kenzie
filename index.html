@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <!--
-KENZ PERSONAL PORTFOLIO V14
+KENZ PERSONAL PORTFOLIO V15
 
 STRUKTUR KODE:
 - STYLE SYSTEM: variabel warna, komponen UI, animasi, dan breakpoint responsif.
 - INTRO: pembuka editorial, dunia grid-oranye, jendela proyek, dan transisi akhir.
+- WORKSPACE: pintasan bergaya desktop untuk profil, studi kasus, karya, dan fokus belajar.
 - SHOWCASE: carousel 3D interaktif untuk profil, minat, dan 3D SMANSA.
+- PROJECT STORY: studi kasus 3D SMANSA dengan tab proses dan teknologi.
+- COLLABORATION: transparansi peran Kenzie dan AI dalam alur kerja.
+- FUTURE FOCUS: area belajar yang ingin diperdalam, bukan klaim keahlian.
 - PROFILE: identitas, bio, minat, serta tombol baca/unduh ringkasan.
 - SKILL STUDIO: tab kategori yang dapat dipilih dengan keyboard.
 - JOURNEY: cerita perjalanan belajar coding.
@@ -28,10 +32,30 @@ Catatan:
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <meta content="#090a10" name="theme-color"/>
-  <meta content="Portofolio Kenzie Surya Pratama — pengembangan web, desain antarmuka, teknologi 3D, dan eksplorasi digital." name="description"/>
+  <meta content="Portofolio Kenzie Surya Pratama — pelajar dan creative developer yang mengeksplorasi Web Development, visualisasi 3D, UI/UX, dan teknologi AI." name="description"/>
   <title>
-   KENZ — Kenzie Surya Pratama | Portfolio V14
+   KENZ — Kenzie Surya Pratama | Digital Portfolio V15
   </title>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="KENZ — Kenzie Surya Pratama | Digital Portfolio"/>
+  <meta property="og:description" content="Perjalanan belajar, eksplorasi teknologi, dan proyek 3D SMANSA Klaten."/>
+  <meta property="og:locale" content="id_ID"/>
+  <meta name="color-scheme" content="dark light"/>
+  <meta name="robots" content="index,follow"/>
+
+  <meta property="og:url" content="https://www.kenziesuryapratama.web.id/"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Kenzie Surya Pratama",
+    "url": "https://www.kenziesuryapratama.web.id/",
+    "sameAs": ["https://www.instagram.com/kenzz_sp/"],
+    "description": "Pelajar dan creative developer yang mengeksplorasi Web Development, visualisasi 3D, UI/UX, dan teknologi AI."
+  }
+  </script>
+
+
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -6394,7 +6418,330 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
   .intro-copy { max-width:280px; margin-inline:auto; line-height:1.65; }
 }
 
-  </style>
+  
+/* ==========================================================
+   KENZ V15 — EDITORIAL WORKSPACE & PROJECT STORY EXPERIENCE
+   ========================================================== */
+:root {
+  --v15-orange: #ff9b70;
+  --v15-blue: #80c9e8;
+  --v15-lilac: #bba3ef;
+  --v15-pink: #ef9fbd;
+  --v15-gold: #efc77c;
+  --v15-mint: #8ed7c5;
+  --v15-radius: 28px;
+}
+.v15-section {
+  position: relative;
+  padding: clamp(84px, 10vw, 142px) 0;
+  isolation: isolate;
+  overflow: clip;
+}
+.v15-section::before {
+  content: "";
+  position: absolute;
+  width: min(58vw, 760px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .12;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, var(--v15-blue), transparent 68%);
+  top: 4%;
+  right: -25%;
+}
+.v15-section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 36px;
+  margin-bottom: clamp(34px, 5vw, 62px);
+}
+.v15-section-head .section-desc { max-width: 390px; }
+.desktop-section {
+  background:
+    radial-gradient(ellipse at 12% 18%, rgba(128,201,232,.14), transparent 34%),
+    radial-gradient(ellipse at 86% 72%, rgba(187,163,239,.13), transparent 36%),
+    linear-gradient(180deg, #11131c 0%, #0b0d14 100%);
+}
+.desktop-section::after {
+  content: "KENZ / WORKSPACE";
+  position: absolute;
+  right: -2vw;
+  bottom: 2%;
+  font: 700 clamp(48px, 11vw, 150px)/.8 var(--display);
+  letter-spacing: -.08em;
+  white-space: nowrap;
+  color: rgba(255,255,255,.018);
+  pointer-events: none;
+}
+.workspace-window {
+  position: relative;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 30px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(37,43,58,.92), rgba(16,19,29,.94));
+  box-shadow: 0 40px 110px rgba(0,0,0,.34), inset 0 1px rgba(255,255,255,.12);
+  backdrop-filter: blur(28px) saturate(150%);
+  transform: translateZ(0);
+}
+.workspace-window::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--spot-x, 72%) var(--spot-y, 30%), rgba(255,255,255,.12), transparent 34%);
+  opacity: .8;
+  pointer-events: none;
+}
+.workspace-topbar {
+  min-height: 54px;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255,255,255,.09);
+  background: rgba(255,255,255,.035);
+}
+.traffic-lights { display: inline-flex; gap: 7px; }
+.traffic-lights i { width: 10px; height: 10px; border-radius: 50%; background: #ff6b67; box-shadow: 0 0 10px rgba(255,107,103,.25); }
+.traffic-lights i:nth-child(2) { background: #ffc45e; box-shadow: 0 0 10px rgba(255,196,94,.22); }
+.traffic-lights i:nth-child(3) { background: #65d58a; box-shadow: 0 0 10px rgba(101,213,138,.22); }
+.workspace-topbar > b { font: 10px var(--mono); letter-spacing: .13em; color: #d9e0e7; }
+.workspace-live { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; font: 9px var(--mono); color: #a7cfc5; letter-spacing: .1em; }
+.workspace-live i { width: 6px; height: 6px; border-radius: 50%; background: var(--v15-mint); box-shadow: 0 0 12px var(--v15-mint); animation: v15Pulse 1.8s ease-in-out infinite; }
+.workspace-layout { display: grid; grid-template-columns: .78fr 1.22fr; gap: 26px; padding: clamp(24px, 4vw, 48px); align-items: stretch; }
+.workspace-welcome { min-height: 300px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; position: relative; }
+.workspace-welcome small, .case-kicker, .frontier-feature > small { font: 9px var(--mono); color: var(--v15-orange); letter-spacing: .16em; text-transform: uppercase; }
+.workspace-welcome h3 { margin: 24px 0 16px; font: 700 clamp(40px, 5.8vw, 76px)/.89 var(--display); letter-spacing: -.075em; }
+.workspace-welcome h3 em { font-style: normal; color: var(--v15-blue); }
+.workspace-welcome p { max-width: 330px; color: #a9b2c0; font-size: 12px; line-height: 1.85; }
+.workspace-signature { margin-top: auto; width: 100%; padding-top: 26px; display: flex; justify-content: space-between; gap: 12px; font: 8px var(--mono); color: #697588; letter-spacing: .1em; }
+.workspace-launcher { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-content: center; }
+.workspace-app {
+  --app-color: var(--v15-blue);
+  position: relative;
+  min-height: 122px;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 5px 13px;
+  background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.018));
+  transition: transform .45s var(--ease), border-color .35s, background .35s, box-shadow .35s;
+  overflow: hidden;
+}
+.workspace-app::after { content: "↗"; position: absolute; right: 16px; top: 15px; color: rgba(255,255,255,.42); transform: translate(-3px,3px); opacity: 0; transition: .3s; }
+.workspace-app:hover { transform: translateY(-5px) scale(1.015); border-color: color-mix(in srgb, var(--app-color), white 12%); background: linear-gradient(135deg, color-mix(in srgb, var(--app-color) 18%, #202331), rgba(255,255,255,.025)); box-shadow: 0 20px 45px rgba(0,0,0,.24), 0 0 28px color-mix(in srgb, var(--app-color) 12%, transparent); }
+.workspace-app:hover::after { opacity: 1; transform: none; }
+.app-glyph { width: 44px; height: 44px; grid-row: span 2; display: grid; place-items: center; border-radius: 14px; color: #111620; background: linear-gradient(135deg, color-mix(in srgb, var(--app-color), white 12%), color-mix(in srgb, var(--app-color), #171b29 10%)); font: 700 18px var(--display); box-shadow: 0 8px 24px color-mix(in srgb, var(--app-color) 22%, transparent); }
+.workspace-app b { align-self: end; font: 600 13px var(--display); color: #f3f3f2; }
+.workspace-app small { align-self: start; font-size: 9px; color: #9ba5b4; }
+.app-profile { --app-color: #f2a273; }
+.app-explore { --app-color: #80c9e8; }
+.app-project { --app-color: #bba3ef; }
+.app-study { --app-color: #ef9fbd; }
+.app-journey { --app-color: #8ed7c5; }
+.app-future { --app-color: #efc77c; }
+.workspace-foot { display: flex; justify-content: space-between; gap: 14px; padding: 15px 24px; border-top: 1px solid rgba(255,255,255,.08); color: #7e8999; font: 8px var(--mono); letter-spacing: .12em; }
+.project-story-section {
+  background:
+    radial-gradient(ellipse at 80% 15%, rgba(255,155,112,.16), transparent 35%),
+    radial-gradient(ellipse at 4% 80%, rgba(128,201,232,.11), transparent 32%),
+    linear-gradient(180deg, #f2efe9, #e8e5df);
+  color: #191d26;
+}
+.project-story-section::before { background: radial-gradient(circle, var(--v15-orange), transparent 70%); opacity: .16; }
+.project-story-section .section-title { color: #171c25; }
+.project-story-section .section-title .dim { color: #81838a; }
+.project-story-section .section-desc { color: #626b76; }
+.project-story-section .eyebrow { color: #b56c4d; }
+.case-window { position: relative; border-radius: 28px; overflow: hidden; background: #111723; color: #f4f2ef; box-shadow: 0 35px 90px rgba(32,37,48,.18); border: 1px solid rgba(22,28,39,.15); }
+.case-window-head { display: flex; align-items: center; gap: 16px; min-height: 52px; padding: 0 20px; border-bottom: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.035); }
+.case-window-head > b { font: 9px var(--mono); letter-spacing: .15em; color: #c6cbd3; }
+.case-window-head > a { margin-left: auto; font: 9px var(--mono); color: var(--v15-orange); letter-spacing: .1em; }
+.case-main { display: grid; grid-template-columns: 1.05fr .95fr; min-height: 440px; }
+.case-visual { position: relative; overflow: hidden; min-height: 390px; background: radial-gradient(ellipse at 48% 30%, #596e89, #263347 46%, #151f30 100%); isolation: isolate; }
+.case-visual-grid { position: absolute; inset: 0; opacity: .3; background-image: linear-gradient(rgba(255,255,255,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.13) 1px,transparent 1px); background-size: 34px 34px; transform: perspective(520px) rotateX(62deg) scale(1.5) translateY(14%); transform-origin: center bottom; }
+.case-horizon { position: absolute; width: 80%; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; left: 10%; top: 6%; box-shadow: 0 0 0 34px rgba(255,255,255,.025),0 0 0 72px rgba(255,255,255,.02); }
+.case-campus { position: absolute; inset: 12% 8% 15%; perspective: 800px; transform-style: preserve-3d; transform: rotateX(58deg) rotateZ(-26deg); }
+.case-building { position: absolute; bottom: 20%; height: 45%; border: 1px solid rgba(255,255,255,.42); background: linear-gradient(90deg,#d7c5a6,#8e9dad 50%,#50657d); box-shadow: 18px 22px 34px rgba(0,0,0,.35); }
+.case-building::before { content: ""; position: absolute; inset: 13% 7%; background: repeating-linear-gradient(90deg,rgba(21,34,52,.75) 0 9px,transparent 9px 20px),repeating-linear-gradient(0deg,transparent 0 16px,rgba(21,34,52,.22) 16px 18px); }
+.case-building-a { left: 9%; width: 38%; transform: translateZ(35px); }
+.case-building-b { right: 8%; width: 31%; height: 38%; transform: translateZ(12px); background: linear-gradient(90deg,#c9b896,#8fa2a9); }
+.case-building-c { left: 34%; width: 28%; height: 25%; bottom: 5%; transform: translateZ(-22px); background: linear-gradient(90deg,#9ab5c0,#667b90); }
+.case-court { position: absolute; border: 2px solid rgba(255,255,255,.6); background: linear-gradient(135deg,rgba(226,146,104,.85),rgba(170,109,90,.62)); box-shadow: 0 10px 28px rgba(0,0,0,.24); }
+.case-basket { width: 22%; height: 18%; left: 1%; bottom: -2%; }
+.case-tennis { width: 23%; height: 18%; right: 0; bottom: -5%; background: linear-gradient(135deg,rgba(123,180,158,.9),rgba(74,127,120,.75)); }
+.case-path { position: absolute; width: 9%; height: 48%; left: 51%; bottom: -7%; background: rgba(226,213,183,.66); transform: rotate(25deg); filter: blur(1px); }
+.case-coordinate { position: absolute; padding: 7px 9px; border: 1px solid rgba(255,255,255,.2); border-radius: 7px; background: rgba(13,20,32,.55); backdrop-filter: blur(10px); color: #e5edf2; font: 8px var(--mono); letter-spacing: .08em; }
+.coord-a { top: 18%; left: 7%; }
+.coord-b { top: 34%; right: 5%; }
+.coord-c { bottom: 16%; left: 8%; color: #ffc096; }
+.case-visual-caption { position: absolute; bottom: 20px; left: 22px; right: 22px; display: flex; justify-content: space-between; gap: 12px; color: rgba(255,255,255,.62); font: 8px var(--mono); letter-spacing: .12em; }
+.case-visual-caption b { color: #fff; }
+.case-copy { padding: clamp(26px,4vw,48px); display: flex; flex-direction: column; justify-content: center; }
+.case-copy h3 { margin: 18px 0; font: 700 clamp(34px,4vw,54px)/.94 var(--display); letter-spacing: -.07em; }
+.case-copy h3 em { color: var(--v15-orange); font-style: normal; }
+.case-copy > p { max-width: 490px; color: #aab3c0; font-size: 11px; line-height: 1.9; }
+.case-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin: 20px 0 15px; }
+.case-tab { padding: 9px 11px; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; background: rgba(255,255,255,.025); color: #aeb6c3; font: 8px var(--mono); letter-spacing: .06em; cursor: pointer; transition: .25s; }
+.case-tab:hover,.case-tab.active { border-color: rgba(255,155,112,.55); color: #ffb18a; background: rgba(255,155,112,.1); }
+.case-tab-panel { min-height: 128px; padding: 17px 18px; border-left: 2px solid var(--v15-orange); background: linear-gradient(90deg,rgba(255,155,112,.085),transparent); animation: casePanelIn .42s var(--ease) both; }
+.case-tab-panel small { color: var(--v15-orange); font: 8px var(--mono); letter-spacing: .12em; }
+.case-tab-panel h4 { margin: 8px 0 6px; color: #fff; font: 600 16px var(--display); }
+.case-tab-panel p { margin: 0; color: #9fa9b8; font-size: 10px; line-height: 1.8; }
+.case-stack { display: grid; grid-template-columns: 160px 1fr; gap: 15px 20px; align-items: center; padding: 22px 26px; border-top: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.025); }
+.case-stack > div:first-child small { display: block; margin-bottom: 6px; color: #8c96a5; font: 8px var(--mono); letter-spacing: .1em; }
+.case-stack > div:first-child b { color: #f4f2ef; font: 600 14px var(--display); }
+.stack-buttons { display: flex; flex-wrap: wrap; gap: 7px; }
+.stack-chip { padding: 8px 11px; border: 1px solid rgba(255,255,255,.12); border-radius: 20px; background: transparent; color: #bec7d2; font: 9px var(--mono); cursor: pointer; transition: .25s; }
+.stack-chip:hover,.stack-chip.active { border-color: rgba(128,201,232,.55); color: #9cdbf1; background: rgba(128,201,232,.1); }
+.stack-detail { grid-column: 2; margin: -5px 0 0; color: #9ca8b5; font-size: 10px; line-height: 1.7; }
+.case-disclaimer { display: grid; grid-template-columns: 150px 1fr; gap: 20px; margin-top: 18px; padding: 20px 24px; border: 1px solid rgba(35,43,56,.12); border-radius: 18px; background: rgba(255,255,255,.48); }
+.case-disclaimer span { color: #a76548; font: 9px var(--mono); letter-spacing: .12em; }
+.case-disclaimer p { margin: 0; color: #525d69; font-size: 11px; line-height: 1.8; }
+.collaboration-section { background: linear-gradient(180deg,#11141e,#171827 55%,#10131b); }
+.collaboration-section::before { top: 16%; right: auto; left: -20%; background: radial-gradient(circle,var(--v15-lilac),transparent 70%); opacity: .14; }
+.collaboration-section::after { content: "HUMAN × AI"; position: absolute; right: -2vw; bottom: 5%; font: 700 clamp(50px,12vw,160px)/.8 var(--display); letter-spacing: -.09em; color: rgba(255,255,255,.018); pointer-events: none; }
+.collaboration-section .section-title { color: #f1f1f2; }
+.collaboration-section .section-title .dim { color: #8992a4; }
+.collab-split { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.collab-panel { position: relative; min-height: 390px; padding: clamp(24px,4vw,42px); border: 1px solid rgba(255,255,255,.11); border-radius: 25px; overflow: hidden; background: linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.018)); }
+.collab-panel::after { content: ""; position: absolute; width: 290px; height: 290px; border-radius: 50%; right: -110px; top: -125px; filter: blur(1px); opacity: .2; pointer-events: none; }
+.collab-human::after { background: radial-gradient(circle,var(--v15-orange),transparent 68%); }
+.collab-ai::after { background: radial-gradient(circle,var(--v15-lilac),transparent 68%); }
+.collab-panel-top { display: flex; justify-content: space-between; gap: 12px; color: #a7b0bd; font: 8px var(--mono); letter-spacing: .13em; }
+.collab-panel-top b { color: var(--v15-orange); }
+.collab-ai .collab-panel-top b { color: var(--v15-lilac); }
+.collab-symbol { width: 64px; height: 64px; margin: 35px 0 24px; display: grid; place-items: center; border-radius: 19px; color: #151923; font: 700 24px var(--display); background: linear-gradient(135deg,#ffb18b,#e4a2c2); box-shadow: 0 14px 36px rgba(255,155,112,.18); }
+.ai-symbol { background: linear-gradient(135deg,#9fd8e9,#bca2ef); box-shadow: 0 14px 36px rgba(187,163,239,.2); }
+.collab-panel h3 { margin: 0 0 20px; font: 600 clamp(24px,3vw,36px)/1.05 var(--display); letter-spacing: -.055em; }
+.collab-panel h3 em { color: var(--v15-orange); font-style: normal; }
+.collab-ai h3 em { color: var(--v15-lilac); }
+.collab-panel ul { display: grid; gap: 11px; padding: 0; margin: 0; list-style: none; }
+.collab-panel li { position: relative; padding-left: 19px; color: #aeb7c4; font-size: 10px; line-height: 1.65; }
+.collab-panel li::before { content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 50%; background: var(--v15-orange); box-shadow: 0 0 12px rgba(255,155,112,.5); }
+.collab-ai li::before { background: var(--v15-lilac); box-shadow: 0 0 12px rgba(187,163,239,.5); }
+.workflow-strip { display: grid; grid-template-columns: 190px 1fr; gap: 24px; align-items: center; margin-top: 16px; padding: 22px 25px; border: 1px solid rgba(255,255,255,.1); border-radius: 20px; background: rgba(255,255,255,.035); }
+.workflow-title small { display: block; color: var(--v15-mint); font: 8px var(--mono); letter-spacing: .14em; margin-bottom: 8px; }
+.workflow-title b { font: 600 15px var(--display); }
+.workflow-steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; }
+.workflow-steps > div { min-width: 0; display: grid; gap: 5px; }
+.workflow-steps i { font: 9px var(--mono); color: var(--v15-orange); font-style: normal; }
+.workflow-steps b { font: 600 11px var(--display); }
+.workflow-steps span { color: #909aaa; font-size: 9px; }
+.future-section { background: linear-gradient(180deg,#f0ede7,#e6e9ed); color: #18202a; }
+.future-section::before { background: radial-gradient(circle,var(--v15-lilac),transparent 70%); opacity: .18; }
+.future-section .section-title { color: #171e28; }
+.future-section .section-title .dim { color: #79808b; }
+.future-section .section-desc { color: #626c79; }
+.future-section .eyebrow { color: #9b674d; }
+.frontier-layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: 16px; }
+.frontier-feature { position: relative; min-height: 520px; padding: 35px; border-radius: 26px; color: #eff2f4; overflow: hidden; background: radial-gradient(ellipse at 70% 14%,rgba(187,163,239,.45),transparent 40%),radial-gradient(ellipse at 18% 82%,rgba(255,155,112,.3),transparent 42%),linear-gradient(145deg,#202a3c,#121925); box-shadow: 0 28px 75px rgba(27,37,53,.18); }
+.frontier-feature::after { content: ""; position: absolute; inset: 0; opacity: .13; background-image: linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(180deg,#000,transparent 80%); }
+.frontier-orbit { position: relative; width: 160px; height: 160px; margin: 20px 0 45px; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; animation: v15Rotate 22s linear infinite; }
+.frontier-orbit::before,.frontier-orbit::after { content: ""; position: absolute; inset: 19px -17px; border: 1px solid rgba(128,201,232,.55); border-radius: 50%; transform: rotate(58deg); }
+.frontier-orbit::after { inset: 36px -28px; border-color: rgba(255,155,112,.6); transform: rotate(-42deg); }
+.frontier-orbit i { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--v15-orange); box-shadow: 0 0 15px var(--v15-orange); top: 12px; left: 75px; }
+.frontier-orbit i:nth-child(2) { top: auto; bottom: 24px; left: 4px; background: var(--v15-blue); box-shadow: 0 0 15px var(--v15-blue); }
+.frontier-orbit i:nth-child(3) { top: 47px; left: auto; right: 0; background: var(--v15-lilac); box-shadow: 0 0 15px var(--v15-lilac); }
+.frontier-orbit b { position: absolute; inset: 0; display: grid; place-items: center; font: 700 29px var(--display); letter-spacing: -.08em; animation: v15Rotate 22s linear infinite reverse; }
+.frontier-feature h3 { position: relative; z-index: 1; margin: 17px 0; font: 600 clamp(29px,3.4vw,43px)/1 var(--display); letter-spacing: -.06em; }
+.frontier-feature h3 em { color: #ffc19c; font-style: normal; }
+.frontier-feature p { position: relative; z-index: 1; max-width: 390px; color: #b4c0ce; font-size: 11px; line-height: 1.9; }
+.frontier-list { display: grid; align-content: stretch; border-top: 1px solid rgba(23,31,43,.16); }
+.frontier-item { display: grid; grid-template-columns: 35px 1fr auto; gap: 14px; align-items: start; padding: 25px 7px; border-bottom: 1px solid rgba(23,31,43,.16); transition: padding .35s var(--ease),background .35s; }
+.frontier-item:hover { padding-left: 16px; background: rgba(255,255,255,.35); }
+.frontier-item > span { color: #ad795f; font: 10px var(--mono); }
+.frontier-item small { color: #79818b; font: 8px var(--mono); letter-spacing: .13em; }
+.frontier-item h3 { margin: 7px 0 5px; font: 600 17px var(--display); letter-spacing: -.035em; color: #1e2733; }
+.frontier-item p { margin: 0; max-width: 480px; color: #68717c; font-size: 10px; line-height: 1.8; }
+.frontier-item > b { padding: 6px 8px; border: 1px solid rgba(173,121,95,.3); border-radius: 20px; color: #9c6c53; font: 8px var(--mono); letter-spacing: .08em; }
+.v15-timeline .timeline-row { padding-top: 28px; padding-bottom: 28px; }
+.v15-timeline .timeline-row:nth-child(2) { --timeline-accent: #80c9e8; }
+.v15-timeline .timeline-row:nth-child(3) { --timeline-accent: #bba3ef; }
+.v15-timeline .timeline-row:nth-child(4) { --timeline-accent: #ef9fbd; }
+.v15-timeline .timeline-row:nth-child(5) { --timeline-accent: #8ed7c5; }
+.v15-timeline .timeline-row::before { background: var(--timeline-accent, var(--accent2)); box-shadow: 0 0 18px var(--timeline-accent, var(--accent2)); }
+@keyframes v15Pulse { 50% { opacity: .45; transform: scale(.76); } }
+@keyframes v15Rotate { to { transform: rotate(360deg); } }
+@keyframes casePanelIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.v15-reveal { opacity: 0; transform: translateY(30px) scale(.985); filter: blur(5px); transition: opacity .85s var(--ease),transform .85s var(--ease),filter .85s var(--ease); }
+.v15-reveal.v15-in { opacity: 1; transform: none; filter: none; }
+.v15-reveal[data-v15-delay="1"] { transition-delay: 90ms; }
+.v15-reveal[data-v15-delay="2"] { transition-delay: 170ms; }
+.v15-reveal[data-v15-delay="3"] { transition-delay: 250ms; }
+.workspace-app:focus-visible,.case-tab:focus-visible,.stack-chip:focus-visible { outline: 2px solid var(--v15-blue); outline-offset: 4px; }
+@media (max-width: 980px) {
+  .workspace-layout { grid-template-columns: 1fr; }
+  .workspace-welcome { min-height: 220px; }
+  .frontier-layout { grid-template-columns: 1fr; }
+  .frontier-feature { min-height: 420px; }
+  .case-main { grid-template-columns: 1fr; }
+  .case-visual { min-height: 350px; }
+}
+@media (max-width: 680px) {
+  .v15-section { padding: 76px 0; }
+  .v15-section-head { display: block; margin-bottom: 30px; }
+  .v15-section-head .section-desc { margin-top: 17px; }
+  .workspace-window { border-radius: 21px; }
+  .workspace-topbar { min-height: 46px; padding: 0 14px; }
+  .workspace-layout { padding: 22px 16px; gap: 18px; }
+  .workspace-welcome { min-height: 190px; }
+  .workspace-welcome h3 { font-size: 52px; }
+  .workspace-launcher { gap: 8px; }
+  .workspace-app { min-height: 108px; padding: 12px; grid-template-columns: 38px 1fr; gap: 4px 9px; border-radius: 15px; }
+  .app-glyph { width: 38px; height: 38px; border-radius: 12px; font-size: 16px; }
+  .workspace-app b { font-size: 11px; }
+  .workspace-app small { font-size: 8px; }
+  .workspace-foot { flex-wrap: wrap; padding: 12px 15px; font-size: 7px; }
+  .case-window { border-radius: 20px; }
+  .case-window-head { min-height: 47px; padding: 0 13px; gap: 10px; }
+  .case-window-head > b { font-size: 8px; }
+  .case-window-head > a { font-size: 8px; }
+  .case-visual { min-height: 285px; }
+  .case-copy { padding: 24px 18px; }
+  .case-copy h3 { font-size: 39px; }
+  .case-tabs { gap: 5px; }
+  .case-tab { padding: 8px 9px; font-size: 7px; }
+  .case-tab-panel { min-height: 145px; padding: 14px; }
+  .case-stack { grid-template-columns: 1fr; padding: 18px; gap: 13px; }
+  .stack-detail { grid-column: 1; margin: 0; }
+  .case-disclaimer { grid-template-columns: 1fr; gap: 9px; padding: 17px; }
+  .collab-split { grid-template-columns: 1fr; }
+  .collab-panel { min-height: auto; padding: 24px; }
+  .collab-symbol { margin: 24px 0 19px; }
+  .workflow-strip { grid-template-columns: 1fr; padding: 18px; gap: 20px; }
+  .workflow-steps { grid-template-columns: repeat(2,1fr); gap: 16px 10px; }
+  .workflow-steps > div:last-child { grid-column: span 2; }
+  .frontier-feature { min-height: 470px; padding: 25px; }
+  .frontier-orbit { width: 130px; height: 130px; margin-bottom: 38px; }
+  .frontier-orbit b { font-size: 25px; }
+  .frontier-item { grid-template-columns: 26px 1fr; gap: 10px; padding: 20px 3px; }
+  .frontier-item > b { grid-column: 2; justify-self: start; }
+  .frontier-item h3 { font-size: 16px; }
+  .frontier-item p { font-size: 9px; }
+  .case-coordinate { font-size: 6px; padding: 6px 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v15-reveal { opacity: 1; transform: none; filter: none; transition: none; }
+  .workspace-live i,.frontier-orbit,.frontier-orbit b { animation: none !important; }
+}
+body.calm .workspace-live i,body.calm .frontier-orbit,body.calm .frontier-orbit b { animation-play-state: paused !important; }
+
+
+/* V15 navigation and focus refinements */
+.sound-toggle { padding: 8px 10px; border: 1px solid rgba(255,255,255,.13); border-radius: 10px; background: rgba(255,255,255,.045); color: #b8c3d1; font: 8px var(--mono); letter-spacing: .08em; cursor: pointer; transition: .25s; }
+.sound-toggle:hover,.sound-toggle[aria-pressed="true"] { border-color: rgba(142,215,197,.5); color: #a8e5d7; background: rgba(142,215,197,.1); }
+.case-tab-panel.is-changing { animation: casePanelIn .42s var(--ease) both; }
+@media (max-width: 1080px) { .sound-toggle { display: none; } }
+@media (max-width: 680px) { .sound-toggle { display: none; } }
+
+</style>
  </head>
  <body>
   <div class="noise">
@@ -6823,30 +7170,15 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
     </span>
    </a>
    <nav class="nav-links" id="navLinks">
-    <a href="#home">
-     Beranda
-    </a>
-    <a href="#about">
-     Profil
-    </a>
-    <a href="#explore">
-     Eksplorasi
-    </a>
-    <a href="#works">
-     Karya
-    </a>
-    <a href="#journey">
-     Perjalanan
-    </a>
-    <a href="#lab">
-     KENZ Lab
-    </a>
-    <a href="#skill-studio">
-     Studio
-    </a>
-    <a href="#contact">
-     Kontak
-    </a>
+    <a href="#home">Beranda</a>
+    <a href="#desktop">Ruang KENZ</a>
+    <a href="#about">Profil</a>
+    <a href="#explore">Eksplorasi</a>
+    <a href="#works">Karya</a>
+    <a href="#project-story">Studi kasus</a>
+    <a href="#journey">Perjalanan</a>
+    <a href="#future-focus">Arah belajar</a>
+    <a href="#contact">Kontak</a>
    </nav>
    <div class="nav-right">
     <span class="nav-status">
@@ -6855,6 +7187,7 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
       --:--
      </b>
     </span>
+    <button aria-label="Aktifkan atau matikan suara antarmuka" aria-pressed="false" class="sound-toggle" id="soundToggle" title="Suara antarmuka (mati secara default)">SUARA: MATI</button>
     <button aria-label="Buka Pusat Kontrol KENZ" class="control-trigger" id="openControl" title="Pusat Kontrol">
      ✳
     </button>
@@ -6889,7 +7222,7 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
        </span>
       </h1>
       <p>
-       Sebuah ruang untuk melihat perjalanan, ketertarikan, dan karya digital yang saya bangun sambil terus belajar.
+       Ruang untuk mengenal perjalanan saya, melihat proses di balik karya, dan menjelajahi bagaimana ide diterjemahkan menjadi pengalaman digital.
       </p>
      </div>
      <div aria-label="Galeri 3D interaktif. Geser atau gunakan tombol untuk menjelajah." class="carousel-zone" id="carouselZone">
@@ -6995,7 +7328,7 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
             PRATAMA.
            </h4>
            <p>
-            Pelajar · Web Developer · Vibe Coder
+            Pelajar · Creative Developer · 3D Web Explorer
            </p>
           </div>
           <div class="mock-avatar">
@@ -7297,6 +7630,29 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
       </a>
      </div>
     </section>
+    <section class="v15-section desktop-section" id="desktop">
+     <div class="container">
+      <div class="v15-section-head reveal">
+       <div><div class="eyebrow">00 / KENZ WORKSPACE</div><h2 class="section-title">Pilih ruang<br/><span class="dim">yang ingin dijelajahi.</span></h2></div>
+       <p class="section-desc">Anggap bagian ini sebagai meja kerja digital. Setiap pintasan membawa kamu ke bagian portofolio yang relevan—tanpa aplikasi atau permainan yang tidak berkaitan.</p>
+      </div>
+      <div class="workspace-window reveal">
+       <div class="workspace-topbar"><span class="traffic-lights"><i></i><i></i><i></i></span><b>KENZ / WORKSPACE</b><span class="workspace-live"><i></i> SYSTEM READY</span></div>
+       <div class="workspace-layout">
+        <div class="workspace-welcome"><small>SELAMAT DATANG DI RUANG KENZ</small><h3>Ide punya<br/><em>ruangnya.</em></h3><p>Jelajahi profil, karya, proses, dan arah belajar saya melalui pintasan berikut.</p><div class="workspace-signature"><span>KS / 2026</span><span>DESAIN · KODE · EKSPLORASI</span></div></div>
+        <div class="workspace-launcher">
+         <a class="workspace-app app-profile" href="#about"><span class="app-glyph">K.</span><b>Profil</b><small>Kenali Kenzie</small></a>
+         <a class="workspace-app app-explore" href="#explore"><span class="app-glyph">✳</span><b>Eksplorasi</b><small>Web · 3D · UI/UX · AI</small></a>
+         <a class="workspace-app app-project" href="#works"><span class="app-glyph">◇</span><b>Karya utama</b><small>3D SMANSA Klaten</small></a>
+         <a class="workspace-app app-study" href="#project-story"><span class="app-glyph">⌘</span><b>Studi kasus</b><small>Di balik proyek 3D</small></a>
+         <a class="workspace-app app-journey" href="#journey"><span class="app-glyph">↗</span><b>Perjalanan</b><small>Proses belajar</small></a>
+         <a class="workspace-app app-future" href="#future-focus"><span class="app-glyph">◎</span><b>Arah belajar</b><small>Fokus berikutnya</small></a>
+        </div>
+       </div>
+       <div class="workspace-foot"><span>01 KARYA UNGGULAN</span><span>04 AREA EKSPLORASI</span><span>SELALU DALAM PROSES</span></div>
+      </div>
+     </div>
+    </section>
     <section class="intro-band">
      <div class="container band-inner">
       <h2>
@@ -7345,10 +7701,10 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
         <strong>
          SMAN 1 Klaten
         </strong>
-        yang tertarik pada teknologi, coding, dan desain website. Saya menikmati proses mengubah ide menjadi solusi digital yang praktis, sekaligus mengeksplorasi tampilan interaktif langsung di browser.
+        yang menggabungkan ketertarikan pada Web Development, visualisasi 3D, UI/UX, dan kecerdasan buatan. Saya senang menerjemahkan kebutuhan nyata menjadi pengalaman digital yang bisa langsung dijelajahi melalui browser.
        </p>
        <p>
-        Saat ini saya masih terus belajar dan mengembangkan kemampuan. Bagi saya, setiap proyek adalah kesempatan untuk mencoba pendekatan baru, memperhatikan detail, dan menciptakan pengalaman yang bermanfaat.
+        Saya mulai mendalami coding secara aktif sekitar Agustus 2026. Dalam prosesnya, saya banyak bereksperimen dengan pendekatan AI-assisted atau vibe coding: saya menentukan visi, arah visual, dan keputusan yang perlu diuji, sementara AI membantu mempercepat penulisan kode, iterasi, serta debugging. Saya tetap belajar memperkuat fondasi teknis agar kelak mampu merancang dan mengoptimalkan sistem secara lebih mandiri.
        </p>
        <div class="skill-tags">
         <span>
@@ -7701,15 +8057,7 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
           </span>
          </h3>
          <p>
-          <strong>
-           3D SMANSA Klaten
-          </strong>
-          adalah platform visualisasi arsitektur interaktif berbasis web yang memungkinkan pengunjung menjelajahi lingkungan kampus
-          <strong>
-           SMA Negeri 1 Klaten
-          </strong>
-          secara virtual dalam format tiga dimensi langsung di peramban tanpa perlu mengunduh aplikasi tambahan, lengkap dengan detail tata letak bangunan seperti deretan ruang kelas berbentuk huruf U, ruang UKS, ruang BK, koperasi sekolah, lapangan basket, dan lapangan tenis, serta simulasi mode cuaca dinamis untuk pengalaman eksplorasi yang realistis.
-         </p>
+          <strong>3D SMANSA Klaten</strong> adalah platform visualisasi arsitektur interaktif berbasis web untuk menjelajahi lingkungan kampus <strong>SMA Negeri 1 Klaten</strong> secara virtual tanpa perlu memasang aplikasi tambahan. Saya berperan sebagai arsitek sekaligus creative director: menggunakan denah asli, menentukan arah visual, menerjemahkan tata ruang menjadi koordinat dan geometri 3D, menguji hasil, serta mengarahkan deployment. Pengunjung dapat menjelajahi ruang kelas berbentuk huruf U, UKS, BK, koperasi, lapangan basket, lapangan tenis, kontrol kamera, dan simulasi cuaca dinamis.</p>
          <div class="feature-tags">
           <span>
            3D VISUALIZATION
@@ -7735,58 +8083,89 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
       </article>
      </div>
     </section>
+    <section class="v15-section project-story-section" id="project-story">
+     <div class="container">
+      <div class="v15-section-head reveal">
+       <div><div class="eyebrow">05 / STUDI KASUS · 3D SMANSA</div><h2 class="section-title">Dari denah asli.<br/><span class="dim">Menjadi ruang digital.</span></h2></div>
+       <p class="section-desc">Satu proyek unggulan, dilihat dari proses dan keputusan di baliknya. Pilih tahapan untuk memahami bagaimana visi visual diterjemahkan ke dalam pengalaman web 3D.</p>
+      </div>
+      <div class="case-window reveal">
+       <div class="case-window-head"><span class="traffic-lights"><i></i><i></i><i></i></span><b>PROJECT FILE / 001</b><a href="https://3d-smansa.vercel.app/" target="_blank" rel="noopener noreferrer">BUKA DEMO ↗</a></div>
+       <div class="case-main">
+        <div class="case-visual" aria-label="Ilustrasi abstrak tata ruang kampus tiga dimensi">
+         <div class="case-visual-grid"></div><div class="case-horizon"></div><div class="case-campus"><i class="case-building case-building-a"></i><i class="case-building case-building-b"></i><i class="case-building case-building-c"></i><i class="case-court case-basket"></i><i class="case-court case-tennis"></i><i class="case-path"></i></div>
+         <div class="case-coordinate coord-a">U / CLASSROOM BLOCK</div><div class="case-coordinate coord-b">UKS · BK · KOPERASI</div><div class="case-coordinate coord-c">THREE.JS / WEBGL</div>
+         <div class="case-visual-caption"><span>SPATIAL VISUALIZATION</span><b>SMANSA / KLATEN</b></div>
+        </div>
+        <div class="case-copy">
+         <div class="case-kicker">KONSEP → KOORDINAT → PENGALAMAN</div>
+         <h3>Ruang sekolah,<br/><em>dihidupkan di browser.</em></h3>
+         <p>Proyek ini berangkat dari denah dan susunan ruang sekolah. Saya menentukan arah visual dan mengarahkan proses penerjemahannya menjadi geometri, material, pencahayaan, kontrol kamera, dan elemen interaktif.</p>
+         <div class="case-tabs" role="tablist" aria-label="Tahapan studi kasus 3D SMANSA">
+          <button class="case-tab active" role="tab" aria-selected="true" data-case-tab="vision">01 / VISI</button>
+          <button class="case-tab" role="tab" aria-selected="false" data-case-tab="layout">02 / RUANG</button>
+          <button class="case-tab" role="tab" aria-selected="false" data-case-tab="build">03 / TEKNIS</button>
+          <button class="case-tab" role="tab" aria-selected="false" data-case-tab="release">04 / RILIS</button>
+         </div>
+         <div class="case-tab-panel" id="caseTabPanel" role="tabpanel" aria-live="polite"><small id="casePanelLabel">01 / VISI PROYEK</small><h4 id="casePanelTitle">Menjelajahi kampus secara virtual</h4><p id="casePanelText">Tujuannya adalah menghadirkan cara untuk mengenal lingkungan SMA Negeri 1 Klaten secara tiga dimensi langsung melalui browser, tanpa mengharuskan pengunjung memasang aplikasi tambahan.</p></div>
+        </div>
+       </div>
+       <div class="case-stack">
+        <div><small>TEKNOLOGI YANG DIGUNAKAN</small><b>Stack proyek</b></div>
+        <div class="stack-buttons" role="group" aria-label="Detail teknologi proyek">
+         <button class="stack-chip active" data-tech="html">HTML5</button><button class="stack-chip" data-tech="js">JavaScript ES Modules</button><button class="stack-chip" data-tech="three">Three.js / WebGL</button><button class="stack-chip" data-tech="tailwind">Tailwind CSS</button><button class="stack-chip" data-tech="github">GitHub</button><button class="stack-chip" data-tech="vercel">Vercel</button>
+        </div>
+        <p class="stack-detail" id="stackDetail" aria-live="polite">HTML5 menjadi struktur dasar halaman dan titik masuk pengalaman web.</p>
+       </div>
+      </div>
+      <div class="case-disclaimer reveal"><span>PERAN SAYA</span><p>Arsitek visual dan creative director proyek: memegang denah asli, menentukan arah visual, meninjau hasil, dan mengarahkan deployment. AI membantu mempercepat penulisan kode, iterasi, serta debugging.</p></div>
+     </div>
+    </section>
+    
     <section class="section journey-section" id="journey">
      <div class="container">
       <div class="section-head reveal">
        <div>
-        <div class="eyebrow" style="color:#b87352">
-         05 / PERJALANAN
-        </div>
-        <h2 class="section-title" style="color:#191e25">
-         Terus belajar.
-         <br/>
-         <span class="dim">
-          Terus bertumbuh.
-         </span>
-        </h2>
+        <div class="eyebrow" style="color:#b87352">06 / PERJALANAN</div>
+        <h2 class="section-title" style="color:#191e25">Dari halaman sederhana.<br/><span class="dim">Menuju ruang tiga dimensi.</span></h2>
        </div>
-       <p class="section-desc" style="color:#676e77">
-        Saya masih berada di tahap awal perjalanan. Setiap proses memberi ruang untuk memahami hal baru dan membangun kemampuan.
-       </p>
+       <p class="section-desc" style="color:#676e77">Perjalanan ini masih berjalan. Saya belajar lewat eksperimen, proyek nyata, dan keberanian untuk mencoba teknologi yang belum pernah digunakan.</p>
       </div>
-      <div class="timeline">
-       <div class="timeline-row reveal">
-        <div class="timeline-date">
-         AGUSTUS 2026
-        </div>
-        <h3>
-         Mulai mendalami coding secara aktif
-        </h3>
-        <p>
-         Berawal dari kebutuhan membuat halaman web untuk tugas sekolah, kemudian berkembang menjadi minat untuk membangun proyek sendiri.
-        </p>
-       </div>
-       <div class="timeline-row reveal">
-        <div class="timeline-date">
-         SAAT INI
-        </div>
-        <h3>
-         Menggabungkan desain dan teknologi
-        </h3>
-        <p>
-         Mengeksplorasi website responsif, antarmuka modern, dashboard, dan visualisasi 3D berbasis browser.
-        </p>
-       </div>
-       <div class="timeline-row reveal">
-        <div class="timeline-date">
-         LANGKAH BERIKUTNYA
-        </div>
-        <h3>
-         Membangun, berbagi, dan belajar
-        </h3>
-        <p>
-         Memperdalam fondasi teknis, meningkatkan kualitas pengalaman pengguna, dan terus mengembangkan karya digital.
-        </p>
+      <div class="timeline v15-timeline">
+       <article class="timeline-row reveal"><div class="timeline-date">AGUSTUS 2026</div><h3>Mulai mendalami coding secara aktif</h3><p>Berawal dari kebutuhan membuat halaman web untuk tugas sekolah. Dari sana, saya mulai tertarik memahami bagaimana struktur, tampilan, dan interaksi sebuah website bekerja.</p></article>
+       <article class="timeline-row reveal"><div class="timeline-date">EKSPERIMEN AWAL</div><h3>Mencoba bentuk web yang berbeda</h3><p>Saya bereksperimen membuat majalah digital sekolah, kalkulator, dan game 2D ringan. Proyek-proyek sederhana ini menjadi ruang latihan untuk memahami logika, tampilan, dan pengalaman pengguna.</p></article>
+       <article class="timeline-row reveal"><div class="timeline-date">APLIKASI PRAKTIS</div><h3>Menghubungkan kode dengan kebutuhan harian</h3><p>Saya mulai mengeksplorasi dashboard manajemen tugas dan antarmuka yang dirancang untuk membantu aktivitas sehari-hari, bukan hanya menjadi tampilan visual.</p></article>
+       <article class="timeline-row reveal"><div class="timeline-date">KARYA UNGGULAN</div><h3>Mewujudkan 3D SMANSA Klaten</h3><p>Eksplorasi web berkembang menjadi visualisasi arsitektur sekolah berbasis Three.js dan WebGL, dengan detail area kampus, kontrol kamera, serta simulasi cuaca dinamis.</p></article>
+       <article class="timeline-row reveal"><div class="timeline-date">EKSPLORASI BERLANJUT</div><h3>Mencoba Python dan teknologi game</h3><p>Di luar web, saya juga bereksperimen dengan game hand-tracking berbasis Python dan mulai mengeksplorasi Unreal Engine dengan C++. Keduanya menjadi ruang belajar, bukan klaim keahlian yang sudah selesai dikuasai.</p></article>
+      </div>
+     </div>
+    </section>
+    <section class="v15-section collaboration-section" id="collaboration">
+     <div class="container">
+      <div class="v15-section-head reveal">
+       <div><div class="eyebrow">07 / CARA SAYA BERKARYA</div><h2 class="section-title">Visi tetap<br/><span class="dim">di tangan manusia.</span></h2></div>
+       <p class="section-desc">Saya menggunakan AI sebagai partner untuk mempercepat pekerjaan teknis, tetapi arah kreatif, keputusan desain, dan penilaian hasil tetap saya pegang.</p>
+      </div>
+      <div class="collab-split">
+       <article class="collab-panel collab-human reveal"><div class="collab-panel-top"><span>01 / CREATIVE DIRECTION</span><b>KENZIE</b></div><div class="collab-symbol human-symbol">K.</div><h3>Saya mengarahkan<br/><em>apa yang ingin diwujudkan.</em></h3><ul><li>Memahami kebutuhan dan tujuan proyek.</li><li>Menggunakan denah asli dan menentukan susunan ruang.</li><li>Memilih arah visual serta menguji hasilnya.</li><li>Menentukan revisi dan mengelola proses rilis.</li></ul></article>
+       <article class="collab-panel collab-ai reveal"><div class="collab-panel-top"><span>02 / TECHNICAL ASSISTANCE</span><b>AI PARTNER</b></div><div class="collab-symbol ai-symbol">✳</div><h3>AI membantu<br/><em>mempercepat proses teknis.</em></h3><ul><li>Membantu menyusun dan mengembangkan kode.</li><li>Mempercepat iterasi dari arahan yang diberikan.</li><li>Membantu proses debugging dan peninjauan.</li><li>Mendukung eksplorasi alternatif implementasi.</li></ul></article>
+      </div>
+      <div class="workflow-strip reveal"><div class="workflow-title"><small>ALUR KERJA</small><b>Dari kebutuhan ke pengalaman.</b></div><div class="workflow-steps"><div><i>01</i><b>Rumuskan</b><span>Tujuan & denah</span></div><div><i>02</i><b>Rancang</b><span>Ruang & antarmuka</span></div><div><i>03</i><b>Bangun</b><span>Kode & iterasi</span></div><div><i>04</i><b>Uji</b><span>Periksa hasil</span></div><div><i>05</i><b>Rilis</b><span>GitHub & Vercel</span></div></div></div>
+     </div>
+    </section>
+    <section class="v15-section future-section" id="future-focus">
+     <div class="container">
+      <div class="v15-section-head reveal">
+       <div><div class="eyebrow">08 / NEXT FRONTIER</div><h2 class="section-title">Hal yang ingin<br/><span class="dim">saya kuasai berikutnya.</span></h2></div>
+       <p class="section-desc">Bagian ini adalah arah belajar, bukan daftar keahlian yang sudah saya kuasai. Saya ingin memahami fondasi teknis lebih dalam sambil terus membangun proyek.</p>
+      </div>
+      <div class="frontier-layout">
+       <div class="frontier-feature reveal"><div class="frontier-orbit"><i></i><i></i><i></i><b>KS</b></div><small>LEARNING DIRECTION / 2026 →</small><h3>Belajar lebih dalam.<br/><em>Membangun lebih mandiri.</em></h3><p>Memperkuat dasar pemrograman dan arsitektur perangkat lunak agar dapat merancang, mengoptimalkan, serta membangun sistem yang lebih kompleks tanpa hanya bergantung pada bantuan AI.</p></div>
+       <div class="frontier-list">
+        <article class="frontier-item reveal"><span>01</span><div><small>WEB 3D / ADVANCED</small><h3>Arsitektur Three.js tingkat lanjut</h3><p>Memahami struktur scene, manajemen aset, kontrol, dan optimasi pengalaman 3D di browser.</p></div><b>FOCUS</b></article>
+        <article class="frontier-item reveal"><span>02</span><div><small>GRAPHICS PROGRAMMING</small><h3>GLSL & shader</h3><p>Mempelajari cara membangun efek visual dan memahami proses grafis pada tingkat yang lebih rendah.</p></div><b>FOCUS</b></article>
+        <article class="frontier-item reveal"><span>03</span><div><small>GAME DEVELOPMENT</small><h3>Unreal Engine dengan C++</h3><p>Memperdalam eksplorasi pembuatan game dan memahami hubungan kode dengan sistem engine.</p></div><b>EXPLORING</b></article>
+        <article class="frontier-item reveal"><span>04</span><div><small>CORE PROGRAMMING</small><h3>Fundamental & arsitektur perangkat lunak</h3><p>Memperkuat logika, struktur sistem, debugging, dan pertimbangan performa agar bisa membangun solusi secara mandiri.</p></div><b>FOCUS</b></article>
        </div>
       </div>
      </div>
@@ -7796,7 +8175,7 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
       <div class="section-head reveal">
        <div>
         <div class="eyebrow">
-         06 / PRINSIP BERKARYA
+         09 / PRINSIP BERKARYA
         </div>
         <h2 class="section-title">
          Fungsi yang kuat.
@@ -7852,18 +8231,18 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
       <div class="section-head reveal">
        <div>
         <div class="eyebrow">
-         07 / KENZ LAB · RUANG EKSPERIMEN
+         10 / KENZ LAB · RUANG EKSPERIMEN
         </div>
         <h2 class="section-title">
-         Bermain dengan
+         Eksperimen
          <br/>
          <span class="dim">
-          kemungkinan visual.
+          bentuk dan cahaya.
          </span>
         </h2>
        </div>
        <p class="section-desc">
-        Coba ubah suasana, intensitas cahaya, dan bentuk visual. Sebuah eksperimen kecil untuk menunjukkan bahwa antarmuka juga bisa menjadi ruang bermain.
+        Ubah suasana warna dan intensitas cahaya untuk melihat bagaimana keputusan visual memengaruhi karakter sebuah antarmuka. Eksperimen ini berfokus pada komposisi dan presentasi.
        </p>
       </div>
       <div class="lab-shell reveal" id="labShell">
@@ -7974,29 +8353,13 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
         
        </div>
       </div>
-      <div class="idea-bar reveal">
-       <div>
-        <span class="idea-label">
-         PEMANTIK IDE / RANDOM THOUGHT
-        </span>
-        <p id="ideaText">
-         Antarmuka yang baik membuat hal rumit terasa sederhana.
-        </p>
-       </div>
-       <button class="idea-shuffle" id="ideaShuffle" type="button">
-        Ganti inspirasi
-        <span>
-         ↻
-        </span>
-       </button>
-      </div>
      </div>
     </section>
     <section class="section faq-section" id="faq">
      <div class="container faq-layout">
       <div class="faq-intro reveal">
        <div class="eyebrow">
-        09 / PERTANYAAN
+        11 / PERTANYAAN
        </div>
        <h2 class="section-title">
         Sedikit hal
@@ -8093,13 +8456,17 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
          Menjaga keseimbangan antara fungsionalitas yang bermanfaat, estetika antarmuka, dan efisiensi teknis agar pengalaman digital terasa jelas dan nyaman.
         </p>
        </details>
+
+       <details class="faq-item"><summary><span>06</span><b>Bagaimana AI digunakan dalam proses pembuatan?</b><i>＋</i></summary><p>AI membantu saya mempercepat penulisan kode, iterasi, dan debugging. Saya tetap menentukan visi, arah visual, keputusan desain, menguji hasil, dan mengarahkan proses rilis.</p></details>
+       <details class="faq-item"><summary><span>07</span><b>Teknologi apa yang digunakan pada 3D SMANSA?</b><i>＋</i></summary><p>Proyek ini menggunakan HTML5, JavaScript ES Modules melalui CDN, Three.js berbasis WebGL, Tailwind CSS, GitHub untuk pengelolaan kode sumber, dan Vercel untuk deployment.</p></details>
+       <details class="faq-item"><summary><span>08</span><b>Apa yang ingin dipelajari selanjutnya?</b><i>＋</i></summary><p>Saya ingin memperdalam arsitektur Three.js, graphics programming dengan GLSL, Unreal Engine dengan C++, serta fundamental pemrograman dan arsitektur perangkat lunak.</p></details>
       </div>
      </div>
     </section>
     <section class="contact-section" id="contact">
      <div class="container">
       <div class="eyebrow reveal">
-       10 / MARI TERHUBUNG
+       12 / MARI TERHUBUNG
       </div>
       <h2 class="contact-title reveal">
        Punya ide?
@@ -8200,6 +8567,7 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
      02
     </span>
    </button>
+   <button aria-label="Ruang KENZ" class="rail-dot" data-section-jump="#desktop" title="Ruang KENZ"><span>03</span></button>
    <button aria-label="Eksplorasi" class="rail-dot" data-section-jump="#explore" title="Eksplorasi">
     <span>
      03
@@ -8210,11 +8578,14 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
      04
     </span>
    </button>
+   <button aria-label="Studi kasus" class="rail-dot" data-section-jump="#project-story" title="Studi kasus"><span>05</span></button>
    <button aria-label="Perjalanan" class="rail-dot" data-section-jump="#journey" title="Perjalanan">
     <span>
      05
     </span>
    </button>
+   <button aria-label="Kolaborasi" class="rail-dot" data-section-jump="#collaboration" title="Kolaborasi"><span>07</span></button>
+   <button aria-label="Arah belajar" class="rail-dot" data-section-jump="#future-focus" title="Arah belajar"><span>08</span></button>
    <button aria-label="KENZ Lab" class="rail-dot" data-section-jump="#lab" title="KENZ Lab">
     <span>
      07
@@ -8515,6 +8886,10 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
        02
       </span>
      </button>
+     <button class="command-item" data-go="#desktop"><span>Ruang KENZ / pintasan</span><span>03</span></button>
+     <button class="command-item" data-go="#project-story"><span>Studi kasus 3D SMANSA</span><span>05</span></button>
+     <button class="command-item" data-go="#collaboration"><span>Kolaborasi manusia + AI</span><span>07</span></button>
+     <button class="command-item" data-go="#future-focus"><span>Arah belajar berikutnya</span><span>08</span></button>
      <button class="command-item" data-go="#explore">
       Eksplorasi
       <span>
@@ -8724,7 +9099,7 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     // 3D carousel controls
     const ring = $('#carouselRing'), cards = $$('.carousel-card'), dots = $$('#carouselDots button'), zone = $('#carouselZone');
     const cardInfo = [
-        { kicker: 'KARYA UNGGULAN / 01', title: '3D SMANSA Klaten', desc: 'Jelajahi lingkungan SMA Negeri 1 Klaten dalam pengalaman visualisasi arsitektur tiga dimensi.', text: '3D SMANSA Klaten adalah platform visualisasi arsitektur interaktif berbasis web yang memungkinkan pengunjung menjelajahi lingkungan kampus SMA Negeri 1 Klaten secara virtual tanpa mengunduh aplikasi tambahan. Di dalamnya terdapat detail ruang kelas berbentuk huruf U, UKS, BK, koperasi, lapangan basket, lapangan tenis, dan simulasi cuaca dinamis.', href: 'https://3d-smansa.vercel.app/', action: 'Buka proyek 3D SMANSA' },
+        { kicker: 'KARYA UNGGULAN / 01', title: '3D SMANSA Klaten', desc: 'Jelajahi lingkungan SMA Negeri 1 Klaten dalam pengalaman visualisasi arsitektur tiga dimensi.', text: '3D SMANSA Klaten adalah platform visualisasi arsitektur interaktif berbasis web. Saya menjadi arsitek visual dan creative director yang menggunakan denah asli, menentukan arah visual, menerjemahkan tata ruang menjadi koordinat dan geometri 3D, menguji hasil, serta mengarahkan deployment. AI membantu penulisan kode, iterasi, dan debugging. Proyek memakai HTML5, JavaScript ES Modules, Three.js/WebGL, Tailwind CSS, GitHub, dan Vercel.', href: 'https://3d-smansa.vercel.app/', action: 'Buka proyek 3D SMANSA' },
         { kicker: 'PROFIL / 02', title: 'Profil & Cerita KENZ', desc: 'Kenali latar belakang, minat, dan perjalanan saya mengenal dunia pengembangan web.', text: 'Saya Kenzie Surya Pratama, pelajar SMAN 1 Klaten yang tertarik pada teknologi, coding, dan desain website. Saya mulai mendalami coding secara aktif sekitar Agustus 2026 dan terus belajar melalui proyek serta eksplorasi mandiri.', href: '#about', action: 'Lihat profil' },
         { kicker: 'AREA MINAT / 03', title: 'Web Development', desc: 'Membangun pengalaman web yang responsif, praktis, dan mudah digunakan.', text: 'Saya tertarik membangun website dan aplikasi yang bisa menyelesaikan kebutuhan sehari-hari. HTML, CSS, dan JavaScript menjadi bagian dari proses belajar dan eksplorasi saya.', href: '#explore', action: 'Lihat area eksplorasi' },
         { kicker: 'EKSPERIMEN / 04', title: 'Coding & Kreativitas', desc: 'Menghubungkan struktur kode dengan ide visual dan interaksi.', text: 'Proses coding bagi saya adalah ruang untuk mencoba, membongkar ide, menemukan cara, dan menyempurnakan pengalaman digital. Saya masih terus mengembangkan dasar-dasar dan praktiknya.', href: '#journey', action: 'Lihat perjalanan' },
@@ -8921,7 +9296,7 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     } requestAnimationFrame(drawParticles); }
     requestAnimationFrame(drawParticles);
     // V11 scroll choreography, micro-interactions and accessible utilities
-    const sections = ['home', 'about', 'explore', 'skill-studio', 'works', 'journey', 'lab', 'faq', 'contact'].map(id => document.getElementById(id)).filter(Boolean);
+    const sections = ['home', 'desktop', 'about', 'explore', 'skill-studio', 'works', 'project-story', 'journey', 'collaboration', 'future-focus', 'principles', 'lab', 'faq', 'contact'].map(id => document.getElementById(id)).filter(Boolean);
     const rail = $('#sectionRail'), railDots = $$('.rail-dot'), readingPill = $('#readingPill'), readPercent = $('#readPercent'), backTop = $('#backTop'), backProgress = $('#backProgress');
     let scrollQueued = false;
     function updateScrollUI() {
@@ -9012,7 +9387,7 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     const labPalettes = { ember: ['#ff895f', '#83c8de', '#b69ce8'], coastal: ['#78c7dd', '#edaa82', '#9bd6c6'], orchid: ['#b79be9', '#ed9abb', '#7fc9dc'], candy: ['#fa8fa8', '#8bc9e8', '#f5c57b'], aurora: ['#76d5c6', '#8cbae8', '#c2a3ec'] };
     let labCurrent = 'ember';
     function applyLab(name) { const colors = labPalettes[name] || labPalettes.ember; labCurrent = name; labStage.style.setProperty('--lab-a', colors[0]); labStage.style.setProperty('--lab-b', colors[1]); labStage.style.setProperty('--lab-c', colors[2]); $$('.lab-palette').forEach(b => b.classList.toggle('active', b.dataset.labPalette === name)); labLabel.textContent = name.toUpperCase() + ' / MOTION'; updateLabCode(); }
-    function updateLabCode() { const colors = labPalettes[labCurrent]; const power = (Number(labSlider.value) / 100).toFixed(2); labStage.style.setProperty('--lab-power', power); labValue.textContent = labSlider.value + '%'; labCode.textContent = `--lab-a: ${colors[0]};\n--lab-b: ${colors[1]};\n--lab-c: ${colors[2]};\n--lab-light: ${power};`; }
+    function updateLabCode() { if (!labStage || !labSlider || !labValue) return; const colors = labPalettes[labCurrent]; const power = (Number(labSlider.value) / 100).toFixed(2); labStage.style.setProperty('--lab-power', power); labValue.textContent = labSlider.value + '%'; if (labCode) labCode.textContent = `--lab-a: ${colors[0]};\n--lab-b: ${colors[1]};\n--lab-c: ${colors[2]};\n--lab-light: ${power};`; }
     $$('.lab-palette').forEach(b => b.addEventListener('click', () => applyLab(b.dataset.labPalette)));
     labSlider?.addEventListener('input', updateLabCode);
     $('#labRandom')?.addEventListener('click', () => { const names = Object.keys(labPalettes), name = names[Math.floor(Math.random() * names.length)]; applyLab(name); labGeometry?.animate([{ transform: 'translate(-50%,-50%) rotateX(-24deg) rotateY(28deg) scale(.7)' }, { transform: 'translate(-50%,-50%) rotateX(336deg) rotateY(388deg) scale(1.08)' }, { transform: 'translate(-50%,-50%) rotateX(-24deg) rotateY(28deg) scale(1)' }], { duration: 850, easing: 'cubic-bezier(.16,1,.3,1)' }); toast('Komposisi visual baru dibuat.'); });
@@ -9169,7 +9544,7 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     function downloadProfileText() {
         const profile = [
             'KENZIE SURYA PRATAMA',
-            'Pelajar · Web Developer · Vibe Coder',
+            'Pelajar · Creative Developer · 3D Web Explorer',
             'Klaten, Indonesia',
             '',
             'TENTANG SAYA',
@@ -9694,6 +10069,197 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     window.clearTimeout(directionTimer);
     directionTimer = window.setTimeout(() => body.classList.remove('page-is-scrolling'), 170);
   }, { passive: true });
+})();
+</script>
+
+
+<script>
+/* KENZ V15 — purposeful interactivity layer */
+(() => {
+  'use strict';
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  // Case-study tabs: each tab explains one grounded stage of the 3D SMANSA project.
+  const caseDetails = {
+    vision: {
+      label: '01 / VISI PROYEK',
+      title: 'Menjelajahi kampus secara virtual',
+      text: 'Tujuannya adalah menghadirkan cara untuk mengenal lingkungan SMA Negeri 1 Klaten secara tiga dimensi langsung melalui browser, tanpa mengharuskan pengunjung memasang aplikasi tambahan.'
+    },
+    layout: {
+      label: '02 / PENERJEMAHAN RUANG',
+      title: 'Berangkat dari denah asli sekolah',
+      text: 'Saya menggunakan denah asli sebagai acuan, lalu menerjemahkan ruang kelas berbentuk huruf U, UKS, BK, koperasi, lapangan basket, dan lapangan tenis menjadi susunan koordinat serta geometri dalam scene 3D.'
+    },
+    build: {
+      label: '03 / IMPLEMENTASI TEKNIS',
+      title: 'Geometri, material, cahaya, dan kamera',
+      text: 'Three.js berbasis WebGL digunakan untuk membangun visual tiga dimensi. HTML5 dan JavaScript ES Modules menjadi fondasi web, sementara Tailwind CSS membantu penyusunan antarmuka dan kontrol pengalaman.'
+    },
+    release: {
+      label: '04 / UJI & RILIS',
+      title: 'Iterasi, peninjauan, lalu deployment',
+      text: 'Saya meninjau hasil visual dan interaksi, mengarahkan iterasi serta debugging dengan bantuan AI, mengelola kode sumber melalui GitHub, lalu men-deploy proyek ke Vercel agar dapat diakses melalui browser.'
+    }
+  };
+  const caseTabs = $$('.case-tab');
+  const casePanel = $('#caseTabPanel');
+  function activateCaseTab(name) {
+    const data = caseDetails[name];
+    if (!data || !casePanel) return;
+    caseTabs.forEach(tab => {
+      const active = tab.dataset.caseTab === name;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+    casePanel.classList.remove('is-changing');
+    void casePanel.offsetWidth;
+    casePanel.classList.add('is-changing');
+    $('#casePanelLabel').textContent = data.label;
+    $('#casePanelTitle').textContent = data.title;
+    $('#casePanelText').textContent = data.text;
+  }
+  caseTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateCaseTab(tab.dataset.caseTab));
+    tab.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      let next = index;
+      if (event.key === 'ArrowRight') next = (index + 1) % caseTabs.length;
+      if (event.key === 'ArrowLeft') next = (index - 1 + caseTabs.length) % caseTabs.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = caseTabs.length - 1;
+      caseTabs[next].focus();
+      activateCaseTab(caseTabs[next].dataset.caseTab);
+    });
+  });
+  activateCaseTab('vision');
+
+  // Technology chips expose how each named technology was used in this project.
+  const techDetails = {
+    html: 'HTML5 menjadi struktur dasar halaman dan titik masuk pengalaman web.',
+    js: 'JavaScript ES Modules melalui CDN menangani logika aplikasi, kontrol interaksi, dan perilaku scene.',
+    three: 'Three.js di atas WebGL merender geometri, material, pencahayaan, dan kamera untuk lingkungan tiga dimensi.',
+    tailwind: 'Tailwind CSS membantu menyusun antarmuka, navigasi, dan kontrol yang digunakan pengunjung.',
+    github: 'GitHub digunakan untuk mengelola kode sumber selama proses pengembangan.',
+    vercel: 'Vercel digunakan untuk deployment sehingga proyek dapat diakses secara online.'
+  };
+  const techButtons = $$('.stack-chip');
+  techButtons.forEach(button => button.addEventListener('click', () => {
+    techButtons.forEach(item => item.classList.toggle('active', item === button));
+    const detail = $('#stackDetail');
+    if (detail) {
+      detail.animate?.([{ opacity: .25, transform: 'translateY(5px)' }, { opacity: 1, transform: 'none' }], { duration: 300, easing: 'ease-out' });
+      detail.textContent = techDetails[button.dataset.tech] || '';
+    }
+  }));
+
+  // Reveal observer for V15-only elements, separate from the existing V14 observer.
+  const newRevealElements = $$('.v15-section .reveal, .v15-section-head, .workspace-app, .case-tab, .stack-chip, .collab-panel, .frontier-item');
+  if ('IntersectionObserver' in window && !reducedMotion) {
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('v15-in');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -45px 0px' });
+    newRevealElements.forEach((element, index) => {
+      element.classList.add('v15-reveal');
+      const siblings = element.parentElement ? Array.from(element.parentElement.children).filter(child => child.matches('.v15-reveal')) : [];
+      const delay = Math.min(Math.max(siblings.indexOf(element), 0), 3);
+      element.dataset.v15Delay = String(delay);
+      revealObserver.observe(element);
+    });
+  } else {
+    newRevealElements.forEach(element => element.classList.add('v15-in'));
+  }
+
+  // Pointer spotlight on the workspace and case-study panels.
+  if (finePointer) {
+    $$('.workspace-window,.case-window,.collab-panel,.frontier-feature').forEach(element => {
+      element.addEventListener('pointermove', event => {
+        const rect = element.getBoundingClientRect();
+        element.style.setProperty('--spot-x', `${event.clientX - rect.left}px`);
+        element.style.setProperty('--spot-y', `${event.clientY - rect.top}px`);
+      }, { passive: true });
+      element.addEventListener('pointerleave', () => {
+        element.style.setProperty('--spot-x', '50%');
+        element.style.setProperty('--spot-y', '50%');
+      });
+    });
+  }
+
+  // Optional UI sound. It stays OFF until the visitor explicitly enables it.
+  let soundEnabled = false;
+  let audioContext = null;
+  const soundButton = $('#soundToggle');
+  function playUiTone(frequency = 520) {
+    if (!soundEnabled) return;
+    try {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+      audioContext ||= new AudioContextClass();
+      if (audioContext.state === 'suspended') audioContext.resume();
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(frequency * 1.18, audioContext.currentTime + .055);
+      gain.gain.setValueAtTime(.0001, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(.035, audioContext.currentTime + .012);
+      gain.gain.exponentialRampToValueAtTime(.0001, audioContext.currentTime + .12);
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + .13);
+    } catch (error) {
+      soundEnabled = false;
+      if (soundButton) soundButton.textContent = 'SUARA: MATI';
+    }
+  }
+  if (soundButton) {
+    soundButton.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      soundButton.setAttribute('aria-pressed', String(soundEnabled));
+      soundButton.textContent = soundEnabled ? 'SUARA: AKTIF' : 'SUARA: MATI';
+      if (soundEnabled) playUiTone(660);
+    });
+  }
+  // Keep sounds opt-in and subtle; only clicks on purposeful controls produce a tone.
+  document.addEventListener('click', event => {
+    if (!soundEnabled) return;
+    const interactive = event.target.closest('.workspace-app,.case-tab,.stack-chip,.feature-link,.quick-action');
+    if (interactive) playUiTone(interactive.matches('.case-tab,.stack-chip') ? 620 : 520);
+  }, { passive: true });
+
+  // Slight kinetic response for desktop workspace tiles only; touch users get tap feedback instead.
+  if (finePointer && !reducedMotion) {
+    $$('.workspace-app').forEach(tile => {
+      tile.addEventListener('pointermove', event => {
+        const rect = tile.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        tile.style.transform = `translateY(-5px) perspective(700px) rotateX(${-y * 3}deg) rotateY(${x * 3}deg)`;
+      });
+      tile.addEventListener('pointerleave', () => { tile.style.transform = ''; });
+    });
+  }
+
+  // A direct link to the project detail section from any case-study context.
+  document.addEventListener('keydown', event => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'j') {
+      const target = $('#desktop');
+      if (target) {
+        event.preventDefault();
+        target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+    }
+  });
 })();
 </script>
 
