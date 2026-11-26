@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-KENZ PERSONAL PORTFOLIO V12
+KENZ PERSONAL PORTFOLIO V14
 
 STRUKTUR KODE:
 - STYLE SYSTEM: variabel warna, komponen UI, animasi, dan breakpoint responsif.
@@ -11,8 +11,6 @@ STRUKTUR KODE:
 - JOURNEY: cerita perjalanan belajar coding.
 - WORKS: detail 3D SMANSA Klaten dan tautan demo.
 - KENZ LAB: eksperimen bentuk, warna, dan intensitas cahaya.
-- IDEA STUDIO: generator konsep dari pilihan pengunjung.
-- PRIVATE NOTE: catatan yang hanya tersimpan lokal pada browser pengunjung.
 - FAQ: pertanyaan singkat tentang profil dan karya.
 - CONTROL CENTER: tema, partikel, gerak, autoplay, fokus, dan cursor.
 - COMMAND PALETTE: pencarian bagian website dengan Ctrl/Command + K.
@@ -30,9 +28,9 @@ Catatan:
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <meta content="#090a10" name="theme-color"/>
-  <meta content="Portofolio Kenzie Surya Pratama — web development, UI/UX, teknologi 3D, dan eksplorasi teknologi digital." name="description"/>
+  <meta content="Portofolio Kenzie Surya Pratama — pengembangan web, desain antarmuka, teknologi 3D, dan eksplorasi digital." name="description"/>
   <title>
-   KENZ — Kenzie Surya Pratama
+   KENZ — Kenzie Surya Pratama | Portfolio V14
   </title>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -4380,7 +4378,7 @@ body.ready .section-rail {
   transform: translateY(-4px);
 }
 /* small editorial ornaments, hover spotlights and magnetic controls */
-.feature-link,.control-trigger,.quick-action,.idea-shuffle,.lab-action,.pill-link {
+.feature-link,.control-trigger,.quick-action,.lab-action,.pill-link {
   --mag-x: 0px;
   --mag-y: 0px;
   translate: var(--mag-x) var(--mag-y);
@@ -4572,7 +4570,7 @@ body.intro-active {
 
 /* ================================================================
    V12 — KENZ INTERACTION SUITE
-   Additional design system, skill explorer, idea studio and FAQ.
+   Additional design system, skill explorer, profile utilities and FAQ.
    ================================================================ */
 :root {
   --v12-radius-xl: 30px;
@@ -6178,6 +6176,224 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
 .hero-dashboard.reveal.visible { opacity:1; transform:none; }
 @media (max-width:680px) { .kenz-ripple { display:none; } }
 
+
+
+/* ======================================================================
+   KENZ V14 — COLOR-FORWARD AURORA, CINEMATIC INTRO & SCROLL DETAILS
+   ====================================================================== */
+:root {
+  --wallpaper-bg: radial-gradient(ellipse at 12% 18%,rgba(133,169,232,.32),transparent 34%),
+    radial-gradient(ellipse at 86% 20%,rgba(242,165,188,.28),transparent 30%),
+    radial-gradient(ellipse at 72% 86%,rgba(169,215,198,.24),transparent 35%),
+    radial-gradient(ellipse at 19% 84%,rgba(201,167,237,.22),transparent 31%),
+    linear-gradient(135deg,#090d18 0%,#121322 42%,#101b25 100%);
+  --scroll-hue: 0deg;
+  --scroll-depth: 0px;
+  --v14-glow-strength: .34;
+}
+#kenzWallpaper {
+  background: var(--wallpaper-bg);
+  transition: background 1.2s var(--ease), filter 1.2s var(--ease);
+}
+#kenzWallpaper::before {
+  background: conic-gradient(from 35deg,var(--accent),var(--accent4),var(--accent2),var(--accent5),var(--accent3),var(--accent));
+  opacity: var(--v14-glow-strength);
+  filter: blur(52px) saturate(155%) hue-rotate(var(--scroll-hue));
+}
+#kenzWallpaper::after {
+  background: conic-gradient(from 110deg,var(--accent3),var(--accent),var(--accent2),var(--accent4),var(--accent5),var(--accent3));
+  opacity: calc(var(--v14-glow-strength) * .88);
+  filter: blur(56px) saturate(165%) hue-rotate(calc(var(--scroll-hue) * -0.65));
+}
+#kenzWallpaper .wallpaper-orb {
+  position: absolute;
+  width: clamp(130px,22vw,330px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(22px);
+  opacity: .15;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+.wallpaper-orb-a { left: 12%; top: 24%; background: radial-gradient(circle,var(--accent2),transparent 68%); animation: wallpaperOrbA 19s ease-in-out infinite alternate; }
+.wallpaper-orb-b { right: 9%; top: 36%; background: radial-gradient(circle,var(--accent3),transparent 68%); animation: wallpaperOrbB 23s ease-in-out infinite alternate; }
+.wallpaper-orb-c { left: 36%; bottom: -12%; background: radial-gradient(circle,var(--accent4),transparent 68%); animation: wallpaperOrbC 27s ease-in-out infinite alternate; }
+.wallpaper-orb-d { right: 27%; top: -17%; width: clamp(100px,15vw,230px) !important; background: radial-gradient(circle,var(--accent5),transparent 68%); animation: wallpaperOrbB 31s ease-in-out infinite alternate-reverse; }
+@keyframes wallpaperOrbA { to { transform: translate3d(12vw,10vh,0) scale(1.18); } }
+@keyframes wallpaperOrbB { to { transform: translate3d(-13vw,8vh,0) scale(.82); } }
+@keyframes wallpaperOrbC { to { transform: translate3d(7vw,-13vh,0) scale(1.2); } }
+
+/* Richer layered gradients on the opening card, coordinated with the active palette. */
+#intro { background: #10131e; }
+#intro::before {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .42;
+  background: conic-gradient(from 20deg at 50% 50%,transparent,var(--accent) 12%,transparent 23%,var(--accent2) 37%,transparent 49%,var(--accent4) 64%,transparent 78%,var(--accent3) 91%,transparent);
+  filter: blur(95px);
+  animation: introChromatic 28s linear infinite;
+}
+@keyframes introChromatic { to { transform: rotate(360deg) scale(1.12); } }
+.intro-opening {
+  background:
+    radial-gradient(ellipse at 14% 18%,rgba(143,173,238,.15),transparent 34%),
+    radial-gradient(ellipse at 86% 78%,rgba(236,156,193,.14),transparent 32%),
+    radial-gradient(ellipse at 57% 12%,rgba(248,205,124,.12),transparent 28%),
+    linear-gradient(125deg,#f5f0e9 0%,#ececf5 42%,#e8f3f1 74%,#f6e7e1 100%);
+}
+.intro-opening::before,.intro-opening::after {
+  content: "";
+  position: absolute;
+  width: min(48vw,620px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(119,131,185,.15);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: openingHalo 17s linear infinite;
+}
+.intro-opening::after { width: min(34vw,420px); border-color: rgba(216,141,161,.20); animation-direction: reverse; animation-duration: 23s; }
+@keyframes openingHalo { to { transform: rotate(360deg) scale(1.07); } }
+.opening-line em {
+  background: linear-gradient(100deg,#d66e50 0%,#b97ac6 38%,#5f9dbb 72%,#d99c4c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 9px 22px rgba(183,119,142,.12));
+}
+.opening-kicker { color: #92715c; }
+.opening-cross:before,.opening-cross:after { background: linear-gradient(90deg,#a28cd0,#d18a76,#73aeb1); }
+
+/* The world phase gains additional floating glass objects and colored energy. */
+.intro-ornaments { position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+.intro-prism,.intro-orb,.intro-spark { position:absolute; display:block; }
+.intro-prism { width:clamp(26px,4vw,58px); aspect-ratio:1; border:1px solid rgba(255,255,255,.45); border-radius:12px; background:linear-gradient(145deg,rgba(255,255,255,.28),rgba(255,255,255,.025)); box-shadow:inset 0 1px rgba(255,255,255,.38),0 0 38px color-mix(in srgb,var(--accent),transparent 66%); backdrop-filter:blur(5px); transform:rotate(35deg) skew(-7deg); animation:prismDrift 9s ease-in-out infinite; }
+.prism-one { left:11%; top:28%; border-color:color-mix(in srgb,var(--accent),white 25%); }
+.prism-two { right:12%; top:28%; width:clamp(20px,3vw,42px); border-radius:50%; border-color:color-mix(in srgb,var(--accent2),white 25%); animation-delay:-2.4s; }
+.prism-three { left:20%; bottom:17%; width:clamp(16px,2vw,30px); border-radius:6px; border-color:color-mix(in srgb,var(--accent3),white 25%); animation-delay:-4.7s; }
+@keyframes prismDrift { 0%,100% { transform:translate3d(0,0,0) rotate(35deg) skew(-7deg); } 50% { transform:translate3d(8px,-25px,0) rotate(125deg) skew(7deg); } }
+.intro-orb { width:clamp(7px,1vw,14px); aspect-ratio:1; border-radius:50%; background:var(--accent2); box-shadow:0 0 22px var(--accent2),0 0 52px color-mix(in srgb,var(--accent2),transparent 28%); animation:orbDrift 6s ease-in-out infinite; }
+.orb-one { left:28%; top:20%; background:var(--accent); box-shadow:0 0 24px var(--accent); }
+.orb-two { right:25%; bottom:22%; background:var(--accent3); box-shadow:0 0 24px var(--accent3); animation-delay:-2s; }
+.orb-three { left:72%; top:16%; background:var(--accent5); box-shadow:0 0 24px var(--accent5); animation-delay:-3.4s; }
+@keyframes orbDrift { 0%,100% { transform:translate3d(0,0,0) scale(.8); opacity:.55; } 50% { transform:translate3d(14px,-21px,0) scale(1.25); opacity:1; } }
+.intro-spark { color:var(--accent4); font-size:clamp(16px,2.4vw,30px); text-shadow:0 0 20px currentColor; animation:sparkTwinkle 3.4s ease-in-out infinite; }
+.spark-one { left:16%; top:57%; }
+.spark-two { right:18%; top:56%; color:var(--accent5); animation-delay:-1.2s; }
+.spark-three { right:31%; bottom:13%; color:var(--accent3); animation-delay:-2.2s; }
+@keyframes sparkTwinkle { 0%,100% { opacity:.25; transform:scale(.65) rotate(0deg); } 50% { opacity:1; transform:scale(1.25) rotate(40deg); } }
+.world-grid-back {
+  background-image: linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);
+}
+.world-grid-floor {
+  background-image: linear-gradient(color-mix(in srgb,var(--accent) 45%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--accent2) 38%,transparent) 1px,transparent 1px);
+}
+.world-orbit { border-color:color-mix(in srgb,var(--accent) 34%,transparent); box-shadow:0 0 80px color-mix(in srgb,var(--accent) 13%,transparent),inset 0 0 80px color-mix(in srgb,var(--accent2) 9%,transparent); }
+.orbit-two { border-color:color-mix(in srgb,var(--accent4) 25%,transparent); }
+.energy-ribbon { filter:drop-shadow(0 0 17px color-mix(in srgb,var(--accent) 65%,transparent)) drop-shadow(0 0 26px color-mix(in srgb,var(--accent2) 40%,transparent)); }
+.ribbon-core { stroke: url(#ribbonGradient); }
+.intro-window { border-color:color-mix(in srgb,var(--accent2) 36%,rgba(255,255,255,.22)); box-shadow:0 28px 95px rgba(0,0,0,.48),0 0 36px color-mix(in srgb,var(--accent) 20%,transparent),inset 0 1px rgba(255,255,255,.15); }
+.window-top>b { color:var(--accent2); }
+.intro-progress-track span { background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent4),var(--accent3),var(--accent5)); box-shadow:0 0 18px var(--accent2); }
+
+/* Color is carried through the main canvas, section headings, and project chrome. */
+.section-title .dim,
+.section-title span:not(.dim),
+.showcase-heading h1 span {
+  background:linear-gradient(100deg,var(--accent) 0%,var(--accent2) 28%,var(--accent4) 58%,var(--accent3) 82%,var(--accent5) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  transition:filter .4s ease;
+}
+.section-title:hover .dim { filter:saturate(1.4) brightness(1.18); }
+.showcase-heading h1 span { filter:drop-shadow(0 10px 28px color-mix(in srgb,var(--accent4),transparent 72%)); }
+.section-head .eyebrow { color:var(--accent2); }
+.eyebrow { text-shadow:0 0 22px color-mix(in srgb,var(--accent2),transparent 76%); }
+.section::before { background:radial-gradient(circle,var(--section-glow,color-mix(in srgb,var(--accent3),transparent 78%)),transparent 68%); }
+.section-in-view { --section-arrival:1; }
+.interest-section { --section-glow:color-mix(in srgb,var(--accent4) 23%,transparent); }
+.story-section { --section-glow:color-mix(in srgb,var(--accent3) 25%,transparent); }
+.feature-section { --section-glow:color-mix(in srgb,var(--accent2) 24%,transparent); }
+.journey-section { --section-glow:color-mix(in srgb,var(--accent5) 25%,transparent); }
+.principles { --section-glow:color-mix(in srgb,var(--accent4) 24%,transparent); }
+.lab-section { --section-glow:color-mix(in srgb,var(--accent) 24%,transparent); }
+.faq-section { --section-glow:color-mix(in srgb,var(--accent3) 25%,transparent); }
+.contact-section { --section-glow:color-mix(in srgb,var(--accent2) 24%,transparent); }
+
+/* Scroll choreography: tiny light sweeps and layered arrival cues. */
+.section { isolation:isolate; }
+.section-ripple {
+  position:absolute; z-index:0; left:var(--ripple-x,50%); top:var(--ripple-y,48%);
+  width:clamp(120px,22vw,300px); aspect-ratio:1; border-radius:50%; pointer-events:none;
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 18%,transparent),color-mix(in srgb,var(--accent4) 10%,transparent) 35%,transparent 70%);
+  opacity:0; transform:translate(-50%,-50%) scale(.25);
+}
+.section-ripple.burst { animation:sectionBloom 1.25s var(--ease) both; }
+@keyframes sectionBloom { 0% { opacity:0; transform:translate(-50%,-50%) scale(.25); } 35% { opacity:.85; } 100% { opacity:0; transform:translate(-50%,-50%) scale(1.85); } }
+.section-sparkle {
+  position:absolute; z-index:2; pointer-events:none; left:var(--spark-x); top:var(--spark-y);
+  color:var(--spark-color,var(--accent2)); font-size:var(--spark-size,13px);
+  text-shadow:0 0 18px currentColor; opacity:0; transform:scale(.4) rotate(-25deg);
+}
+.section-sparkle.burst { animation:sectionSparkle .95s var(--ease) forwards; }
+@keyframes sectionSparkle { 0% { opacity:0; transform:scale(.25) rotate(-35deg); } 35% { opacity:1; } 100% { opacity:0; transform:translate(var(--spark-dx),var(--spark-dy)) scale(1.25) rotate(70deg); } }
+#pageProgress { height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent4),var(--accent3),var(--accent5)); box-shadow:0 0 14px color-mix(in srgb,var(--accent2),transparent 32%); }
+.nav,.mac-menubar,.control-window,.detail-window,.command-window,.shortcut-window { backdrop-filter:blur(30px) saturate(185%); -webkit-backdrop-filter:blur(30px) saturate(185%); }
+.nav { border-color:color-mix(in srgb,var(--accent3) 22%,rgba(255,255,255,.13)); }
+.nav.scrolled { background:linear-gradient(120deg,rgba(15,20,31,.91),rgba(28,19,37,.88),rgba(13,26,34,.91)); }
+.carousel-card.active { border-color:color-mix(in srgb,var(--accent2) 48%,white 8%); }
+.interest-card,.principle-card,.story-step,.contact-card,.hero-widget,.lab-shell { transform-style:preserve-3d; will-change:transform; }
+.interest-card.kinetic-card,.principle-card.kinetic-card,.story-step.kinetic-card,.contact-card.kinetic-card,.hero-widget.kinetic-card,.lab-shell.kinetic-card { transition:transform .28s var(--ease),box-shadow .35s,border-color .35s; }
+.kinetic-card.is-tilting { transform:perspective(950px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(-4px); }
+#cursorRing[data-cursor-label="OPEN"]::after { content:"OPEN"; }
+#cursorRing[data-cursor-label="DRAG"]::after { content:"DRAG"; }
+#cursorRing[data-cursor-label="READ"]::after { content:"READ"; }
+.control-trigger:hover,.menu-trigger:hover { box-shadow:0 0 0 5px color-mix(in srgb,var(--accent4),transparent 85%),0 10px 28px color-mix(in srgb,var(--accent),transparent 78%); }
+
+@media (max-width:680px) {
+  #kenzWallpaper .wallpaper-orb { opacity:.09; filter:blur(38px); }
+  .intro-prism { opacity:.55; }
+  .intro-spark { opacity:.65; }
+  .intro-panels { transform:translate(-50%,-50%) scale(.82); }
+  .world-headline { top:8%; }
+}
+@media (prefers-reduced-motion:reduce) {
+  #intro::before,.intro-prism,.intro-orb,.intro-spark,.wallpaper-orb { animation:none !important; }
+  .section-ripple,.section-sparkle { display:none !important; }
+  .kinetic-card,.is-tilting { transform:none !important; transition:none !important; }
+}
+
+
+/* Final responsive polish for V14. */
+.theme-btn::before {
+  background: var(--theme-swatch,linear-gradient(135deg,var(--accent),var(--accent3),var(--accent4)));
+}
+.theme-btn[data-theme="tropical"]::before { background:linear-gradient(135deg,#b9e769,#f477a8,#62d5cf); }
+.theme-btn[data-theme="berry"]::before { background:linear-gradient(135deg,#9b72ed,#ec7eae,#ffbd7b); }
+.theme-btn[data-theme="electric"]::before { background:linear-gradient(135deg,#5179ff,#54d9e9,#ef62b5); }
+.theme-btn[data-theme="mango"]::before { background:linear-gradient(135deg,#ff9a45,#f7d45e,#6cbbe8); }
+.theme-btn[data-theme="lagoon"]::before { background:linear-gradient(135deg,#39b8bd,#78a8e8,#f3a28b); }
+.theme-btn[data-theme="peach"]::before { background:linear-gradient(135deg,#f4a68d,#e8a9cb,#9bcde0); }
+.theme-btn[data-theme="candyglass"]::before { background:linear-gradient(135deg,#f36fb5,#62d6e9,#b09bff); }
+@media (max-width:680px) {
+  .intro-ornaments { opacity:.62; }
+  .intro-prism.prism-one { left:5%; }
+  .intro-prism.prism-two { right:5%; }
+  .intro-progress-ui { width:calc(100% - 28px); }
+  .intro-progress-top { font-size:8px; }
+  .intro-skip { padding:9px 12px; }
+  .theme-list { max-height:190px; overflow:auto; padding-right:4px; }
+  .section-sparkle { display:none; }
+}
+@media (max-width:380px) {
+  .opening-line { font-size:clamp(34px,10vw,42px); }
+  .opening-meta,.opening-index { font-size:7px; letter-spacing:.1em; }
+  .intro-copy { max-width:280px; margin-inline:auto; line-height:1.65; }
+}
+
   </style>
  </head>
  <body>
@@ -6227,6 +6443,17 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
     </div>
    </div>
    <div aria-hidden="true" class="intro-world">
+    <div class="intro-ornaments">
+     <span class="intro-prism prism-one"></span>
+     <span class="intro-prism prism-two"></span>
+     <span class="intro-prism prism-three"></span>
+     <span class="intro-orb orb-one"></span>
+     <span class="intro-orb orb-two"></span>
+     <span class="intro-orb orb-three"></span>
+     <span class="intro-spark spark-one">✦</span>
+     <span class="intro-spark spark-two">✧</span>
+     <span class="intro-spark spark-three">✳</span>
+    </div>
     <div class="world-grid world-grid-back">
     </div>
     <div class="world-grid world-grid-floor">
@@ -7743,33 +7970,8 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
          </b>
         </label>
         <input class="lab-range" id="labIntensity" max="100" min="20" type="range" value="72"/>
-        <div class="lab-actions">
-         <button class="lab-action primary" id="labRandom">
-          Acak komposisi
-          <span>
-           ✳
-          </span>
-         </button>
-         <button class="lab-action" id="labCopy">
-          Salin kode CSS
-          <span>
-           ⌘
-          </span>
-         </button>
-        </div>
-        <div class="lab-code">
-         <div>
-          <span>
-           CSS / GENERATED STYLE
-          </span>
-          <button aria-label="Salin kode CSS" id="labCopyMini">
-           COPY
-          </button>
-         </div>
-         <code id="labCssCode">
-          --accent: #85a9e8; --accent-2: #83c8de;
-         </code>
-        </div>
+        
+        
        </div>
       </div>
       <div class="idea-bar reveal">
@@ -7790,214 +7992,11 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
       </div>
      </div>
     </section>
-    <section class="section idea-studio-section" id="ideas">
-     <div class="container">
-      <div class="section-head reveal">
-       <div>
-        <div class="eyebrow">
-         09 / RUANG IDE
-        </div>
-        <h2 class="section-title">
-         Bagaimana jika
-         <br/>
-         <span class="dim">
-          kita mencoba?
-         </span>
-        </h2>
-       </div>
-       <p class="section-desc">
-        Pilih arah eksperimen, lalu buat satu gagasan proyek sebagai pemantik. Bukan daftar proyek yang sudah dibuat—ini hanya generator ide kreatif.
-       </p>
-      </div>
-      <div class="idea-studio-grid">
-       <div class="idea-builder reveal">
-        <div class="idea-builder-head">
-         <span class="idea-builder-symbol">
-          ✳
-         </span>
-         <div>
-          <small>
-           KENZ / IDEA GENERATOR
-          </small>
-          <h3>
-           Racik sebuah ide.
-          </h3>
-         </div>
-         <span class="idea-live">
-          LIVE
-         </span>
-        </div>
-        <div class="idea-select-grid">
-         <label>
-          Jenis pengalaman
-          <select id="ideaDomain">
-           <option value="website interaktif">
-            Website interaktif
-           </option>
-           <option value="dashboard web">
-            Dashboard web
-           </option>
-           <option value="ruang 3D berbasis browser">
-            Ruang 3D berbasis browser
-           </option>
-           <option value="eksperimen antarmuka">
-            Eksperimen antarmuka
-           </option>
-           <option value="prototipe berbantuan AI">
-            Prototipe berbantuan AI
-           </option>
-          </select>
-         </label>
-         <label>
-          Tujuan utama
-          <select id="ideaPurpose">
-           <option value="membantu aktivitas belajar">
-            Membantu kegiatan belajar
-           </option>
-           <option value="mempermudah pengelolaan tugas">
-            Mengelola tugas
-           </option>
-           <option value="mengenalkan lingkungan sekolah">
-            Mengenalkan lingkungan sekolah
-           </option>
-           <option value="menyajikan informasi dengan jelas">
-            Menyajikan informasi
-           </option>
-           <option value="menjelajahi visual kreatif">
-            Menjelajahi visual kreatif
-           </option>
-          </select>
-         </label>
-         <label>
-          Nuansa visual
-          <select id="ideaMood">
-           <option value="editorial dan elegan">
-            Editorial &amp; elegan
-           </option>
-           <option value="warna cerah dan playful">
-            Cerah &amp; playful
-           </option>
-           <option value="futuristik dan sinematik">
-            Futuristik &amp; sinematik
-           </option>
-           <option value="minimal dan tenang">
-            Minimal &amp; tenang
-           </option>
-           <option value="eksperimental dan berani">
-            Eksperimental &amp; berani
-           </option>
-          </select>
-         </label>
-         <label>
-          Fokus interaksi
-          <select id="ideaInteraction">
-           <option value="navigasi yang intuitif dan animasi halus">
-            Navigasi intuitif
-           </option>
-           <option value="objek 3D yang dapat dijelajahi">
-            Objek 3D interaktif
-           </option>
-           <option value="filter dan pencarian dinamis">
-            Filter dan pencarian
-           </option>
-           <option value="visualisasi data yang mudah dipahami">
-            Visualisasi data
-           </option>
-           <option value="kontrol personal yang dapat diubah">
-            Kontrol personal
-           </option>
-          </select>
-         </label>
-        </div>
-        <div class="idea-builder-actions">
-         <button class="idea-generate" id="generateIdea" type="button">
-          BUAT GAGASAN
-          <span>
-           ✳
-          </span>
-         </button>
-         <button class="idea-copy" id="copyIdea" type="button">
-          SALIN IDE ↗
-         </button>
-        </div>
-       </div>
-       <article aria-live="polite" class="idea-result reveal">
-        <div class="idea-result-top">
-         <span>
-          OUTPUT / 001
-         </span>
-         <span class="idea-result-dot">
-         </span>
-        </div>
-        <small>
-         GAGASAN YANG TERBENTUK
-        </small>
-        <h3 id="ideaResultTitle">
-         Ruang belajar interaktif.
-        </h3>
-        <p id="ideaResultText">
-         Bangun sebuah website interaktif untuk membantu aktivitas belajar, dengan nuansa editorial dan elegan serta navigasi yang intuitif dan animasi halus.
-        </p>
-        <div class="idea-result-tags" id="ideaResultTags">
-         <span>
-          WEB
-         </span>
-         <span>
-          EXPERIENCE
-         </span>
-         <span>
-          IDEA
-         </span>
-        </div>
-        <div class="idea-result-bottom">
-         DIBUAT DARI RASA INGIN TAHU
-         <b>
-          KENZ / LAB
-         </b>
-        </div>
-       </article>
-      </div>
-      <div class="personal-note reveal">
-       <div class="personal-note-copy">
-        <span class="note-icon">
-         ✎
-        </span>
-        <div>
-         <small>
-          CATATAN PRIBADI DI PERANGKAT INI
-         </small>
-         <h3>
-          Simpan ide yang ingin kamu ingat.
-         </h3>
-         <p>
-          Catatan ini hanya disimpan di browser perangkat yang sedang digunakan, tidak dikirim ke pemilik website.
-         </p>
-        </div>
-       </div>
-       <div class="personal-note-editor">
-        <textarea id="visitorNote" maxlength="500" placeholder="Tulis ide singkat atau hal yang ingin kamu eksplorasi..." rows="3"></textarea>
-        <div class="personal-note-actions">
-         <span id="noteCount">
-          0 / 500
-         </span>
-         <div>
-          <button id="clearNote" type="button">
-           HAPUS
-          </button>
-          <button id="saveNote" type="button">
-           SIMPAN CATATAN ↗
-          </button>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </section>
     <section class="section faq-section" id="faq">
      <div class="container faq-layout">
       <div class="faq-intro reveal">
        <div class="eyebrow">
-        10 / PERTANYAAN
+        09 / PERTANYAAN
        </div>
        <h2 class="section-title">
         Sedikit hal
@@ -8100,7 +8099,7 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
     <section class="contact-section" id="contact">
      <div class="container">
       <div class="eyebrow reveal">
-       08 / MARI TERHUBUNG
+       10 / MARI TERHUBUNG
       </div>
       <h2 class="contact-title reveal">
        Punya ide?
@@ -8226,19 +8225,14 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
      08
     </span>
    </button>
-   <button aria-label="Ruang ide" class="rail-dot" data-section-jump="#ideas" title="Ruang ide">
+   <button aria-label="Pertanyaan" class="rail-dot" data-section-jump="#faq" title="Pertanyaan">
     <span>
      09
     </span>
    </button>
-   <button aria-label="Pertanyaan" class="rail-dot" data-section-jump="#faq" title="Pertanyaan">
-    <span>
-     10
-    </span>
-   </button>
    <button aria-label="Kontak" class="rail-dot" data-section-jump="#contact" title="Kontak">
     <span>
-     11
+     10
     </span>
    </button>
   </aside>
@@ -8318,6 +8312,13 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
      <button class="theme-btn" data-theme="sunset">Sunset</button>
      <button class="theme-btn" data-theme="oceanic">Oceanic</button>
      <button class="theme-btn" data-theme="sakura">Sakura</button>
+     <button class="theme-btn" data-theme="tropical" style="--theme-swatch:linear-gradient(135deg,#b9e769,#f477a8,#62d5cf)">Tropical</button>
+     <button class="theme-btn" data-theme="berry" style="--theme-swatch:linear-gradient(135deg,#9b72ed,#ec7eae,#ffbd7b)">Berry</button>
+     <button class="theme-btn" data-theme="electric" style="--theme-swatch:linear-gradient(135deg,#5179ff,#54d9e9,#ef62b5)">Electric</button>
+     <button class="theme-btn" data-theme="mango" style="--theme-swatch:linear-gradient(135deg,#ff9a45,#f7d45e,#6cbbe8)">Mango</button>
+     <button class="theme-btn" data-theme="lagoon" style="--theme-swatch:linear-gradient(135deg,#39b8bd,#78a8e8,#f3a28b)">Lagoon</button>
+     <button class="theme-btn" data-theme="peach" style="--theme-swatch:linear-gradient(135deg,#f4a68d,#e8a9cb,#9bcde0)">Peach</button>
+     <button class="theme-btn" data-theme="candyglass" style="--theme-swatch:linear-gradient(135deg,#f36fb5,#62d6e9,#b09bff)">Candy Glass</button>
     </div>
     <div class="control-grid">
      <button class="control-tile" data-toggle="particles">
@@ -8544,12 +8545,6 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
        08
       </span>
      </button>
-     <button class="command-item" data-go="#ideas">
-      Ruang ide
-      <span>
-       09
-      </span>
-     </button>
      <button class="command-item" data-go="#faq">
       Pertanyaan
       <span>
@@ -8559,7 +8554,7 @@ body.ready .mac-menubar { opacity: 1; transform: none; }
      <button class="command-item" data-go="#contact">
       Kontak
       <span>
-       11
+       10
       </span>
      </button>
     </div>
@@ -8674,8 +8669,8 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     const body = document.body, intro = $('#intro'), site = $('#site'), bar = $('#introBar'), pct = $('#introPercent'), status = $('#introStatus'), toastEl = $('#toast');
     const reducePref = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let manualCalm = reducePref, particlesOn = true, autoPlay = true, activeIndex = 0, autoTimer = null, tourTimer = null, toastTimer = null;
-    const themes = { ember: ['#ff895f', '#f3b75e', '#83c8de', '#b69ce8', '#ec9bb7'], coastal: ['#78c7dd', '#edaa82', '#9bd6c6', '#a8b8ee', '#e9bd79'], orchid: ['#b79be9', '#ed9abb', '#7fc9dc', '#e9c47b', '#a4d6c5'], candy: ['#fa8fa8', '#8bc9e8', '#c2a4eb', '#f5c57b', '#8ed8c0'], aurora: ['#76d5c6', '#8cbae8', '#c2a3ec', '#f1b17a', '#ef9ebc'], atelier: ['#c88c6a', '#d8b477', '#88b3c9', '#b5a1d6', '#dfa4ad'], citrus: ['#d5df79', '#f0a36c', '#79c8b1', '#81bfe3', '#d9a4ca'], glacier: ['#7ecbe7', '#a5d9d0', '#b6a4e8', '#f4c98c', '#ed9eb3'], midnight: ['#a4b5d8', '#7c9fba', '#c8a4c9', '#d5b78a', '#9dc9be'], sonoma: ['#85a9e8', '#f2a5bc', '#a9d7c6', '#c9a7ed', '#f4c883'], prism: ['#a68cf2', '#69d9e5', '#f28fad', '#f4be68', '#9fe0b0'], sunset: ['#ff8c69', '#f3c36e', '#d28ebe', '#8fa8dd', '#9ad1c5'], oceanic: ['#46b6c7', '#79a8ef', '#a8dbd6', '#b49be7', '#e9c283'], sakura: ['#f29ab5', '#d6a8ec', '#86bdd7', '#f3c98f', '#a5d9c0'] };
-    function setTheme(name) { let a = themes[name] || themes.ember; let root = document.documentElement; ['--accent', '--accent2', '--accent3', '--accent4', '--accent5'].forEach((v, i) => root.style.setProperty(v, a[i])); root.style.setProperty('--glow', a[0] + '55'); $$('.theme-btn').forEach(b => b.classList.toggle('active', b.dataset.theme === name)); try {
+    const themes = { ember: ['#ff895f', '#f3b75e', '#83c8de', '#b69ce8', '#ec9bb7'], coastal: ['#78c7dd', '#edaa82', '#9bd6c6', '#a8b8ee', '#e9bd79'], orchid: ['#b79be9', '#ed9abb', '#7fc9dc', '#e9c47b', '#a4d6c5'], candy: ['#fa8fa8', '#8bc9e8', '#c2a4eb', '#f5c57b', '#8ed8c0'], aurora: ['#76d5c6', '#8cbae8', '#c2a3ec', '#f1b17a', '#ef9ebc'], atelier: ['#c88c6a', '#d8b477', '#88b3c9', '#b5a1d6', '#dfa4ad'], citrus: ['#d5df79', '#f0a36c', '#79c8b1', '#81bfe3', '#d9a4ca'], glacier: ['#7ecbe7', '#a5d9d0', '#b6a4e8', '#f4c98c', '#ed9eb3'], midnight: ['#a4b5d8', '#7c9fba', '#c8a4c9', '#d5b78a', '#9dc9be'], sonoma: ['#85a9e8', '#f2a5bc', '#a9d7c6', '#c9a7ed', '#f4c883'], prism: ['#a68cf2', '#69d9e5', '#f28fad', '#f4be68', '#9fe0b0'], sunset: ['#ff8c69', '#f3c36e', '#d28ebe', '#8fa8dd', '#9ad1c5'], oceanic: ['#46b6c7', '#79a8ef', '#a8dbd6', '#b49be7', '#e9c283'], sakura: ['#f29ab5', '#d6a8ec', '#86bdd7', '#f3c98f', '#a5d9c0'], tropical: ['#b9e769', '#f477a8', '#62d5cf', '#a48bea', '#ffd36b'], berry: ['#9b72ed', '#ec7eae', '#ffbd7b', '#6ec8df', '#b4dfaa'], electric: ['#5179ff', '#54d9e9', '#ef62b5', '#c0ed77', '#ff9d5c'], mango: ['#ff9a45', '#f7d45e', '#6cbbe8', '#ad8fe7', '#79d2b4'], lagoon: ['#39b8bd', '#78a8e8', '#f3a28b', '#b69ae7', '#e9ce80'], peach: ['#f4a68d', '#e8a9cb', '#9bcde0', '#c2a7ed', '#f2d27d'], candyglass: ['#f36fb5', '#62d6e9', '#b09bff', '#ffe16b', '#78d7a9'] };
+    function setTheme(name) { let a = themes[name] || themes.ember; let root = document.documentElement; ['--accent', '--accent2', '--accent3', '--accent4', '--accent5'].forEach((v, i) => root.style.setProperty(v, a[i])); root.style.setProperty('--glow', a[0] + '55'); root.style.setProperty('--wallpaper-bg', `radial-gradient(ellipse at 12% 18%, ${a[0]}55, transparent 34%), radial-gradient(ellipse at 86% 20%, ${a[1]}48, transparent 30%), radial-gradient(ellipse at 72% 86%, ${a[2]}45, transparent 35%), radial-gradient(ellipse at 19% 84%, ${a[3]}42, transparent 31%), radial-gradient(ellipse at 52% 52%, ${a[4]}22, transparent 48%), linear-gradient(135deg,#090d18 0%,#121322 42%,#101b25 100%)`); root.dataset.kenzTheme = name; $$('.theme-btn').forEach(b => b.classList.toggle('active', b.dataset.theme === name)); try {
         localStorage.setItem('kenz-theme', name);
     }
     catch (e) { } }
@@ -8851,7 +8846,7 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     } }));
     updateToggleUI();
     // tour uses only real sections present on this page
-    function runTour() { let ids = ['home', 'about', 'explore', 'skill-studio', 'works', 'journey', 'lab', 'ideas', 'faq', 'contact'], i = 0; stopAuto(); function next() { if (i >= ids.length) {
+    function runTour() { let ids = ['home', 'about', 'explore', 'skill-studio', 'works', 'journey', 'lab', 'faq', 'contact'], i = 0; stopAuto(); function next() { if (i >= ids.length) {
         toast('Tur portofolio selesai.');
         startAuto();
         return;
@@ -8926,7 +8921,7 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     } requestAnimationFrame(drawParticles); }
     requestAnimationFrame(drawParticles);
     // V11 scroll choreography, micro-interactions and accessible utilities
-    const sections = ['home', 'about', 'explore', 'skill-studio', 'works', 'journey', 'lab', 'ideas', 'faq', 'contact'].map(id => document.getElementById(id)).filter(Boolean);
+    const sections = ['home', 'about', 'explore', 'skill-studio', 'works', 'journey', 'lab', 'faq', 'contact'].map(id => document.getElementById(id)).filter(Boolean);
     const rail = $('#sectionRail'), railDots = $$('.rail-dot'), readingPill = $('#readingPill'), readPercent = $('#readPercent'), backTop = $('#backTop'), backProgress = $('#backProgress');
     let scrollQueued = false;
     function updateScrollUI() {
@@ -8991,7 +8986,7 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     });
     // Magnetic micro-movement, deliberately small and reset on leave.
     if (matchMedia('(pointer:fine)').matches) {
-        $$('.feature-link,.control-trigger,.quick-action,.idea-shuffle,.lab-action,.pill-link').forEach(el => {
+        $$('.feature-link,.control-trigger,.quick-action,.lab-action,.pill-link').forEach(el => {
             el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(), dx = (e.clientX - r.left - r.width / 2) / Math.max(1, r.width / 2), dy = (e.clientY - r.top - r.height / 2) / Math.max(1, r.height / 2); el.style.setProperty('--mag-x', (dx * 4) + 'px'); el.style.setProperty('--mag-y', (dy * 4) + 'px'); });
             el.addEventListener('pointerleave', () => { el.style.setProperty('--mag-x', '0px'); el.style.setProperty('--mag-y', '0px'); });
         });
@@ -9046,8 +9041,6 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     $('#labCopy')?.addEventListener('click', copyLabCode);
     $('#labCopyMini')?.addEventListener('click', copyLabCode);
     applyLab('ember');
-    const ideaList = ['Antarmuka yang baik membuat hal rumit terasa sederhana.', 'Mulai dari fungsi, lalu beri bentuk yang mudah diingat.', 'Eksperimen kecil bisa membuka kemungkinan yang besar.', 'Detail terbaik sering muncul setelah mencoba sekali lagi.', 'Buat sesuatu yang berguna, lalu buat pengalaman menggunakannya terasa menyenangkan.', 'Teknologi memberi alat; rasa ingin tahu memberi arah.'];
-    $('#ideaShuffle')?.addEventListener('click', () => { const el = $('#ideaText'); el.animate([{ opacity: 1, transform: 'translateY(0)' }, { opacity: 0, transform: 'translateY(7px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 420, easing: 'ease' }); const next = ideaList[Math.floor(Math.random() * ideaList.length)]; setTimeout(() => el.textContent = next, 180); });
     // Share and copy profile actions; graceful fallback for local previews.
     $('#copyInstagram')?.addEventListener('click', () => copyText('@kenzz_sp'));
     $('#sharePortfolio')?.addEventListener('click', async () => { const data = { title: 'KENZ — Kenzie Surya Pratama', text: 'Jelajahi portofolio digital KENZ.', url: location.href }; try {
@@ -9075,8 +9068,7 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     // logo in intro and header are the same asset and the nav remains in the same visual position across the reveal
     // ================================================================
     // V12 INTERACTION SUITE
-    // Skill explorer, idea generator, local notes, profile tools,
-    // reading voice, shortcuts, focus mode and local clock.
+    // Skill explorer, profile tools, reading voice, shortcuts, focus mode, and local clock.
     // ================================================================
     const skillContent = {
         web: {
@@ -9173,107 +9165,6 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
         });
     });
     renderSkill('web');
-    // Build a project concept from selected constraints.
-    const ideaDomain = $('#ideaDomain');
-    const ideaPurpose = $('#ideaPurpose');
-    const ideaMood = $('#ideaMood');
-    const ideaInteraction = $('#ideaInteraction');
-    const ideaResultTitle = $('#ideaResultTitle');
-    const ideaResultText = $('#ideaResultText');
-    const ideaResult = $('.idea-result');
-    const ideaResultTags = $('#ideaResultTags');
-    const ideaTitles = [
-        'Ruang digital yang punya tujuan.',
-        'Satu gagasan, banyak kemungkinan.',
-        'Eksperimen yang bisa dijelajahi.',
-        'Pengalaman kecil yang terasa berarti.',
-        'Dari kebutuhan menjadi pengalaman.'
-    ];
-    function generateIdea() {
-        if (!ideaDomain || !ideaPurpose || !ideaMood || !ideaInteraction) {
-            return;
-        }
-        const domain = ideaDomain.value;
-        const purpose = ideaPurpose.value;
-        const mood = ideaMood.value;
-        const interaction = ideaInteraction.value;
-        const sentence = `Rancang ${domain} untuk ${purpose}, menggunakan pendekatan visual ${mood}, serta menghadirkan ${interaction}.`;
-        const title = ideaTitles[Math.floor(Math.random() * ideaTitles.length)];
-        ideaResult.classList.remove('refresh');
-        void ideaResult.offsetWidth;
-        ideaResult.classList.add('refresh');
-        ideaResultTitle.textContent = title;
-        ideaResultText.textContent = sentence;
-        const tags = [
-            domain.split(' ')[0],
-            purpose.split(' ').slice(0, 2).join(' '),
-            mood.split(' ')[0],
-            'IDEA'
-        ];
-        ideaResultTags.replaceChildren();
-        tags.forEach((tag) => {
-            const item = document.createElement('span');
-            item.textContent = tag.toUpperCase();
-            ideaResultTags.appendChild(item);
-        });
-        toast('Gagasan baru berhasil diracik.');
-    }
-    $('#generateIdea')?.addEventListener('click', generateIdea);
-    $('#copyIdea')?.addEventListener('click', () => {
-        const title = ideaResultTitle?.textContent || '';
-        const description = ideaResultText?.textContent || '';
-        copyText(`${title}\n${description}`);
-    });
-    // Visitors may keep a private note in their own browser.
-    const visitorNote = $('#visitorNote');
-    const noteCount = $('#noteCount');
-    const noteStorageKey = 'kenz-visitor-note-v1';
-    function updateNoteCount() {
-        if (!visitorNote || !noteCount) {
-            return;
-        }
-        noteCount.textContent = `${visitorNote.value.length} / 500`;
-    }
-    function loadVisitorNote() {
-        if (!visitorNote) {
-            return;
-        }
-        try {
-            visitorNote.value = localStorage.getItem(noteStorageKey) || '';
-        }
-        catch (error) {
-            visitorNote.value = '';
-        }
-        updateNoteCount();
-    }
-    visitorNote?.addEventListener('input', updateNoteCount);
-    $('#saveNote')?.addEventListener('click', () => {
-        if (!visitorNote) {
-            return;
-        }
-        try {
-            localStorage.setItem(noteStorageKey, visitorNote.value.trim());
-            toast('Catatan tersimpan di browser ini.');
-        }
-        catch (error) {
-            toast('Penyimpanan lokal tidak tersedia di browser ini.');
-        }
-    });
-    $('#clearNote')?.addEventListener('click', () => {
-        if (!visitorNote) {
-            return;
-        }
-        visitorNote.value = '';
-        updateNoteCount();
-        try {
-            localStorage.removeItem(noteStorageKey);
-        }
-        catch (error) {
-            // The textarea is still cleared even when storage is disabled.
-        }
-        toast('Catatan lokal dibersihkan.');
-    });
-    loadVisitorNote();
     // A concise profile can be downloaded as a text file.
     function downloadProfileText() {
         const profile = [
@@ -9447,7 +9338,7 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     // Observe the new interactive areas so reveal effects work even after
     // the browser has already completed the first pass of the page.
     if (revealObserver) {
-        $$('.skill-explorer .reveal, .idea-studio-grid .reveal, .personal-note, .faq-item').forEach((element) => {
+        $$('.skill-explorer .reveal, .faq-item').forEach((element) => {
             revealObserver.observe(element);
         });
     }
@@ -9481,7 +9372,7 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
     const wallpaper = doc.createElement('div');
     wallpaper.id = 'kenzWallpaper';
     wallpaper.setAttribute('aria-hidden', 'true');
-    wallpaper.innerHTML = '<span class="wallpaper-grain"></span><span class="wallpaper-beam"></span>';
+    wallpaper.innerHTML = '<span class="wallpaper-grain"></span><span class="wallpaper-beam"></span><span class="wallpaper-orb wallpaper-orb-a"></span><span class="wallpaper-orb wallpaper-orb-b"></span><span class="wallpaper-orb wallpaper-orb-c"></span><span class="wallpaper-orb wallpaper-orb-d"></span>';
     body.insertBefore(wallpaper, body.firstChild);
   }
 
@@ -9654,5 +9545,157 @@ document.querySelectorAll('[data-kenz-logo]').forEach(img => img.src = 'data:ima
 })();
 </script>
 
- </body>
+ 
+<script>
+/* KENZ V14 — colorful ambient system and polished scroll micro-interactions. */
+(() => {
+  'use strict';
+  const doc = document;
+  const root = doc.documentElement;
+  const body = doc.body;
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = matchMedia('(pointer: fine)').matches;
+  const qsa = (selector, scope = doc) => Array.from(scope.querySelectorAll(selector));
+
+  // Keep the decorative wallpaper alive with several coordinated color orbs.
+  const wallpaper = doc.getElementById('kenzWallpaper');
+  if (wallpaper) {
+    wallpaper.style.setProperty('--v14-glow-strength', '.36');
+  }
+
+  // Smooth, low-cost scroll signals drive the ambient hue and the top progress rail.
+  let scrollFrame = 0;
+  let previousY = window.scrollY;
+  let scrollVelocity = 0;
+  let lastStamp = performance.now();
+  function updateScrollAtmosphere(now = performance.now()) {
+    const docHeight = Math.max(1, doc.documentElement.scrollHeight - window.innerHeight);
+    const progress = Math.max(0, Math.min(1, window.scrollY / docHeight));
+    const delta = window.scrollY - previousY;
+    const dt = Math.max(16, now - lastStamp);
+    scrollVelocity += ((delta / dt) - scrollVelocity) * .18;
+    previousY = window.scrollY;
+    lastStamp = now;
+    root.style.setProperty('--scroll-hue', `${(progress * 34 + Math.min(14, Math.abs(scrollVelocity) * 120)).toFixed(1)}deg`);
+    root.style.setProperty('--scroll-depth', `${Math.min(24, Math.abs(scrollVelocity) * 160).toFixed(1)}px`);
+    scrollFrame = 0;
+  }
+  window.addEventListener('scroll', () => {
+    if (scrollFrame) return;
+    scrollFrame = requestAnimationFrame(updateScrollAtmosphere);
+  }, { passive: true });
+  updateScrollAtmosphere();
+
+  // A section gets one soft bloom and a few tiny sparkles on its first entrance.
+  const animatedSections = qsa('main section');
+  function addArrivalEffect(section) {
+    if (reduceMotion || section.dataset.arrivalPlayed) return;
+    section.dataset.arrivalPlayed = '1';
+    const bloom = doc.createElement('span');
+    bloom.className = 'section-ripple burst';
+    bloom.setAttribute('aria-hidden', 'true');
+    section.appendChild(bloom);
+    const sparkleColors = ['var(--accent2)', 'var(--accent4)', 'var(--accent3)', 'var(--accent5)'];
+    for (let i = 0; i < 4; i += 1) {
+      const sparkle = doc.createElement('span');
+      sparkle.className = 'section-sparkle burst';
+      sparkle.textContent = i % 2 ? '✧' : '✦';
+      sparkle.setAttribute('aria-hidden', 'true');
+      sparkle.style.setProperty('--spark-x', `${18 + i * 19}%`);
+      sparkle.style.setProperty('--spark-y', `${17 + (i % 2) * 62}%`);
+      sparkle.style.setProperty('--spark-dx', `${(i - 1.5) * 18}px`);
+      sparkle.style.setProperty('--spark-dy', `${i % 2 ? 22 : -22}px`);
+      sparkle.style.setProperty('--spark-color', sparkleColors[i]);
+      sparkle.style.animationDelay = `${i * 65}ms`;
+      section.appendChild(sparkle);
+      window.setTimeout(() => sparkle.remove(), 1350);
+    }
+    window.setTimeout(() => bloom.remove(), 1400);
+  }
+  if ('IntersectionObserver' in window) {
+    const arrivalObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('section-in-view');
+        addArrivalEffect(entry.target);
+      });
+    }, { threshold: .16, rootMargin: '0px 0px -8% 0px' });
+    animatedSections.forEach(section => arrivalObserver.observe(section));
+  } else {
+    animatedSections.forEach(section => section.classList.add('section-in-view'));
+  }
+
+  // Gentle 3D tilt for cards. The small rotation is disabled on touch and reduced-motion devices.
+  if (finePointer && !reduceMotion) {
+    const tiltCards = qsa('.interest-card,.principle-card,.story-step,.contact-card,.hero-widget,.lab-shell');
+    tiltCards.forEach(card => {
+      card.classList.add('kinetic-card');
+      card.addEventListener('pointermove', event => {
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / Math.max(1, rect.width) - .5;
+        const y = (event.clientY - rect.top) / Math.max(1, rect.height) - .5;
+        card.style.setProperty('--tilt-x', `${(-y * 3.2).toFixed(2)}deg`);
+        card.style.setProperty('--tilt-y', `${(x * 3.6).toFixed(2)}deg`);
+        card.classList.add('is-tilting');
+      }, { passive: true });
+      card.addEventListener('pointerleave', () => {
+        card.classList.remove('is-tilting');
+        card.style.setProperty('--tilt-x', '0deg');
+        card.style.setProperty('--tilt-y', '0deg');
+      });
+    });
+  }
+
+  // Give the custom cursor contextual labels without changing its position logic.
+  const cursorRing = doc.getElementById('cursorRing');
+  if (cursorRing && finePointer) {
+    qsa('a,button,.carousel-card,.interest-card,.story-step').forEach(target => {
+      target.addEventListener('pointerenter', () => {
+        const label = target.matches('.carousel-card,.interest-card,.story-step') ? 'OPEN' :
+          (target.matches('a[href^="#"]') ? 'READ' : 'VIEW');
+        cursorRing.dataset.cursorLabel = label;
+      });
+      target.addEventListener('pointerleave', () => { cursorRing.dataset.cursorLabel = 'VIEW'; });
+    });
+  }
+
+  // Add a small color shimmer to section titles once they enter the viewport.
+  if ('IntersectionObserver' in window) {
+    const titleObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('title-arrived');
+        titleObserver.unobserve(entry.target);
+      });
+    }, { threshold: .45 });
+    qsa('.section-title,.showcase-heading h1').forEach(title => titleObserver.observe(title));
+  }
+
+  // The Lab visual palette follows the global theme, but retains its own three-color experiment.
+  const labThemeSync = () => {
+    const activeTheme = root.dataset.kenzTheme || 'sonoma';
+    const stage = doc.getElementById('labStage');
+    if (!stage) return;
+    const styles = getComputedStyle(root);
+    stage.style.setProperty('--lab-a', styles.getPropertyValue('--accent').trim());
+    stage.style.setProperty('--lab-b', styles.getPropertyValue('--accent2').trim());
+    stage.style.setProperty('--lab-c', styles.getPropertyValue('--accent4').trim());
+    stage.dataset.globalTheme = activeTheme;
+  };
+  qsa('.theme-btn').forEach(button => button.addEventListener('click', () => {
+    window.setTimeout(labThemeSync, 30);
+  }));
+  labThemeSync();
+
+  // A compact mobile-friendly status pill updates when the page is in motion.
+  let directionTimer = 0;
+  window.addEventListener('scroll', () => {
+    body.classList.add('page-is-scrolling');
+    window.clearTimeout(directionTimer);
+    directionTimer = window.setTimeout(() => body.classList.remove('page-is-scrolling'), 170);
+  }, { passive: true });
+})();
+</script>
+
+</body>
 </html>
